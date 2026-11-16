@@ -1,0 +1,9 @@
+{
+  "id": "a3a5d1b7-f27c-449e-95ae-1b607c3df429",
+  "name": "Sentinela do Sepulcro",
+  "level": 2,
+  "type": "melee",
+  "attack": 300,
+  "defense": 1550,
+  "image": "/images/cards/melee/sentinela-do-sepulcro.png"
+}

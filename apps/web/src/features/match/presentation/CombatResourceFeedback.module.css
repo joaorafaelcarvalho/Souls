@@ -1,0 +1,55 @@
+.damage,
+.soul {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.18rem 0.4rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: resourceFeedback var(--vfx-feedback-duration, 500ms) ease-out both;
+}
+
+.damage {
+  background: rgba(122, 38, 31, 0.92);
+  color: #ffe1d1;
+  box-shadow: 0 0 0.9rem rgba(192, 62, 40, 0.7);
+}
+
+.soul {
+  background: rgba(56, 38, 104, 0.92);
+  color: #e4dcff;
+  box-shadow: 0 0 0.9rem rgba(137, 105, 239, 0.72);
+}
+
+.spent {
+  background: rgba(33, 32, 53, 0.95);
+  color: #bcb1e7;
+  box-shadow: 0 0 0.7rem rgba(130, 108, 192, 0.45);
+}
+
+@keyframes resourceFeedback {
+  0% {
+    opacity: 0;
+    transform: translateY(0.45rem) scale(0.82);
+  }
+  22% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-0.9rem) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .damage,
+  .soul {
+    animation: none;
+    opacity: 1;
+  }
+}

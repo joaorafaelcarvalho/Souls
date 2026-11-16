@@ -1,0 +1,9 @@
+{
+  "id": "1a853caf-208d-4339-8ee6-e17a0553a87e",
+  "name": "Rei Exilado",
+  "level": 4,
+  "type": "melee",
+  "attack": 2200,
+  "defense": 1150,
+  "image": "/images/cards/melee/rei-exilado.png"
+}

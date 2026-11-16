@@ -1,0 +1,9 @@
+{
+  "id": "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+  "name": "Arqueiro",
+  "level": 0,
+  "type": "ranged",
+  "attack": 500,
+  "defense": 0,
+  "image": "/images/cards/ranged/arqueiro.png"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "be508c62-ad27-4f34-8059-6c1b3e8daf74",
+  "name": "Vigia da Capela",
+  "level": 1,
+  "type": "melee",
+  "attack": 350,
+  "defense": 1250,
+  "image": "/images/cards/melee/vigia-da-capela.png"
+}

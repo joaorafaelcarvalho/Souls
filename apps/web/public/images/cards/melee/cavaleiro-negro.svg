@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Placeholder do Cavaleiro Negro</title>
+  <rect width="640" height="360" rx="24" fill="#191c22"/>
+  <path d="M320 50 438 116v128l-118 66-118-66V116z" fill="#b34848"/>
+  <path d="M320 78 402 124v91l-82 47-82-47v-91z" fill="#111318"/>
+  <path d="m320 108 22 49h54l-44 32 17 53-49-31-49 31 17-53-44-32h54z" fill="#d9b36c"/>
+</svg>

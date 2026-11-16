@@ -1,0 +1,271 @@
+{
+  "totalDefinitions": 26,
+  "byLevel": {
+    "0": 7,
+    "1": 6,
+    "2": 5,
+    "3": 5,
+    "4": 3
+  },
+  "byType": {
+    "melee": 16,
+    "ranged": 10
+  },
+  "byFaction": {
+    "ashen-crown": 5,
+    "last-watch": 7,
+    "sepulchral-oath": 5,
+    "rift-conclave": 5,
+    "pale-moon-veil": 4
+  },
+  "averageAttackByLevel": {
+    "0": 342.86,
+    "1": 716.67,
+    "2": 850,
+    "3": 1160,
+    "4": 1383.33
+  },
+  "averageDefenseByLevel": {
+    "0": 442.86,
+    "1": 408.33,
+    "2": 690,
+    "3": 830,
+    "4": 1133.33
+  },
+  "definitions": [
+    {
+      "id": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+      "name": "Carrasco Errante",
+      "type": "melee",
+      "level": 1,
+      "attack": 900,
+      "defense": 300,
+      "factionId": "ashen-crown"
+    },
+    {
+      "id": "4f82a16e-5dc7-409b-8e34-6bad5f7c8eb9",
+      "name": "Cavaleiro Negro",
+      "type": "melee",
+      "level": 1,
+      "attack": 700,
+      "defense": 500,
+      "factionId": "ashen-crown"
+    },
+    {
+      "id": "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+      "name": "Cavaleiro",
+      "type": "melee",
+      "level": 0,
+      "attack": 500,
+      "defense": 500,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "4d744c98-d167-4e74-9e11-78cee560f32d",
+      "name": "Colosso do Crepúsculo",
+      "type": "melee",
+      "level": 4,
+      "attack": 500,
+      "defense": 2350,
+      "factionId": "sepulchral-oath"
+    },
+    {
+      "id": "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+      "name": "Defensor",
+      "type": "melee",
+      "level": 0,
+      "attack": 0,
+      "defense": 1000,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+      "name": "Duelista do Abismo",
+      "type": "melee",
+      "level": 3,
+      "attack": 1500,
+      "defense": 550,
+      "factionId": "ashen-crown"
+    },
+    {
+      "id": "7a1d4c2e-6f83-4b90-8c15-2e7d9a4f6b30",
+      "name": "Escudeiro das Cinzas",
+      "type": "melee",
+      "level": 0,
+      "attack": 300,
+      "defense": 700,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+      "name": "Espadachim do Eclipse",
+      "type": "melee",
+      "level": 2,
+      "attack": 1050,
+      "defense": 700,
+      "factionId": "ashen-crown"
+    },
+    {
+      "id": "fb57bcb1-18ff-41d1-9514-0fd3e9b64256",
+      "name": "Guardião das Correntes",
+      "type": "melee",
+      "level": 2,
+      "attack": 800,
+      "defense": 1200,
+      "factionId": "sepulchral-oath"
+    },
+    {
+      "id": "9c3f6e40-8b05-4d12-ae37-4a9f1c6b8d52",
+      "name": "Guardião das Ruínas",
+      "type": "melee",
+      "level": 0,
+      "attack": 200,
+      "defense": 900,
+      "factionId": "sepulchral-oath"
+    },
+    {
+      "id": "ad4f7b51-9c16-4e23-bf48-5b0a2d7c9e63",
+      "name": "Lanceiro de Ferro",
+      "type": "melee",
+      "level": 1,
+      "attack": 800,
+      "defense": 400,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "edb08720-b1b8-4c94-ad13-3a94bab76349",
+      "name": "Paladino da Última Vigília",
+      "type": "melee",
+      "level": 3,
+      "attack": 1100,
+      "defense": 1650,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "1a853caf-208d-4339-8ee6-e17a0553a87e",
+      "name": "Rei Exilado",
+      "type": "melee",
+      "level": 4,
+      "attack": 1900,
+      "defense": 1050,
+      "factionId": "ashen-crown"
+    },
+    {
+      "id": "68c2dc9a-cc43-4119-b339-c03f0b147946",
+      "name": "Sentinela da Catedral",
+      "type": "melee",
+      "level": 3,
+      "attack": 350,
+      "defense": 1950,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "a3a5d1b7-f27c-449e-95ae-1b607c3df429",
+      "name": "Sentinela do Sepulcro",
+      "type": "melee",
+      "level": 2,
+      "attack": 300,
+      "defense": 1550,
+      "factionId": "sepulchral-oath"
+    },
+    {
+      "id": "be508c62-ad27-4f34-8059-6c1b3e8daf74",
+      "name": "Vigia da Capela",
+      "type": "melee",
+      "level": 1,
+      "attack": 350,
+      "defense": 1250,
+      "factionId": "last-watch"
+    },
+    {
+      "id": "d072ae84-cf49-416b-a27b-8e3d5f0ac196",
+      "name": "Acólito da Névoa",
+      "type": "ranged",
+      "level": 1,
+      "attack": 800,
+      "defense": 0,
+      "factionId": "rift-conclave"
+    },
+    {
+      "id": "ae5bdd73-f2f2-472b-9192-9926c7f75c46",
+      "name": "Arcanista do Fim",
+      "type": "ranged",
+      "level": 4,
+      "attack": 1750,
+      "defense": 0,
+      "factionId": "rift-conclave"
+    },
+    {
+      "id": "cf619d73-be38-405a-916a-7d2c4f9eb085",
+      "name": "Arqueira do Crepúsculo",
+      "type": "ranged",
+      "level": 1,
+      "attack": 750,
+      "defense": 0,
+      "factionId": "pale-moon-veil"
+    },
+    {
+      "id": "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+      "name": "Arqueiro",
+      "type": "ranged",
+      "level": 0,
+      "attack": 500,
+      "defense": 0,
+      "factionId": "pale-moon-veil"
+    },
+    {
+      "id": "8b2e5d3f-7a94-4c01-9d26-3f8e0b5a7c41",
+      "name": "Batedora do Breu",
+      "type": "ranged",
+      "level": 0,
+      "attack": 400,
+      "defense": 0,
+      "factionId": "pale-moon-veil"
+    },
+    {
+      "id": "76a72481-f831-4a46-ad9b-5072defa7513",
+      "name": "Caçadora da Lua Pálida",
+      "type": "ranged",
+      "level": 2,
+      "attack": 1100,
+      "defense": 0,
+      "factionId": "pale-moon-veil"
+    },
+    {
+      "id": "2d63165c-9200-47fa-ba55-f04214e6f873",
+      "name": "Feiticeira da Ruptura",
+      "type": "ranged",
+      "level": 3,
+      "attack": 1450,
+      "defense": 0,
+      "factionId": "rift-conclave"
+    },
+    {
+      "id": "3e71905d-4cb6-4f8a-9d23-5a9c4e6b7da8",
+      "name": "Mago",
+      "type": "ranged",
+      "level": 0,
+      "attack": 500,
+      "defense": 0,
+      "factionId": "rift-conclave"
+    },
+    {
+      "id": "e723386a-c9cd-4a6a-849d-13e09230be3f",
+      "name": "Matriarca dos Selos",
+      "type": "ranged",
+      "level": 3,
+      "attack": 1400,
+      "defense": 0,
+      "factionId": "sepulchral-oath"
+    },
+    {
+      "id": "c5c7f3d9-b49e-46b0-b7c0-3d829e5fa641",
+      "name": "Tecelão de Almas",
+      "type": "ranged",
+      "level": 2,
+      "attack": 1000,
+      "defense": 0,
+      "factionId": "rift-conclave"
+    }
+  ]
+}

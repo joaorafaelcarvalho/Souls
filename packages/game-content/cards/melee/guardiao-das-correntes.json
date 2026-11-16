@@ -1,0 +1,9 @@
+{
+  "id": "fb57bcb1-18ff-41d1-9514-0fd3e9b64256",
+  "name": "Guardião das Correntes",
+  "level": 2,
+  "type": "melee",
+  "attack": 800,
+  "defense": 1200,
+  "image": "/images/cards/melee/guardiao-das-correntes.png"
+}

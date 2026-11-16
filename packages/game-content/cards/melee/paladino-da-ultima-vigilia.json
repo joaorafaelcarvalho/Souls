@@ -1,0 +1,9 @@
+{
+  "id": "edb08720-b1b8-4c94-ad13-3a94bab76349",
+  "name": "Paladino da Última Vigília",
+  "level": 3,
+  "type": "melee",
+  "attack": 1100,
+  "defense": 1650,
+  "image": "/images/cards/melee/paladino-da-ultima-vigilia.png"
+}

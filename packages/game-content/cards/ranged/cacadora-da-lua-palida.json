@@ -1,0 +1,9 @@
+{
+  "id": "76a72481-f831-4a46-ad9b-5072defa7513",
+  "name": "Caçadora da Lua Pálida",
+  "level": 2,
+  "type": "ranged",
+  "attack": 1100,
+  "defense": 0,
+  "image": "/images/cards/ranged/cacadora-da-lua-palida.png"
+}

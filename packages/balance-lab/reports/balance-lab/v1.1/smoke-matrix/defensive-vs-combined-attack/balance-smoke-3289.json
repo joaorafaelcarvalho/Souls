@@ -1,0 +1,4909 @@
+{
+  "games": [
+    {
+      "id": "simulation-3289-1",
+      "seed": 3289,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 2,
+      "firstPlayerId": 1,
+      "finalRound": 12,
+      "turns": 22,
+      "actions": 82,
+      "finalHp": {
+        "1": 0,
+        "2": 300
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 4,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 11,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 6,
+        "2": 5
+      },
+      "damageDealt": {
+        "1": 1500,
+        "2": 3900
+      },
+      "damageReceived": {
+        "1": 3900,
+        "2": 1500
+      },
+      "combatDamageDealt": {
+        "1": 1500,
+        "2": 3900
+      },
+      "combatDamageReceived": {
+        "1": 3900,
+        "2": 1500
+      },
+      "hpPenalties": {
+        "1": 6500,
+        "2": 8200
+      },
+      "excessDamage": {
+        "1": 400,
+        "2": 0
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 2,
+          "1": 6,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 23,
+            "2": 51,
+            "3": 53,
+            "4": 20
+          },
+          "availableNotChosen": {
+            "0": 8,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 61,
+            "2": 58,
+            "3": 23,
+            "4": 19
+          },
+          "availableNotChosen": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 1,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3290-2",
+      "seed": 3290,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 82,
+      "finalHp": {
+        "1": 7200,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 7,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 5
+      },
+      "damageDealt": {
+        "1": 2000,
+        "2": 2800
+      },
+      "damageReceived": {
+        "1": 2800,
+        "2": 2000
+      },
+      "combatDamageDealt": {
+        "1": 2000,
+        "2": 2800
+      },
+      "combatDamageReceived": {
+        "1": 2800,
+        "2": 2000
+      },
+      "hpPenalties": {
+        "1": 0,
+        "2": 8300
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 300
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 6,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 11,
+            "2": 52,
+            "3": 43,
+            "4": 14
+          },
+          "availableNotChosen": {
+            "0": 12,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 7,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 52,
+            "2": 70,
+            "3": 28,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 5,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3291-3",
+      "seed": 3291,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 9,
+      "turns": 17,
+      "actions": 70,
+      "finalHp": {
+        "1": 8100,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 1,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 6,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 6,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 1,
+        "2": 1
+      },
+      "damageDealt": {
+        "1": 1800,
+        "2": 1900
+      },
+      "damageReceived": {
+        "1": 1900,
+        "2": 1800
+      },
+      "combatDamageDealt": {
+        "1": 1800,
+        "2": 1900
+      },
+      "combatDamageReceived": {
+        "1": 1900,
+        "2": 1800
+      },
+      "hpPenalties": {
+        "1": 0,
+        "2": 8250
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 50
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 9,
+          "1": 2,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 3,
+          "2": 8,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 9,
+            "2": 30,
+            "3": 34,
+            "4": 12
+          },
+          "availableNotChosen": {
+            "0": 8,
+            "1": 1,
+            "2": 2,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 5,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 56,
+            "2": 42,
+            "3": 22,
+            "4": 4
+          },
+          "availableNotChosen": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 1,
+            "1": 0,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 5,
+            "1": 0,
+            "2": 1,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3292-4",
+      "seed": 3292,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 78,
+      "finalHp": {
+        "1": 5900,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 3,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 3,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 10,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 3,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 5
+      },
+      "damageDealt": {
+        "1": 2600,
+        "2": 2100
+      },
+      "damageReceived": {
+        "1": 2100,
+        "2": 2600
+      },
+      "combatDamageDealt": {
+        "1": 2600,
+        "2": 2100
+      },
+      "combatDamageReceived": {
+        "1": 2100,
+        "2": 2600
+      },
+      "hpPenalties": {
+        "1": 2000,
+        "2": 8000
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 600
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 28,
+            "2": 74,
+            "3": 24,
+            "4": 20
+          },
+          "availableNotChosen": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 66,
+            "2": 44,
+            "3": 19,
+            "4": 6
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 2,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3293-5",
+      "seed": 3293,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 73,
+      "finalHp": {
+        "1": 2400,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 1,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 2,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 1,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 9,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 2,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 1400,
+        "2": 900
+      },
+      "damageReceived": {
+        "1": 900,
+        "2": 1400
+      },
+      "combatDamageDealt": {
+        "1": 1400,
+        "2": 900
+      },
+      "combatDamageReceived": {
+        "1": 900,
+        "2": 1400
+      },
+      "hpPenalties": {
+        "1": 6700,
+        "2": 8750
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 150
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 8,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 3,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 6,
+            "2": 48,
+            "3": 29,
+            "4": 17
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 8,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 45,
+            "2": 41,
+            "3": 28,
+            "4": 4
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 2,
+            "1": 1,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3294-6",
+      "seed": 3294,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 78,
+      "finalHp": {
+        "1": 4850,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 7,
+        "2": 1
+      },
+      "soulsSpent": {
+        "1": 7,
+        "2": 1
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 13,
+        "2": 9
+      },
+      "cardsDestroyed": {
+        "1": 7,
+        "2": 1
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 750,
+        "2": 4150
+      },
+      "damageReceived": {
+        "1": 4150,
+        "2": 750
+      },
+      "combatDamageDealt": {
+        "1": 750,
+        "2": 4150
+      },
+      "combatDamageReceived": {
+        "1": 4150,
+        "2": 750
+      },
+      "hpPenalties": {
+        "1": 1000,
+        "2": 9650
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 400
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 0,
+          "3": 1,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 3,
+          "2": null,
+          "3": 8,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": 8,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 3,
+            "2": 46,
+            "3": 40,
+            "4": 12
+          },
+          "availableNotChosen": {
+            "0": 13,
+            "1": 0,
+            "2": 4,
+            "3": 2,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 48,
+            "2": 36,
+            "3": 22,
+            "4": 18
+          },
+          "availableNotChosen": {
+            "0": 5,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 4,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3295-7",
+      "seed": 3295,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 9,
+      "turns": 17,
+      "actions": 67,
+      "finalHp": {
+        "1": 6800,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 4,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 11,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 1,
+        "2": 1
+      },
+      "damageDealt": {
+        "1": 6400,
+        "2": 1100
+      },
+      "damageReceived": {
+        "1": 1100,
+        "2": 6400
+      },
+      "combatDamageDealt": {
+        "1": 6400,
+        "2": 1100
+      },
+      "combatDamageReceived": {
+        "1": 1100,
+        "2": 6400
+      },
+      "hpPenalties": {
+        "1": 2100,
+        "2": 4100
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 500
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 0,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": null,
+          "2": 7,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 16,
+            "2": 32,
+            "3": 16,
+            "4": 8
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 1,
+            "2": 2,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 39,
+            "2": 44,
+            "3": 15,
+            "4": 15
+          },
+          "availableNotChosen": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 2,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3296-8",
+      "seed": 3296,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 74,
+      "finalHp": {
+        "1": 100,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 5,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 1500,
+        "2": 5900
+      },
+      "damageReceived": {
+        "1": 5900,
+        "2": 1500
+      },
+      "combatDamageDealt": {
+        "1": 1500,
+        "2": 5900
+      },
+      "combatDamageReceived": {
+        "1": 5900,
+        "2": 1500
+      },
+      "hpPenalties": {
+        "1": 4000,
+        "2": 8550
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 50
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 1,
+          "2": 0,
+          "3": 1,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 8,
+          "2": null,
+          "3": 7,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 21,
+            "2": 61,
+            "3": 37,
+            "4": 4
+          },
+          "availableNotChosen": {
+            "0": 11,
+            "1": 3,
+            "2": 4,
+            "3": 2,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 58,
+            "2": 40,
+            "3": 15,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 1,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 5,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3297-9",
+      "seed": 3297,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 82,
+      "finalHp": {
+        "1": 300,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 6,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 6,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 6,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 5
+      },
+      "damageDealt": {
+        "1": 1800,
+        "2": 4200
+      },
+      "damageReceived": {
+        "1": 4200,
+        "2": 1800
+      },
+      "combatDamageDealt": {
+        "1": 1800,
+        "2": 4200
+      },
+      "combatDamageReceived": {
+        "1": 4200,
+        "2": 1800
+      },
+      "hpPenalties": {
+        "1": 5500,
+        "2": 8250
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 50
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 5,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 10,
+            "2": 49,
+            "3": 31,
+            "4": 17
+          },
+          "availableNotChosen": {
+            "0": 9,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 65,
+            "2": 41,
+            "3": 21,
+            "4": 14
+          },
+          "availableNotChosen": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3298-10",
+      "seed": 3298,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 12,
+      "turns": 23,
+      "actions": 85,
+      "finalHp": {
+        "1": 100,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 5,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 11,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 7,
+        "2": 7
+      },
+      "damageDealt": {
+        "1": 1400,
+        "2": 1900
+      },
+      "damageReceived": {
+        "1": 1900,
+        "2": 1400
+      },
+      "combatDamageDealt": {
+        "1": 1400,
+        "2": 1900
+      },
+      "combatDamageReceived": {
+        "1": 1900,
+        "2": 1400
+      },
+      "hpPenalties": {
+        "1": 8000,
+        "2": 8750
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 150
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 7,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 16,
+            "2": 58,
+            "3": 47,
+            "4": 20
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 72,
+            "2": 51,
+            "3": 27,
+            "4": 11
+          },
+          "availableNotChosen": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 1,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 5,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3299-11",
+      "seed": 3299,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 82,
+      "finalHp": {
+        "1": 3650,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 9,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 9,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 14,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 9,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 5
+      },
+      "damageDealt": {
+        "1": 0,
+        "2": 4350
+      },
+      "damageReceived": {
+        "1": 4350,
+        "2": 0
+      },
+      "combatDamageDealt": {
+        "1": 0,
+        "2": 4350
+      },
+      "combatDamageReceived": {
+        "1": 4350,
+        "2": 0
+      },
+      "hpPenalties": {
+        "1": 2000,
+        "2": 10750
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 750
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 2,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 7,
+          "2": 6,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 17,
+            "2": 41,
+            "3": 42,
+            "4": 13
+          },
+          "availableNotChosen": {
+            "0": 17,
+            "1": 3,
+            "2": 4,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 62,
+            "2": 38,
+            "3": 20,
+            "4": 4
+          },
+          "availableNotChosen": {
+            "0": 10,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 10,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 2,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 8,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3300-12",
+      "seed": 3300,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 2,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 20,
+      "actions": 75,
+      "finalHp": {
+        "1": 0,
+        "2": 800
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 3,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 3,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 10,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 3,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 4,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 1500,
+        "2": 1300
+      },
+      "damageReceived": {
+        "1": 1300,
+        "2": 1500
+      },
+      "combatDamageDealt": {
+        "1": 1500,
+        "2": 1300
+      },
+      "combatDamageReceived": {
+        "1": 1300,
+        "2": 1500
+      },
+      "hpPenalties": {
+        "1": 9100,
+        "2": 7700
+      },
+      "excessDamage": {
+        "1": 400,
+        "2": 0
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 9,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 5,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 11,
+            "2": 59,
+            "3": 37,
+            "4": 3
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 5,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 42,
+            "2": 35,
+            "3": 15,
+            "4": 16
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 1,
+            "1": 1,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3301-13",
+      "seed": 3301,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 77,
+      "finalHp": {
+        "1": 6650,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 7,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 13,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 400,
+        "2": 3350
+      },
+      "damageReceived": {
+        "1": 3350,
+        "2": 400
+      },
+      "combatDamageDealt": {
+        "1": 400,
+        "2": 3350
+      },
+      "combatDamageReceived": {
+        "1": 3350,
+        "2": 400
+      },
+      "hpPenalties": {
+        "1": 0,
+        "2": 9700
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 100
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 7,
+          "2": 6,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 1,
+            "2": 28,
+            "3": 46,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 10,
+            "1": 1,
+            "2": 4,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 50,
+            "2": 52,
+            "3": 30,
+            "4": 6
+          },
+          "availableNotChosen": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3302-14",
+      "seed": 3302,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 80,
+      "finalHp": {
+        "1": 4650,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 7,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 7,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 4
+      },
+      "damageDealt": {
+        "1": 0,
+        "2": 3350
+      },
+      "damageReceived": {
+        "1": 3350,
+        "2": 0
+      },
+      "combatDamageDealt": {
+        "1": 0,
+        "2": 3350
+      },
+      "combatDamageReceived": {
+        "1": 3350,
+        "2": 0
+      },
+      "hpPenalties": {
+        "1": 2000,
+        "2": 10650
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 650
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 9,
+          "1": 2,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 3,
+          "2": 7,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 0,
+            "2": 53,
+            "3": 55,
+            "4": 19
+          },
+          "availableNotChosen": {
+            "0": 16,
+            "1": 0,
+            "2": 3,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 10,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 58,
+            "2": 36,
+            "3": 34,
+            "4": 12
+          },
+          "availableNotChosen": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 1,
+            "1": 0,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3303-15",
+      "seed": 3303,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 74,
+      "finalHp": {
+        "1": 6950,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 1,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 5,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 5,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 2
+      },
+      "damageDealt": {
+        "1": 4000,
+        "2": 2050
+      },
+      "damageReceived": {
+        "1": 2050,
+        "2": 4000
+      },
+      "combatDamageDealt": {
+        "1": 4000,
+        "2": 2050
+      },
+      "combatDamageReceived": {
+        "1": 2050,
+        "2": 4000
+      },
+      "hpPenalties": {
+        "1": 1000,
+        "2": 6350
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 350
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 5,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 3,
+            "2": 44,
+            "3": 39,
+            "4": 6
+          },
+          "availableNotChosen": {
+            "0": 10,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 31,
+            "2": 40,
+            "3": 18,
+            "4": 14
+          },
+          "availableNotChosen": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 4,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3304-16",
+      "seed": 3304,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 11,
+      "turns": 21,
+      "actions": 81,
+      "finalHp": {
+        "1": 2200,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 5,
+        "2": 1
+      },
+      "soulsSpent": {
+        "1": 5,
+        "2": 1
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 9
+      },
+      "cardsDestroyed": {
+        "1": 5,
+        "2": 1
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 5,
+        "2": 4
+      },
+      "damageDealt": {
+        "1": 1600,
+        "2": 1700
+      },
+      "damageReceived": {
+        "1": 1700,
+        "2": 1600
+      },
+      "combatDamageDealt": {
+        "1": 1600,
+        "2": 1700
+      },
+      "combatDamageReceived": {
+        "1": 1700,
+        "2": 1600
+      },
+      "hpPenalties": {
+        "1": 6100,
+        "2": 8400
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 0
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 1,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 5,
+          "2": 7,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 2,
+          "1": 6,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 10,
+            "2": 56,
+            "3": 43,
+            "4": 5
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 1,
+            "2": 3,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 61,
+            "2": 43,
+            "3": 36,
+            "4": 9
+          },
+          "availableNotChosen": {
+            "0": 1,
+            "1": 3,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 1,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 5,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 4,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3305-17",
+      "seed": 3305,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 75,
+      "finalHp": {
+        "1": 5100,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 6,
+        "2": 1
+      },
+      "soulsSpent": {
+        "1": 6,
+        "2": 1
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 12,
+        "2": 9
+      },
+      "cardsDestroyed": {
+        "1": 6,
+        "2": 1
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 2200,
+        "2": 1500
+      },
+      "damageReceived": {
+        "1": 1500,
+        "2": 2200
+      },
+      "combatDamageDealt": {
+        "1": 2200,
+        "2": 1500
+      },
+      "combatDamageReceived": {
+        "1": 1500,
+        "2": 2200
+      },
+      "hpPenalties": {
+        "1": 3400,
+        "2": 8650
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 850
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 0,
+          "2": 1,
+          "3": 1,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 1,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": null,
+          "2": 8,
+          "3": 5,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": 4,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 5,
+            "2": 37,
+            "3": 14,
+            "4": 12
+          },
+          "availableNotChosen": {
+            "0": 16,
+            "1": 1,
+            "2": 5,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 31,
+            "2": 31,
+            "3": 21,
+            "4": 16
+          },
+          "availableNotChosen": {
+            "0": 9,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 7,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 2,
+            "2": 3,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 4,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3306-18",
+      "seed": 3306,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 77,
+      "finalHp": {
+        "1": 1800,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 7,
+        "2": 2
+      },
+      "soulsSpent": {
+        "1": 7,
+        "2": 2
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 13,
+        "2": 10
+      },
+      "cardsDestroyed": {
+        "1": 7,
+        "2": 2
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 2650,
+        "2": 3300
+      },
+      "damageReceived": {
+        "1": 3300,
+        "2": 2650
+      },
+      "combatDamageDealt": {
+        "1": 2650,
+        "2": 3300
+      },
+      "combatDamageReceived": {
+        "1": 3300,
+        "2": 2650
+      },
+      "hpPenalties": {
+        "1": 4900,
+        "2": 8000
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 650
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 2,
+          "2": 0,
+          "3": 1,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": 3,
+          "2": null,
+          "3": 7,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": 3,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 4,
+            "2": 44,
+            "3": 19,
+            "4": 4
+          },
+          "availableNotChosen": {
+            "0": 11,
+            "1": 0,
+            "2": 4,
+            "3": 1,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 32,
+            "2": 34,
+            "3": 16,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 3,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 0,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 6,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 3,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 1,
+            "1": 1,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3307-19",
+      "seed": 3307,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 75,
+      "finalHp": {
+        "1": 5300,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 0,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 4,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 11,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 4,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 3
+      },
+      "damageDealt": {
+        "1": 1400,
+        "2": 3700
+      },
+      "damageReceived": {
+        "1": 3700,
+        "2": 1400
+      },
+      "combatDamageDealt": {
+        "1": 1400,
+        "2": 3700
+      },
+      "combatDamageReceived": {
+        "1": 3700,
+        "2": 1400
+      },
+      "hpPenalties": {
+        "1": 1000,
+        "2": 8700
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 100
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 10,
+          "1": 0,
+          "2": 1,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": null,
+          "2": 7,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 24,
+            "2": 46,
+            "3": 49,
+            "4": 18
+          },
+          "availableNotChosen": {
+            "0": 5,
+            "1": 2,
+            "2": 3,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 45,
+            "2": 31,
+            "3": 30,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 0,
+            "1": 2,
+            "2": 3,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    },
+    {
+      "id": "simulation-3308-20",
+      "seed": 3308,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": "Laboratório · defensive",
+      "playerTwoDeck": "Laboratório · combined-attack",
+      "status": "completed",
+      "reason": "game-ended",
+      "winnerId": 1,
+      "firstPlayerId": 1,
+      "finalRound": 10,
+      "turns": 19,
+      "actions": 71,
+      "finalHp": {
+        "1": 4800,
+        "2": 0
+      },
+      "finalSouls": {
+        "1": 1,
+        "2": 0
+      },
+      "soulsGained": {
+        "1": 2,
+        "2": 0
+      },
+      "soulsSpent": {
+        "1": 1,
+        "2": 0
+      },
+      "cardsDrawn": {
+        "1": 15,
+        "2": 15
+      },
+      "cardsInvoked": {
+        "1": 9,
+        "2": 8
+      },
+      "cardsDestroyed": {
+        "1": 2,
+        "2": 0
+      },
+      "cardsRetired": {
+        "1": 0,
+        "2": 0
+      },
+      "failedDraws": {
+        "1": 3,
+        "2": 2
+      },
+      "damageDealt": {
+        "1": 3400,
+        "2": 800
+      },
+      "damageReceived": {
+        "1": 800,
+        "2": 3400
+      },
+      "combatDamageDealt": {
+        "1": 3400,
+        "2": 800
+      },
+      "combatDamageReceived": {
+        "1": 800,
+        "2": 3400
+      },
+      "hpPenalties": {
+        "1": 4400,
+        "2": 7300
+      },
+      "excessDamage": {
+        "1": 0,
+        "2": 700
+      },
+      "invocationsByLevel": {
+        "1": {
+          "0": 9,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "2": {
+          "0": 8,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "firstInvocationRoundByLevel": {
+        "1": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        },
+        "2": {
+          "0": 1,
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null
+        }
+      },
+      "invocationDiagnostics": {
+        "1": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 20,
+            "2": 45,
+            "3": 21,
+            "4": 7
+          },
+          "availableNotChosen": {
+            "0": 6,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 4,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "insufficientSouls": {
+            "0": 0,
+            "1": 44,
+            "2": 38,
+            "3": 20,
+            "4": 13
+          },
+          "availableNotChosen": {
+            "0": 7,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "noSpace": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "placementLimit": {
+            "0": 3,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "cardLocationsByLevel": {
+        "1": {
+          "hand": {
+            "0": 1,
+            "1": 2,
+            "2": 4,
+            "3": 3,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 2,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        },
+        "2": {
+          "hand": {
+            "0": 0,
+            "1": 5,
+            "2": 4,
+            "3": 2,
+            "4": 1
+          },
+          "deck": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          },
+          "discard": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0
+          }
+        }
+      },
+      "metricWarnings": []
+    }
+  ],
+  "aggregate": {
+    "generatedAt": "2026-11-13T14:00:43.986Z",
+    "config": {
+      "games": 20,
+      "seed": 3289,
+      "maxRounds": 200,
+      "maxActions": 2000,
+      "playerOneStrategy": "defensive",
+      "playerTwoStrategy": "combined-attack",
+      "playerOneDeck": {
+        "name": "Laboratório · defensive",
+        "profile": "defensive",
+        "cards": [
+          "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+          "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+          "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+          "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+          "9c3f6e40-8b05-4d12-ae37-4a9f1c6b8d52",
+          "9c3f6e40-8b05-4d12-ae37-4a9f1c6b8d52",
+          "9c3f6e40-8b05-4d12-ae37-4a9f1c6b8d52",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "be508c62-ad27-4f34-8059-6c1b3e8daf74",
+          "be508c62-ad27-4f34-8059-6c1b3e8daf74",
+          "fb57bcb1-18ff-41d1-9514-0fd3e9b64256",
+          "fb57bcb1-18ff-41d1-9514-0fd3e9b64256",
+          "a3a5d1b7-f27c-449e-95ae-1b607c3df429",
+          "a3a5d1b7-f27c-449e-95ae-1b607c3df429",
+          "edb08720-b1b8-4c94-ad13-3a94bab76349",
+          "edb08720-b1b8-4c94-ad13-3a94bab76349",
+          "68c2dc9a-cc43-4119-b339-c03f0b147946",
+          "4d744c98-d167-4e74-9e11-78cee560f32d"
+        ]
+      },
+      "playerTwoDeck": {
+        "name": "Laboratório · combined-attack",
+        "profile": "combined-attack",
+        "cards": [
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+          "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+          "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+          "1c5f7e3b-2a94-4d68-9b01-3e7a2c4f5b86",
+          "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+          "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+          "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+          "d072ae84-cf49-416b-a27b-8e3d5f0ac196",
+          "d072ae84-cf49-416b-a27b-8e3d5f0ac196",
+          "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+          "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+          "c5c7f3d9-b49e-46b0-b7c0-3d829e5fa641",
+          "c5c7f3d9-b49e-46b0-b7c0-3d829e5fa641",
+          "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+          "2d63165c-9200-47fa-ba55-f04214e6f873",
+          "1a853caf-208d-4339-8ee6-e17a0553a87e"
+        ]
+      },
+      "rulesVersion": "SOULS v0.6",
+      "catalogVersion": "local-26-definitions",
+      "includeEvents": false,
+      "firstPlayerId": 1
+    },
+    "games": 20,
+    "completedGames": 20,
+    "inconclusiveGames": 0,
+    "winsByPlayer": {
+      "1": 18,
+      "2": 2
+    },
+    "strategyResults": [
+      {
+        "playerId": 1,
+        "strategy": "defensive",
+        "deck": "Laboratório · defensive",
+        "games": 20,
+        "wins": 18,
+        "losses": 2,
+        "inconclusive": 0,
+        "firstPlayerGames": 20,
+        "firstPlayerWins": 18,
+        "winRate": 90,
+        "averageRounds": 10.45,
+        "averageFinalHp": 3842.5,
+        "averageSoulsGained": 5.2,
+        "averageSoulsSpent": 5,
+        "averageDamageDealt": 1915,
+        "averageDamageReceived": 2712.5
+      },
+      {
+        "playerId": 2,
+        "strategy": "combined-attack",
+        "deck": "Laboratório · combined-attack",
+        "games": 20,
+        "wins": 2,
+        "losses": 18,
+        "inconclusive": 0,
+        "firstPlayerGames": 0,
+        "firstPlayerWins": 0,
+        "winRate": 10,
+        "averageRounds": 10.45,
+        "averageFinalHp": 55,
+        "averageSoulsGained": 0.25,
+        "averageSoulsSpent": 0.25,
+        "averageDamageDealt": 2712.5,
+        "averageDamageReceived": 1915
+      }
+    ],
+    "averageRounds": 10.45,
+    "averageTurns": 19.8,
+    "averageFinalHp": {
+      "1": 3842.5,
+      "2": 55
+    },
+    "averageSoulsGained": {
+      "1": 5.2,
+      "2": 0.25
+    },
+    "averageSoulsSpent": {
+      "1": 5,
+      "2": 0.25
+    },
+    "averageDamageDealt": {
+      "1": 1915,
+      "2": 2712.5
+    },
+    "averageDamageReceived": {
+      "1": 2712.5,
+      "2": 1915
+    },
+    "averageCombatDamageDealt": {
+      "1": 1915,
+      "2": 2712.5
+    },
+    "averageCombatDamageReceived": {
+      "1": 2712.5,
+      "2": 1915
+    },
+    "averageHpPenalties": {
+      "1": 3485,
+      "2": 8350
+    },
+    "averageExcessDamage": {
+      "1": 40,
+      "2": 320
+    },
+    "invocationsByLevel": {
+      "0": 354,
+      "1": 29,
+      "2": 9,
+      "3": 4,
+      "4": 0
+    },
+    "invocationsByPlayerAndLevel": {
+      "1": {
+        "0": 194,
+        "1": 24,
+        "2": 9,
+        "3": 4,
+        "4": 0
+      },
+      "2": {
+        "0": 160,
+        "1": 5,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      }
+    },
+    "firstInvocationRoundByPlayerAndLevel": {
+      "1": {
+        "0": 1,
+        "1": 3,
+        "2": 6,
+        "3": 5,
+        "4": null
+      },
+      "2": {
+        "0": 1,
+        "1": 3,
+        "2": null,
+        "3": null,
+        "4": null
+      }
+    },
+    "invocationDiagnostics": {
+      "1": {
+        "insufficientSouls": {
+          "0": 0,
+          "1": 238,
+          "2": 954,
+          "3": 719,
+          "4": 238
+        },
+        "availableNotChosen": {
+          "0": 179,
+          "1": 15,
+          "2": 38,
+          "3": 5,
+          "4": 0
+        },
+        "noSpace": {
+          "0": 63,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "placementLimit": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      },
+      "2": {
+        "insufficientSouls": {
+          "0": 0,
+          "1": 1018,
+          "2": 845,
+          "3": 460,
+          "4": 209
+        },
+        "availableNotChosen": {
+          "0": 78,
+          "1": 9,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "noSpace": {
+          "0": 0,
+          "1": 2,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        },
+        "placementLimit": {
+          "0": 47,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0
+        }
+      }
+    },
+    "averageCardsRemainingInHand": {
+      "1": {
+        "0": 0.3,
+        "1": 0.8,
+        "2": 3.55,
+        "3": 2.8,
+        "4": 1
+      },
+      "2": {
+        "0": 0,
+        "1": 4.75,
+        "2": 4,
+        "3": 2,
+        "4": 1
+      }
+    },
+    "averageCardsRemainingInDeck": {
+      "1": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      },
+      "2": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      }
+    },
+    "deckDistributions": [
+      {
+        "playerId": 1,
+        "name": "Laboratório · defensive",
+        "profile": "defensive",
+        "totalCards": 20,
+        "valid": true,
+        "practicalToStart": true,
+        "validationErrors": [],
+        "byLevel": {
+          "0": 10,
+          "1": 2,
+          "2": 4,
+          "3": 3,
+          "4": 1
+        },
+        "byType": {
+          "melee": 20,
+          "ranged": 0
+        },
+        "definitionsPresent": 9,
+        "definitionsMissing": 17,
+        "freeCards": 10
+      },
+      {
+        "playerId": 2,
+        "name": "Laboratório · combined-attack",
+        "profile": "combined-attack",
+        "totalCards": 20,
+        "valid": true,
+        "practicalToStart": true,
+        "validationErrors": [],
+        "byLevel": {
+          "0": 8,
+          "1": 5,
+          "2": 4,
+          "3": 2,
+          "4": 1
+        },
+        "byType": {
+          "melee": 11,
+          "ranged": 9
+        },
+        "definitionsPresent": 9,
+        "definitionsMissing": 17,
+        "freeCards": 8
+      }
+    ],
+    "invocationCoverage": {
+      "scenarios": [
+        {
+          "level": 0,
+          "cardDefinitionId": "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+          "cardName": "Cavaleiro",
+          "type": "melee",
+          "soulsBefore": 0,
+          "legal": true,
+          "invoked": true,
+          "reason": "invoked"
+        },
+        {
+          "level": 1,
+          "cardDefinitionId": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+          "cardName": "Carrasco Errante",
+          "type": "melee",
+          "soulsBefore": 1,
+          "legal": true,
+          "invoked": true,
+          "reason": "invoked"
+        },
+        {
+          "level": 1,
+          "cardDefinitionId": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+          "cardName": "Carrasco Errante",
+          "type": "melee",
+          "soulsBefore": 0,
+          "legal": false,
+          "invoked": false,
+          "reason": "insufficient-souls"
+        },
+        {
+          "level": 2,
+          "cardDefinitionId": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+          "cardName": "Espadachim do Eclipse",
+          "type": "melee",
+          "soulsBefore": 2,
+          "legal": true,
+          "invoked": true,
+          "reason": "invoked"
+        },
+        {
+          "level": 2,
+          "cardDefinitionId": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+          "cardName": "Espadachim do Eclipse",
+          "type": "melee",
+          "soulsBefore": 1,
+          "legal": false,
+          "invoked": false,
+          "reason": "insufficient-souls"
+        },
+        {
+          "level": 3,
+          "cardDefinitionId": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+          "cardName": "Duelista do Abismo",
+          "type": "melee",
+          "soulsBefore": 3,
+          "legal": true,
+          "invoked": true,
+          "reason": "invoked"
+        },
+        {
+          "level": 3,
+          "cardDefinitionId": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+          "cardName": "Duelista do Abismo",
+          "type": "melee",
+          "soulsBefore": 2,
+          "legal": false,
+          "invoked": false,
+          "reason": "insufficient-souls"
+        },
+        {
+          "level": 4,
+          "cardDefinitionId": "4d744c98-d167-4e74-9e11-78cee560f32d",
+          "cardName": "Colosso do Crepúsculo",
+          "type": "melee",
+          "soulsBefore": 4,
+          "legal": true,
+          "invoked": true,
+          "reason": "invoked"
+        },
+        {
+          "level": 4,
+          "cardDefinitionId": "4d744c98-d167-4e74-9e11-78cee560f32d",
+          "cardName": "Colosso do Crepúsculo",
+          "type": "melee",
+          "soulsBefore": 3,
+          "legal": false,
+          "invoked": false,
+          "reason": "insufficient-souls"
+        }
+      ],
+      "invocationsByLevel": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1
+      },
+      "allLevelsCovered": true,
+      "warnings": []
+    },
+    "warnings": [
+      "J1: existem cartas de nível 4 no baralho, mas nenhuma foi invocada.",
+      "J2: existem cartas de nível 2 no baralho, mas nenhuma foi invocada.",
+      "J2: existem cartas de nível 3 no baralho, mas nenhuma foi invocada.",
+      "J2: existem cartas de nível 4 no baralho, mas nenhuma foi invocada.",
+      "Existe uma diferença relevante entre as vitórias dos dois jogadores; isto é um alerta diagnóstico, não uma conclusão de balanceamento.",
+      "J2: a cobertura de níveis 2–4 não foi observada nas partidas; use o cenário determinístico de invocação para separar falha de cobertura de equilíbrio."
+    ]
+  },
+  "invocationCoverage": {
+    "scenarios": [
+      {
+        "level": 0,
+        "cardDefinitionId": "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+        "cardName": "Cavaleiro",
+        "type": "melee",
+        "soulsBefore": 0,
+        "legal": true,
+        "invoked": true,
+        "reason": "invoked"
+      },
+      {
+        "level": 1,
+        "cardDefinitionId": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+        "cardName": "Carrasco Errante",
+        "type": "melee",
+        "soulsBefore": 1,
+        "legal": true,
+        "invoked": true,
+        "reason": "invoked"
+      },
+      {
+        "level": 1,
+        "cardDefinitionId": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+        "cardName": "Carrasco Errante",
+        "type": "melee",
+        "soulsBefore": 0,
+        "legal": false,
+        "invoked": false,
+        "reason": "insufficient-souls"
+      },
+      {
+        "level": 2,
+        "cardDefinitionId": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+        "cardName": "Espadachim do Eclipse",
+        "type": "melee",
+        "soulsBefore": 2,
+        "legal": true,
+        "invoked": true,
+        "reason": "invoked"
+      },
+      {
+        "level": 2,
+        "cardDefinitionId": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+        "cardName": "Espadachim do Eclipse",
+        "type": "melee",
+        "soulsBefore": 1,
+        "legal": false,
+        "invoked": false,
+        "reason": "insufficient-souls"
+      },
+      {
+        "level": 3,
+        "cardDefinitionId": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+        "cardName": "Duelista do Abismo",
+        "type": "melee",
+        "soulsBefore": 3,
+        "legal": true,
+        "invoked": true,
+        "reason": "invoked"
+      },
+      {
+        "level": 3,
+        "cardDefinitionId": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+        "cardName": "Duelista do Abismo",
+        "type": "melee",
+        "soulsBefore": 2,
+        "legal": false,
+        "invoked": false,
+        "reason": "insufficient-souls"
+      },
+      {
+        "level": 4,
+        "cardDefinitionId": "4d744c98-d167-4e74-9e11-78cee560f32d",
+        "cardName": "Colosso do Crepúsculo",
+        "type": "melee",
+        "soulsBefore": 4,
+        "legal": true,
+        "invoked": true,
+        "reason": "invoked"
+      },
+      {
+        "level": 4,
+        "cardDefinitionId": "4d744c98-d167-4e74-9e11-78cee560f32d",
+        "cardName": "Colosso do Crepúsculo",
+        "type": "melee",
+        "soulsBefore": 3,
+        "legal": false,
+        "invoked": false,
+        "reason": "insufficient-souls"
+      }
+    ],
+    "invocationsByLevel": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1
+    },
+    "allLevelsCovered": true,
+    "warnings": []
+  }
+}

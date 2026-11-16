@@ -1,0 +1,9 @@
+{
+  "id": "cf619d73-be38-405a-916a-7d2c4f9eb085",
+  "name": "Arqueira do Crepúsculo",
+  "level": 1,
+  "type": "ranged",
+  "attack": 750,
+  "defense": 0,
+  "image": "/images/cards/ranged/arqueira-do-crepusculo.png"
+}

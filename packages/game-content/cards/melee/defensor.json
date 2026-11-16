@@ -1,0 +1,9 @@
+{
+  "id": "2d608f4c-3ba5-4e79-8c12-4f8b3d5a6c97",
+  "name": "Defensor",
+  "level": 0,
+  "type": "melee",
+  "attack": 0,
+  "defense": 1000,
+  "image": "/images/cards/melee/defensor.png"
+}

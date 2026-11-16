@@ -1,0 +1,561 @@
+.shell {
+  display: grid;
+  width: 100%;
+  min-height: 100dvh;
+  height: 100dvh;
+  max-height: 100dvh;
+  grid-template-columns: minmax(14rem, 0.8fr) minmax(22rem, 1.2fr) minmax(25rem, 1.1fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    "left board rail"
+    ". board player"
+    "footer footer footer";
+  gap: var(--souls-space-2);
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem 0.75rem 0.25rem;
+}
+
+.leftRail {
+  display: flex;
+  grid-area: left;
+  min-width: 0;
+  min-height: 0;
+  height: 160%;
+  flex-direction: column;
+  gap: var(--souls-space-3);
+  overflow: hidden;
+  z-index: 2;
+}
+.leftTop {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--souls-space-2);
+}
+
+.leftTop .header {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.35rem;
+}
+
+.leftTop .headerActions {
+  width: auto;
+  align-items: flex-start;
+}
+
+.leftTop .opponentPanel {
+  min-width: 0;
+}
+
+.leftTop .logo {
+  padding: 1rem;
+  width: min(100%);
+}
+
+.opponentPanel {
+  min-width: 0;
+}
+
+.boardStage {
+  display: grid;
+  grid-area: board;
+  min-width: 0;
+  min-height: 0;
+  place-items: stretch;
+  padding: 0 0.25rem;
+}
+
+.rightRail {
+  display: flex;
+  grid-area: rail;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  gap: var(--souls-space-3);
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: var(--souls-space-3);
+  border: 1px solid rgba(150, 113, 78, 0.62);
+  border-radius: var(--souls-radius-md);
+  padding: 0.4rem 0.55rem 0.5rem;
+  background: var(--souls-gradient-panel);
+  box-shadow: var(--souls-shadow-panel);
+}
+
+.headerActions {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.1rem;
+  color: var(--souls-color-accent-gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--souls-color-text-primary);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  letter-spacing: 0.08em;
+  line-height: 0.95;
+  text-shadow: 0 0 1rem rgba(200, 165, 105, 0.16);
+}
+.logoTitle {
+  margin: 0;
+}
+
+.logo {
+  display: block;
+  width: min(100%, 15rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.leftRail .header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.leftRail .headerActions {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.leftRail .note {
+  max-width: 100%;
+  text-align: left;
+}
+
+.leftRail .headerActions button {
+  align-self: auto;
+}
+
+.note,
+.footer,
+.message,
+.selection span {
+  color: var(--souls-color-text-secondary);
+  font-size: 0.68rem;
+}
+
+.note {
+  max-width: 14rem;
+  margin: 0;
+  text-align: right;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.2rem;
+}
+
+.controls button,
+.header button,
+.selection button {
+  border: 1px solid var(--souls-color-accent-gold);
+  border-radius: var(--souls-radius-md);
+  padding: 0.28rem 0.45rem;
+  background: var(--souls-gradient-iron);
+  color: var(--souls-color-text-primary);
+  font-size: 0.66rem;
+  cursor: pointer;
+  transition: background var(--souls-transition-fast), box-shadow var(--souls-transition-fast), color var(--souls-transition-fast);
+}
+
+.controls button:hover,
+.controls button:focus-visible,
+.header button:hover,
+.header button:focus-visible,
+.selection button:hover,
+.selection button:focus-visible {
+  background: var(--souls-gradient-gold);
+  box-shadow: var(--souls-shadow-glow);
+  color: var(--souls-color-bg);
+  outline: none;
+}
+
+.turnPanel {
+  display: grid;
+  grid-template-columns: max-content max-content minmax(0, 1fr) max-content;
+  align-content: start;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  border: 1px solid rgba(150, 113, 78, 0.62);
+  border-radius: var(--souls-radius-md);
+  padding: 0.55rem 0.6rem;
+  background: var(--souls-gradient-panel);
+  box-shadow: var(--souls-shadow-panel);
+  text-align: left;
+}
+
+.round,
+.turnPanel > span {
+  color: var(--souls-color-text-secondary);
+  font-size: 0.64rem;
+}
+
+.turnPanel strong {
+  color: var(--souls-color-accent-gold);
+  font-size: 0.82rem;
+}
+.message {
+  grid-column: 1 / -1;
+  min-height: 1rem;
+  margin: 0;
+  line-height: 1.05;
+}
+
+.playerArea {
+  display: grid;
+  grid-area: player;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "status"
+    "controls";
+  align-content: start;
+  align-items: start;
+  min-width: 0;
+  min-height: 0;
+  gap: 0.35rem;
+}
+
+.playerControls {
+  display: grid;
+  grid-area: controls;
+  min-width: 0;
+  min-height: 0;
+  grid-template-rows: auto auto;
+  gap: 0.2rem;
+}
+
+.playerStatusPanel {
+  grid-area: status;
+  min-width: 0;
+  min-height: 0;
+}
+
+.selection {
+  display: flex;
+  min-height: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--souls-space-2);
+  border-left: 2px solid var(--souls-color-accent-gold);
+  padding: 0.2rem 0.45rem;
+  background: var(--souls-gradient-panel);
+  box-shadow: var(--souls-shadow-panel);
+}
+
+.footer {
+  grid-area: footer;
+  border-top: 1px solid rgba(150, 113, 78, 0.52);
+  padding-top: 0.2rem;
+}
+
+@media (max-width: 62rem) {
+  .shell {
+    height: auto;
+    max-height: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(24rem, 68dvh) auto auto;
+    grid-template-areas:
+      "rail"
+      "left"
+      "board"
+      "player"
+      "footer";
+    overflow: auto;
+  }
+
+  .leftRail {
+    height: auto;
+    overflow: visible;
+  }
+
+  .rightRail {
+    gap: var(--souls-space-2);
+  }
+
+  .boardStage {
+    min-height: 24rem;
+    padding: 0;
+  }
+
+  .playerArea {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "status"
+      "controls";
+  }
+}
+
+@media (max-width: 42rem) {
+  .shell {
+    gap: 0.35rem;
+    min-height: 0;
+  overflow: hidden;
+  padding: 0.35rem;
+  }
+
+  .header {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .headerActions {
+    align-items: flex-end;
+  }
+
+  .note {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .turnPanel {
+    grid-template-columns: max-content 1fr;
+    padding: 0.4rem;
+  }
+
+  .turnPanel > span:nth-of-type(2),
+  .turnPanel .controls {
+    grid-column: 1 / -1;
+  }
+
+  .controls {
+    justify-content: flex-start;
+  }
+
+  .turnPanel .message {
+    display: none;
+  }
+
+  .playerArea {
+    gap: 0.35rem;
+  }
+}
+.combatControls {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  color: var(--souls-color-text-secondary);
+  font-size: 0.62rem;
+}
+
+.combatControls span {
+  margin-right: auto;
+}
+
+.combatControls button {
+  border: 1px solid var(--souls-color-accent-gold);
+  border-radius: var(--souls-radius-md);
+  padding: 0.25rem 0.4rem;
+  background: var(--souls-gradient-iron);
+  color: var(--souls-color-text-primary);
+  font-size: 0.62rem;
+  cursor: pointer;
+}
+
+.combatControls button:hover,
+.combatControls button:focus-visible {
+  background: var(--souls-gradient-gold);
+  color: var(--souls-color-bg);
+  outline: none;
+}
+/* Entrada e controlos: linguagem ornamental partilhada com o MainMenu. */
+.shell {
+  min-width: 0;
+  animation: gameEntry 460ms cubic-bezier(0.18, 0.8, 0.3, 1) both;
+}
+
+.leftTop .header {
+  border: 0;
+  border-radius: 0;
+  padding: 0.25rem;
+  background: transparent;
+  box-shadow: none;
+}
+
+.leftTop .header > div:first-child {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.leftTop .logo {
+  width: min(100%, 14rem);
+  padding: 0;
+}
+
+.leftRail .header {
+  flex-direction: row;
+  align-items: center;
+}
+
+.leftRail .headerActions {
+  width: auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.controls {
+  justify-content: center;
+}
+
+.controls button,
+.header button,
+.selection button,
+.combatControls button {
+  border: 1px solid rgba(150, 113, 78, 0.82);
+  border-radius: 0.2rem;
+  padding: 0.34rem 0.65rem;
+  background: linear-gradient(180deg, rgba(58, 49, 43, 0.94), rgba(16, 16, 20, 0.98) 74%), var(--souls-gradient-iron);
+  box-shadow: inset 0 1px rgba(242, 234, 219, 0.08), inset 0 -0.22rem rgba(0, 0, 0, 0.25), 0 0.35rem 0.75rem rgba(0, 0, 0, 0.2);
+  color: var(--souls-color-text-primary);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  clip-path: polygon(7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%);
+}
+
+.controls button:hover,
+.controls button:focus-visible,
+.header button:hover,
+.header button:focus-visible,
+.selection button:hover,
+.selection button:focus-visible,
+.combatControls button:hover,
+.combatControls button:focus-visible {
+  border-color: var(--souls-color-accent-gold);
+  background: linear-gradient(180deg, rgba(103, 76, 45, 0.94), rgba(27, 20, 18, 0.99) 74%), var(--souls-gradient-iron);
+  box-shadow: inset 0 1px rgba(242, 234, 219, 0.14), 0 0 0.9rem rgba(200, 165, 105, 0.22);
+  color: var(--souls-color-text-primary);
+  outline: 2px solid rgba(200, 165, 105, 0.22);
+  outline-offset: 2px;
+}
+
+.combatControls button {
+  border-radius: 0.2rem;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.62rem;
+}
+
+@keyframes gameEntry {
+  from { opacity: 0; transform: translateY(0.45rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 62rem) {
+  .leftRail .headerActions {
+    width: auto;
+  }
+}
+
+@media (max-width: 42rem) {
+  .leftTop .header {
+    flex-direction: row;
+    align-items: center;
+  }
+  .leftRail .headerActions {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .leftTop .logo {
+    width: min(100%, 10rem);
+  }
+  .leftRail .headerActions button {
+    padding: 0.28rem 0.5rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    animation: none;
+  }
+}
+
+/* No cabeçalho esquerdo, os controlos ficam novamente sob o logótipo. */
+.leftRail .header {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.leftRail .headerActions {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.leftTop .headerActions {
+  align-self: auto;
+}
+
+/* Controlos da partida alinhados com o diálogo de retorno ao menu. */
+.controls button,
+.header button,
+.selection button,
+.combatControls button,
+.leftRail .headerActions button {
+  min-height: 2.25rem;
+  border: 1px solid var(--souls-color-accent-bronze);
+  border-radius: 0.3rem;
+  padding: 0.55rem 0.8rem;
+  background: var(--souls-gradient-iron);
+  box-shadow: inset 0 1px rgba(242, 234, 219, 0.08), inset 0 -0.25rem rgba(0, 0, 0, 0.3);
+  color: var(--souls-color-text-primary);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  clip-path: none;
+}
+
+.controls button:hover,
+.controls button:focus-visible,
+.header button:hover,
+.header button:focus-visible,
+.selection button:hover,
+.selection button:focus-visible,
+.combatControls button:hover,
+.combatControls button:focus-visible,
+.leftRail .headerActions button:hover,
+.leftRail .headerActions button:focus-visible {
+  border-color: var(--souls-color-accent-gold);
+  background: var(--souls-gradient-iron);
+  box-shadow: inset 0 1px rgba(242, 234, 219, 0.14), 0 0 0.85rem rgba(200, 165, 105, 0.2);
+  color: var(--souls-color-text-primary);
+  outline: 2px solid rgba(200, 165, 105, 0.25);
+  outline-offset: 2px;
+  transform: translateY(-1px);
+}

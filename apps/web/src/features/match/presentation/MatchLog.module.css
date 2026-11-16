@@ -1,0 +1,63 @@
+.log {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(150, 113, 78, 0.62);
+  border-radius: var(--souls-radius-md);
+  background: transparent;
+  box-shadow: none;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--souls-space-2);
+  border-bottom: 1px solid rgba(200, 165, 105, 0.32);
+  padding: 0.45rem 0.55rem;
+}
+
+.heading h2 {
+  margin: 0;
+  color: var(--souls-color-accent-gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.heading span {
+  color: var(--souls-color-text-secondary);
+  font-size: 0.6rem;
+}
+
+.entries {
+  min-height: 0;
+  margin: 0;
+  padding: 0.3rem 0.45rem 0.5rem 1.45rem;
+  overflow-y: auto;
+  color: var(--souls-color-text-secondary);
+  font-size: 0.67rem;
+  line-height: 1.25;
+  scrollbar-color: var(--souls-color-accent-bronze) rgba(15, 15, 15, 0.5);
+}
+
+.entry {
+  padding: 0.36rem 0.2rem;
+  border-bottom: 1px solid rgba(242, 234, 219, 0.08);
+}
+
+.entry::marker {
+  color: var(--souls-color-accent-gold);
+  font-size: 0.65rem;
+}
+
+@media (max-width: 62rem) {
+  .log {
+    flex: 0 1 15rem;
+    max-height: 15rem;
+  }
+}

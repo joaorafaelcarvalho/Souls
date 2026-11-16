@@ -1,0 +1,9 @@
+{
+  "id": "8ad0df27-9075-4bee-9145-d04e1f11dbf8",
+  "name": "Duelista do Abismo",
+  "level": 3,
+  "type": "melee",
+  "attack": 1700,
+  "defense": 600,
+  "image": "/images/cards/melee/duelista-do-abismo.png"
+}

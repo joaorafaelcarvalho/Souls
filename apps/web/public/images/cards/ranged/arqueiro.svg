@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Placeholder do Arqueiro</title>
+  <rect width="640" height="360" rx="24" fill="#245264"/>
+  <path d="M148 280c86-132 177-198 344-208-82 61-135 132-160 216" fill="none" stroke="#d9b36c" stroke-width="18"/>
+  <path d="M184 270 444 92" stroke="#f2f4f7" stroke-width="7"/>
+  <path d="m444 92-38 9 25 28z" fill="#f2f4f7"/>
+</svg>

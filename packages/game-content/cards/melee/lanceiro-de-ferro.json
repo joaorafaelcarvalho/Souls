@@ -1,0 +1,9 @@
+{
+  "id": "ad4f7b51-9c16-4e23-bf48-5b0a2d7c9e63",
+  "name": "Lanceiro de Ferro",
+  "level": 1,
+  "type": "melee",
+  "attack": 800,
+  "defense": 400,
+  "image": "/images/cards/melee/lanceiro-de-ferro.png"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "9c3f6e40-8b05-4d12-ae37-4a9f1c6b8d52",
+  "name": "Guardião das Ruínas",
+  "level": 0,
+  "type": "melee",
+  "attack": 200,
+  "defense": 900,
+  "image": "/images/cards/melee/guardiao-das-ruinas.png"
+}

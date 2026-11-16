@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Placeholder do Defensor</title>
+  <rect width="640" height="360" rx="24" fill="#31455e"/>
+  <path d="M320 52 466 106v99c0 73-57 117-146 143-89-26-146-70-146-143v-99z" fill="#9eb3c7"/>
+  <path d="M320 90 418 126v78c0 46-37 76-98 97-61-21-98-51-98-97v-78z" fill="#283b4d"/>
+  <path d="m320 118 20 52h55l-44 32 17 54-48-32-48 32 17-54-44-32h55z" fill="#d9b36c"/>
+</svg>

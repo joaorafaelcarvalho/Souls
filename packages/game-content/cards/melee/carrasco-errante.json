@@ -1,0 +1,9 @@
+{
+  "id": "e183bf95-d05a-427c-b38c-9f4e6a1bd207",
+  "name": "Carrasco Errante",
+  "level": 1,
+  "type": "melee",
+  "attack": 900,
+  "defense": 300,
+  "image": "/images/cards/melee/carrasco-errante.png"
+}

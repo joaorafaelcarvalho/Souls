@@ -1,0 +1,1 @@
+export { combatVfxTiming, scaledVfxDuration } from '../combatVfxTiming';

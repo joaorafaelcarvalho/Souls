@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Placeholder do Mago</title>
+  <rect width="640" height="360" rx="24" fill="#553b70"/>
+  <circle cx="320" cy="180" r="112" fill="none" stroke="#d9b36c" stroke-width="18"/>
+  <circle cx="320" cy="180" r="64" fill="#283b4d"/>
+  <path d="m320 82 23 70 73 3-57 45 19 71-58-41-58 41 19-71-57-45 73-3z" fill="#f2f4f7"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "id": "e723386a-c9cd-4a6a-849d-13e09230be3f",
+  "name": "Matriarca dos Selos",
+  "level": 3,
+  "type": "ranged",
+  "attack": 1600,
+  "defense": 0,
+  "image": "/images/cards/ranged/matriarca-dos-selos.png"
+}

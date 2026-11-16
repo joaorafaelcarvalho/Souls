@@ -1,0 +1,9 @@
+{
+  "id": "c5c7f3d9-b49e-46b0-b7c0-3d829e5fa641",
+  "name": "Tecelão de Almas",
+  "level": 2,
+  "type": "ranged",
+  "attack": 1000,
+  "defense": 0,
+  "image": "/images/cards/ranged/tecelao-de-almas.png"
+}

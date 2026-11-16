@@ -1,0 +1,9 @@
+{
+  "id": "3e71905d-4cb6-4f8a-9d23-5a9c4e6b7da8",
+  "name": "Mago",
+  "level": 0,
+  "type": "ranged",
+  "attack": 500,
+  "defense": 0,
+  "image": "/images/cards/ranged/mago.png"
+}

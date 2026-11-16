@@ -1,0 +1,86 @@
+# SOULS Balance Lab v1.1
+
+- Jogos: 20
+- Concluídos: 20
+- Inconclusivos: 0
+- Rondas médias: 7.9
+- Turnos médios: 14
+- Vitórias J1/J2: 17 / 3
+- Prioridade forçada: J1
+
+## Estratégia, baralho e posição
+
+| Jogador | Estratégia | Baralho | Jogos | Vitórias | Derrotas | Inconclusivos | Jogos em primeiro | Vitórias em primeiro | Win rate | Rondas médias | Dano causado | Dano recebido |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| J1 | aggressive | Laboratório · aggressive | 20 | 17 | 3 | 0 | 20 | 17 | 85% | 7.9 | 10105 | 7117.5 |
+| J2 | combined-attack | Laboratório · combined-attack | 20 | 3 | 17 | 0 | 0 | 0 | 15% | 7.9 | 7117.5 | 10105 |
+
+## Distribuição dos baralhos
+
+| Jogador | Baralho | Perfil | Cartas | N0 | N1 | N2 | N3 | N4 | Definições ausentes | Válido |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|
+| J1 | Laboratório · aggressive | aggressive | 20 | 8 | 5 | 4 | 2 | 1 | 17 | sim |
+| J2 | Laboratório · combined-attack | combined-attack | 20 | 8 | 5 | 4 | 2 | 1 | 17 | sim |
+
+## Invocações por nível
+
+| Nível | J1 | J2 | Total | Primeira J1 | Primeira J2 |
+|---:|---:|---:|---:|---:|---:|
+| 0 | 131 | 118 | 249 | 1 | 1 |
+| 1 | 47 | 30 | 77 | 3 | 4 |
+| 2 | 11 | 6 | 17 | 5 | 4 |
+| 3 | 4 | 3 | 7 | 7 | 7 |
+| 4 | 0 | 0 | 0 | — | — |
+
+## Testes determinísticos do motor
+
+| Nível | Carta | Souls usadas | Invocação legal | Invocada | Resultado |
+|---:|---|---:|---|---|---|
+| 0 | Cavaleiro | 0 | sim | sim | invoked |
+| 1 | Carrasco Errante | 1 | sim | sim | invoked |
+| 1 | Carrasco Errante | 0 | não | não | insufficient-souls |
+| 2 | Espadachim do Eclipse | 2 | sim | sim | invoked |
+| 2 | Espadachim do Eclipse | 1 | não | não | insufficient-souls |
+| 3 | Duelista do Abismo | 3 | sim | sim | invoked |
+| 3 | Duelista do Abismo | 2 | não | não | insufficient-souls |
+| 4 | Colosso do Crepúsculo | 4 | sim | sim | invoked |
+| 4 | Colosso do Crepúsculo | 3 | não | não | insufficient-souls |
+
+## Diagnóstico de invocação
+
+Cada célula apresenta: Souls insuficientes / disponíveis não escolhidas / sem espaço / limite de colocação.
+
+| Nível | J1 | J2 |
+|---:|---|---|
+| 0 | 0 / 160 / 0 / 89 | 0 / 101 / 0 / 43 |
+| 1 | 467 / 123 / 0 / 0 | 519 / 93 / 0 / 0 |
+| 2 | 640 / 39 / 0 / 0 | 550 / 19 / 0 / 0 |
+| 3 | 355 / 2 / 0 / 0 | 281 / 3 / 0 / 0 |
+| 4 | 187 / 0 / 0 / 0 | 161 / 0 / 0 / 0 |
+
+## Cartas que permaneceram
+
+| Nível | Mão J1 | Mão J2 | Baralho J1 | Baralho J2 |
+|---:|---:|---:|---:|---:|
+| 0 | 1.00 | 0.85 | 0.45 | 1.25 |
+| 1 | 2.25 | 2.80 | 0.40 | 0.70 |
+| 2 | 3.15 | 3.25 | 0.30 | 0.45 |
+| 3 | 1.60 | 1.50 | 0.20 | 0.35 |
+| 4 | 0.95 | 0.85 | 0.05 | 0.15 |
+
+## Souls e dano
+
+| Métrica | J1 | J2 |
+|---|---:|---:|
+| Souls ganhas médias | 4.8 | 3.35 |
+| Souls gastas médias | 4.25 | 2.55 |
+| Dano de combate causado | 10105 | 7117.5 |
+| Dano de combate recebido | 7117.5 | 10105 |
+| Penalizações de HP | 0 | 100 |
+| Dano excedente | 97.5 | 470 |
+
+## Alertas
+
+- J1: existem cartas de nível 4 no baralho, mas nenhuma foi invocada.
+- J2: existem cartas de nível 4 no baralho, mas nenhuma foi invocada.
+- Existe uma diferença relevante entre as vitórias dos dois jogadores; isto é um alerta diagnóstico, não uma conclusão de balanceamento.

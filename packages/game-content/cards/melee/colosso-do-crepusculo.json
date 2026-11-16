@@ -1,0 +1,9 @@
+{
+  "id": "4d744c98-d167-4e74-9e11-78cee560f32d",
+  "name": "Colosso do Crepúsculo",
+  "level": 4,
+  "type": "melee",
+  "attack": 500,
+  "defense": 2350,
+  "image": "/images/cards/melee/colosso-do-crepusculo.png"
+}

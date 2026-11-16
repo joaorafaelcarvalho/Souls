@@ -1,0 +1,9 @@
+{
+  "id": "d072ae84-cf49-416b-a27b-8e3d5f0ac196",
+  "name": "Acólito da Névoa",
+  "level": 1,
+  "type": "ranged",
+  "attack": 800,
+  "defense": 0,
+  "image": "/images/cards/ranged/acolito-da-nevoa.png"
+}

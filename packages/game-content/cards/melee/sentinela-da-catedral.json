@@ -1,0 +1,9 @@
+{
+  "id": "68c2dc9a-cc43-4119-b339-c03f0b147946",
+  "name": "Sentinela da Catedral",
+  "level": 3,
+  "type": "melee",
+  "attack": 350,
+  "defense": 1950,
+  "image": "/images/cards/melee/sentinela-da-catedral.png"
+}

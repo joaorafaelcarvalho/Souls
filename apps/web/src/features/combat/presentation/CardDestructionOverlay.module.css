@@ -1,0 +1,12 @@
+.overlay {
+  position: absolute;
+  inset: -7%;
+  z-index: 8;
+  width: 114%;
+  height: 114%;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
+}

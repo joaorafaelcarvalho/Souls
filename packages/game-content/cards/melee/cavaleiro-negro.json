@@ -1,0 +1,9 @@
+{
+  "id": "4f82a16e-5dc7-409b-8e34-6bad5f7c8eb9",
+  "name": "Cavaleiro Negro",
+  "level": 1,
+  "type": "melee",
+  "attack": 700,
+  "defense": 500,
+  "image": "/images/cards/melee/cavaleiro-negro.png"
+}

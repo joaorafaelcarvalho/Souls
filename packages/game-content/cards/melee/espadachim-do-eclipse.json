@@ -1,0 +1,9 @@
+{
+  "id": "f294c0a6-e16b-438d-849d-0a5f7b2ce318",
+  "name": "Espadachim do Eclipse",
+  "level": 2,
+  "type": "melee",
+  "attack": 1150,
+  "defense": 750,
+  "image": "/images/cards/melee/espadachim-do-eclipse.png"
+}

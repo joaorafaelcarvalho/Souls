@@ -1,0 +1,11 @@
+export { createAgent, createLabObservation, getHandPlacementDiagnostics, getLegalPlacements, strategyLabel } from './agents.js';
+export { AUDIT_MATCHUPS, runBalanceAudit, writeAuditReports } from './audit.js';
+export { analyzeCatalog } from './catalogAnalysis.js';
+export type { CatalogAnalysis } from './catalogAnalysis.js';
+export { loadNodeCardCatalog, loadNodeLoreCatalog } from './catalog.js';
+export { runInvocationCoverage } from './coverage.js';
+export { analyzeDeckFixture, assertOfficialDeckFixtures, createDeckFixture, createNegativeDeckFixture } from './decks.js';
+export { createSeededRandom, createSimulationRandom, createDeterministicUuidGenerator } from './random.js';
+export { aggregateMarkdown, catalogAnalysisMarkdown, pairedComparisonCsv, pairedComparisonMarkdown, simulationCsv, writePairedReports, writeSimulationReports } from './reports.js';
+export { runPairedSimulation, runSimulation } from './simulation.js';
+export type * from './types.js';

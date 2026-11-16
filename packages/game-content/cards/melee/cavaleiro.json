@@ -1,0 +1,9 @@
+{
+  "id": "0b4e6d2a-1f83-4c57-8a90-2d6f1b3e4a75",
+  "name": "Cavaleiro",
+  "level": 0,
+  "type": "melee",
+  "attack": 500,
+  "defense": 500,
+  "image": "/images/cards/melee/cavaleiro.png"
+}

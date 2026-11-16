@@ -1,0 +1,124 @@
+.status {
+  width: 60%;
+  display: grid;
+  gap: 0.6rem;
+  min-height: 1;
+  border: 1px solid rgba(150, 113, 78, 0.62);
+  border-radius: var(--souls-radius-md);
+  padding: 0.3rem 0.5rem;
+  background: var(--souls-gradient-panel);
+  box-shadow: var(--souls-shadow-panel);
+}
+
+.active {
+  border-color: var(--souls-color-accent-gold);
+  box-shadow: 0 0 0 1px var(--souls-color-accent-gold), var(--souls-shadow-panel);
+}
+
+.heading,
+.metrics,
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--souls-space-2);
+}
+
+.heading {
+  color: var(--souls-color-text-primary);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.05rem 0.3rem;
+  background: var(--souls-gradient-gold);
+  color: var(--souls-color-bg);
+  font-size: 0.52rem;
+  text-transform: uppercase;
+}
+
+.metrics {
+  color: var(--souls-color-text-primary);
+  font-size: 0.68rem;
+}
+
+.metrics strong {
+  display: inline;
+  font-size: 0.82rem;
+}
+
+.secondary {
+  flex-wrap: wrap;
+  color: var(--souls-color-text-secondary);
+  font-size: 0.56rem;
+}
+
+@media (max-width: 42rem) {
+  .secondary {
+    display: none;
+  }
+
+  .status {
+    gap: 0.1rem;
+  }
+}
+.status[data-player-position='bottom'] {
+  float: right;
+  gap: 1rem;
+  padding: 0.35rem 0.25rem;
+}
+
+.status[data-player-position='bottom'] .heading {
+  font-size: 0.6rem;
+}
+
+.status[data-player-position='bottom'] .metrics {
+  font-size: 0.6rem;
+}
+
+.status[data-player-position='bottom'] .metrics strong {
+  font-size: 0.72rem;
+}
+
+.status[data-player-position='bottom'] .secondary {
+  font-size: 0.5rem;
+}
+.hpMetric {
+  position: relative;
+}
+
+.hpBar {
+  height: 0.2rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(8, 10, 13, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(242, 234, 219, 0.08);
+}
+
+.hpBar span {
+  display: block;
+  width: var(--hp-progress);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8a2f29, #d08458 72%, var(--souls-color-accent-gold));
+  box-shadow: 0 0 0.55rem rgba(197, 83, 57, 0.52);
+  transition: width 420ms ease-out;
+}
+
+.feedback {
+  position: absolute;
+  top: 50%;
+  right: 0.35rem;
+  display: flex;
+  gap: 0.25rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hpBar span {
+    transition: none;
+  }
+}

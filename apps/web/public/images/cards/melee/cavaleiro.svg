@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title>Placeholder do Cavaleiro</title>
+  <rect width="640" height="360" rx="24" fill="#62442f"/>
+  <path d="M320 52 432 116v132l-112 60-112-60V116z" fill="#d9b36c"/>
+  <path d="M320 82 392 124v96l-72 40-72-40v-96z" fill="#283b4d"/>
+  <path d="m320 108 25 52h55l-45 33 17 56-52-34-52 34 17-56-45-33h55z" fill="#f2f4f7"/>
+</svg>
