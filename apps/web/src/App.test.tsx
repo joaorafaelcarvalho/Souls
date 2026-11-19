@@ -1,7 +1,8 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import App from './App';
 import { TURN_ANNOUNCEMENT_DURATION_MS } from './features/match/presentation/TurnAnnouncement';
+import { TURN_DRAW_ANIMATION_DURATION_MS } from './features/match/presentation/TurnHandoffOverlay';
 
 const fixedRandom = { next: () => 0 };
 
@@ -84,6 +85,35 @@ describe('application entry and local match prototype', () => {
     expect(boardCell).toHaveTextContent('0');
     expect(getHandButtons()).toHaveLength(4);
     expect(getHandButtons()).not.toContain(meleeCard);
+  });
+
+  it('keeps own board cards selectable for Soul Harvest after selecting a hand card', () => {
+    renderGame();
+
+    fireEvent.click(getHandButton('Defensor')!);
+    fireEvent.click(screen.getByTestId('board-cell-3,0'));
+    fireEvent.click(screen.getByRole('button', { name: /terminar posicionamento/i }));
+
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    act(() => vi.advanceTimersByTime(TURN_ANNOUNCEMENT_DURATION_MS));
+
+    fireEvent.click(getHandButton('Cavaleiro')!);
+    fireEvent.click(screen.getByTestId('board-cell-1,0'));
+    fireEvent.click(screen.getByRole('button', { name: /terminar posicionamento/i }));
+
+    fireEvent.click(within(screen.getByTestId('turn-handoff-overlay')).getByRole('button', { name: 'Efetuar duas compras' }));
+    act(() => vi.advanceTimersByTime(TURN_DRAW_ANIMATION_DURATION_MS));
+
+    fireEvent.click(getHandButton('Cavaleiro')!);
+    const occupiedCell = screen.getByTestId('board-cell-3,0');
+    expect(occupiedCell).not.toBeDisabled();
+    fireEvent.click(occupiedCell);
+
+    expect(screen.getByRole('region', { name: 'Estado do jogador ativo' })).toHaveTextContent('Carta no campo selecionada.');
+    fireEvent.click(screen.getByRole('button', { name: /retirar carta/i }));
+
+    expect(occupiedCell).not.toHaveTextContent('Defensor');
+    expect(screen.getByRole('status')).toHaveTextContent('Carta retirada: recebeste 1 Soul');
   });
 
   it('can confirm returning to the main menu', () => {

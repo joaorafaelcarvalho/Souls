@@ -36,13 +36,13 @@ describe('tutorial scenarios', () => {
     expect(result.combatTrace?.columns[0]?.attackerIds).toHaveLength(2);
   });
 
-  it('earns a Soul through combat before presenting a paid level-one invocation', () => {
+  it('presents a legal positioning phase for a paid level-two invocation', () => {
     const state = createSoulInvocationScenario();
 
     expect(state.turn.phase).toBe('positioning');
     expect(state.turn.activePlayerId).toBe(1);
-    expect(state.players[1].souls).toBe(1);
-    expect(() => cardInHandFor(state, 1, 'cavaleiro-negro')).not.toThrow();
+    expect(state.players[1].souls).toBe(2);
+    expect(() => cardInHandFor(state, 1, 'cacadora-lua-palida')).not.toThrow();
   });
 
   it('builds a real v0.7 Soul Harvest scenario', () => {

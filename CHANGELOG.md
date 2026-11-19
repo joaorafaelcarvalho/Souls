@@ -4,6 +4,10 @@
 
 ### Adicionado
 
+- modal de passagem de turno integrado com as duas compras obrigatórias, WebP de saque congelado na primeira frame antes do clique e animação sincronizada até ao posicionamento;
+- tutorial concluído com compras falhadas jogáveis, comparação de níveis superiores e desafio final de posicionamento/combate;
+- seleção de cartas do campo preservada durante a seleção de uma carta da mão, permitindo executar a retirada estratégica válida;
+- enquadramento da animação WebP de saque centrado pelo conteúdo visível e correção da seleção de cartas no campo na etapa Soul Harvest do tutorial;
 - SOULS v0.7: Soul Harvest, ações de posicionamento partilhadas, bloqueios sem penalização, atributos atualizados de cinco cartas, tutorial/Códice/Balance Lab e testes de regressão;
 - inspeção modal centrada na etapa 3 do tutorial, esquema visual da ordem dos turnos e cenário combinado com Cavaleiro adversário;
 - Codex das Almas em viewport completo com transição de entrada, catálogo/lore atualizado e suporte a novas cartas e facções;
@@ -52,7 +56,7 @@
 - animação de moeda baseada em `turn.firstPlayerId`, handoff local de confirmação e anúncio visual de turnos sem alterar o motor;
 - faces I/II da moeda substituídas pelos assets medievais transparentes fornecidos, com rotação 3D desacelerada e aterragem progressiva;
 - animações WebP completas das moedas integradas, substituindo a rotação CSS duplicada;
-- modo Tutorial Interativo v1 com doze etapas, cenários determinísticos, destaques de linhas, compra/combate oficiais e conclusão própria;
+- modo Tutorial Interativo v1 com dezasseis etapas, cenários determinísticos, destaques de linhas, compra/combate oficiais e conclusão própria;
 - Códice das Almas com galeria oficial, pesquisa normalizada, filtros, ordenação, detalhes e lore provisório separado;
 - Card Expansion v1 com 20 novas definições, níveis 0–4, UUIDs permanentes e placeholder visual comum;
 - testes de catálogo, validação de categorias, apresentação e remoção real da carta da mão após colocação.

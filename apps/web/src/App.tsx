@@ -379,8 +379,17 @@ export default function App({ random = systemRandomSource }: AppProps) {
       return occupantId === null ? 'inactive' : 'valid';
     }
 
-    if (occupantId !== null || selectedCardId === null) {
+    if (selectedCardId === null) {
       return 'invalid';
+    }
+
+    if (occupantId !== null) {
+      const occupant = view.visibleCardInstances[occupantId];
+      const canSelectOwnCard = (
+        view.turn.phase === 'first-round-positioning' || view.turn.phase === 'positioning'
+      ) && occupant?.ownerId === view.activePlayerId;
+
+      return canSelectOwnCard ? 'valid' : 'invalid';
     }
 
     return canPlaceSelectedCard(selectedCardId as CardInstanceId, position.row, position.column)
@@ -522,6 +531,9 @@ export default function App({ random = systemRandomSource }: AppProps) {
         firstPlayerId={view.turn.firstPlayerId}
         activePlayerId={view.activePlayerId}
         status={view.status}
+        turnPhase={view.turn.phase}
+        isResourceAnimating={isResourceAnimating}
+        onResolveDraw={commands.resolveDraw}
         onPresentationReady={setPresentationReady}
       />
     </main>

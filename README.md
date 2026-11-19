@@ -18,7 +18,7 @@ Implementado:
 - animação sequencial de combate por colunas, com efeitos visuais, velocidade 2×, reduced motion e salto;
 - VFX cinematográficos de combate com SVG, CSS e feedback de HP/Souls;
 - ecrã final de vitória/derrota com resumo real e botão de revanche;
-- sorteio oficial apresentado por moeda medieval, confirmação de passagem local e anúncio visual de cada novo turno;
+- sorteio oficial apresentado por moeda medieval, passagem local integrada com as duas compras obrigatórias e anúncio visual nas transições sem compra;
 - tutorial interativo determinístico com etapas guiadas, destaques do tabuleiro, compra e combate reais;
 - Códice das Almas com galeria oficial, pesquisa, filtros, ordenação e detalhes narrativos provisórios;
 - Deck Builder local com baralhos guardados, validação oficial 10/4/3/2/1, estatísticas e preparação do PvP Local;

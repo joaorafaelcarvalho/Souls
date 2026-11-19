@@ -6,7 +6,7 @@ O tutorial é um modo independente do PvP Local. Apresenta uma sessão determin�
 
 ## Arquitetura
 
-- [tutorialSteps.ts](../apps/web/src/features/tutorial/application/tutorialSteps.ts) define as doze etapas pedagógicas e os seus objetivos.
+- [tutorialSteps.ts](../apps/web/src/features/tutorial/application/tutorialSteps.ts) define as dezasseis etapas pedagógicas e os seus objetivos.
 - [tutorialGame.ts](../apps/web/src/features/tutorial/application/tutorialGame.ts) cria a mão ordenada e os cenários através de `initializeGame` e das operações oficiais.
 - [useTutorialGame.ts](../apps/web/src/features/tutorial/application/useTutorialGame.ts) mantém a etapa, seleção, cenário, feedback e reprodução de combate. Não calcula dano, Souls ou legalidade.
 - [TutorialInstructionPanel.tsx](../apps/web/src/features/tutorial/presentation/TutorialInstructionPanel.tsx) apresenta objetivo, progresso, feedback e ações.
@@ -23,14 +23,19 @@ O modo tutorial usa cenários independentes quando uma demonstração contínua 
 5. preparação da defesa;
 6. posicionamento ranged;
 7. ordem dos turnos;
-8. compra obrigatória;
-9. combate por coluna;
-10. ataque combinado;
-11. Souls, retirada estratégica e bloqueios;
-12. executar Soul Harvest;
-13. vitória e derrota.
+8. compra normal;
+9. compras falhadas sem Souls;
+10. compras falhadas com Souls;
+11. combate por coluna;
+12. ataque combinado;
+13. invocação com Souls;
+14. comparação de níveis superiores;
+15. retirada estratégica (Soul Harvest);
+16. desafio final de vitória e derrota.
 
 As etapas de compra, combate e Souls executam operações reais. O tutorial explica que uma carta destruída e uma retirada estratégica podem conceder Souls, que a retirada consome uma das duas ações e que um ataque bloqueado não remove Souls nem HP. No catálogo atual, o `Cavaleiro Negro` é nível 1; o cenário de Souls obtém primeiro uma Soul através de combate e só depois permite a sua invocação, pagando o custo oficial.
+
+As três etapas de compra usam, respetivamente, a compra normal, duas penalizações de HP e o consumo de uma Soul seguido de uma penalização de HP. A etapa de comparação apresenta a `Matriarca dos Selos` e o `Rei Exilado` lado a lado. O desafio final permite colocar cartas, terminar o posicionamento e resolver o ataque através das operações oficiais.
 
 ## Progresso e limpeza
 

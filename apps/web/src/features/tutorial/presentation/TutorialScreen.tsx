@@ -67,7 +67,26 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
     ? undefined
     : tutorial.view.cardDefinitions[tutorial.view.visibleCardInstances[tutorial.selectedCardId]?.cardDefinitionId ?? ''];
   const selectedCardInHand = tutorial.selectedCardId !== null && tutorial.view.viewer.hand.includes(tutorial.selectedCardId);
-  const handEnabled = tutorial.step.kind === 'card-selection' || tutorial.step.kind === 'placement';
+  const handEnabled = tutorial.step.kind === 'card-selection'
+    || tutorial.step.kind === 'placement'
+    || tutorial.step.kind === 'challenge';
+  const boardEnabled = handEnabled || tutorial.step.kind === 'retirement';
+
+  const action = tutorial.step.kind === 'draw'
+    ? tutorial.commands.resolveDraw
+    : tutorial.step.kind === 'retirement'
+      ? tutorial.commands.retireSelectedCard
+      : tutorial.step.id === 'victory' && tutorial.view.turn.phase === 'positioning'
+        ? tutorial.commands.finishPositioning
+        : tutorial.commands.resolveAttack;
+  const actionLabel = tutorial.step.id === 'victory' && tutorial.view.turn.phase === 'positioning'
+    ? 'Terminar posicionamento'
+    : tutorial.step.id === 'victory'
+      ? 'Resolver ataque'
+      : undefined;
+  const comparisonDefinition = tutorial.step.id === 'levels'
+    ? Object.values(tutorial.view.cardDefinitions).find((definition) => definition.name === 'Rei Exilado')
+    : undefined;
 
   function handleCellClick(position: BoardPosition, occupantId: string | null) {
     if (occupantId !== null) {
@@ -83,7 +102,7 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
   }
 
   function getCellState(position: BoardPosition, occupantId: string | null): BoardCellState {
-    if (!handEnabled || tutorial.isCombatAnimating) {
+    if (!boardEnabled || tutorial.isCombatAnimating) {
       return 'invalid';
     }
 
@@ -97,12 +116,6 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
 
     return tutorial.canPlaceSelectedCard(tutorial.selectedCardId, position) ? 'valid' : 'invalid';
   }
-
-  const action = tutorial.step.kind === 'draw'
-    ? tutorial.commands.resolveDraw
-    : tutorial.step.kind === 'retirement'
-      ? tutorial.commands.retireSelectedCard
-      : tutorial.commands.resolveAttack;
 
   return (
     <main className={styles.screen} data-testid="tutorial-screen" aria-label="Tutorial interativo SOULS">
@@ -147,6 +160,7 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
           highlightedZone={tutorial.highlightedZone}
           onExploreZone={tutorial.commands.exploreZone}
           onAction={action}
+          {...(actionLabel === undefined ? {} : { actionLabel })}
           onAdvance={tutorial.commands.advanceStep}
           onExit={onExit}
         />
@@ -167,9 +181,13 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
         />
       </section>
 
-      {tutorial.step.id === 'cards' && selectedCardDefinition !== undefined ? (
+      {(tutorial.step.id === 'cards' || tutorial.step.id === 'levels') && selectedCardDefinition !== undefined ? (
         <div className={styles.cardDetailModal} role="dialog" aria-modal="true" aria-label={`Atributos de ${selectedCardDefinition.name}`}>
-          <TutorialCardAttributePanel definition={selectedCardDefinition} onContinue={tutorial.commands.advanceStep} />
+          <TutorialCardAttributePanel
+            definition={selectedCardDefinition}
+            {...(comparisonDefinition === undefined ? {} : { comparisonDefinition })}
+            onContinue={tutorial.commands.advanceStep}
+          />
         </div>
       ) : null}
     </main>

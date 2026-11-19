@@ -3,7 +3,6 @@ import {
   finishPositioningPhase,
   initializeGame,
   placeCard,
-  resolveAttackPhase,
   resolveDrawPhase,
   type CardDefinitionId,
   type GameState,
@@ -192,7 +191,7 @@ export function createCombatScenario(combined: boolean): GameState {
 }
 
 export function createSoulInvocationScenario(): GameState {
-  let state = createTutorialGame();
+  let state = resolveDrawPhase(createDrawScenario()).state;
   state = ensureCardInHand(state, 1, 'cacadora-lua-palida');
 
   return {

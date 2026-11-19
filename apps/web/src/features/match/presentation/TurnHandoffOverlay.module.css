@@ -26,6 +26,38 @@
   animation: panelIn 260ms cubic-bezier(0.18, 0.8, 0.3, 1) both;
 }
 
+.drawVisualFrame {
+  position: relative;
+  display: block;
+  width: min(100%, 15rem);
+  height: 10rem;
+  overflow: hidden;
+}
+
+.drawVisual {
+  position: absolute;
+  top: -1.3rem;
+  left: 50%;
+  display: block;
+  width: 18rem;
+  max-width: none;
+  height: auto;
+  flex: 0 0 auto;
+  transform: translateX(-50%);
+}
+
+.drawVisualReady {
+  opacity: 1;
+}
+
+.drawPreload {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .panel::before,
 .panel::after {
   position: absolute;
@@ -100,6 +132,14 @@
   outline: 2px solid rgba(200, 165, 105, 0.24);
   outline-offset: 2px;
   transform: translateY(-1px);
+}
+
+.panel button:disabled {
+  border-color: rgba(150, 113, 78, 0.58);
+  color: var(--souls-color-text-secondary);
+  cursor: wait;
+  opacity: 0.8;
+  transform: none;
 }
 
 @keyframes overlayIn { from { opacity: 0; } to { opacity: 1; } }

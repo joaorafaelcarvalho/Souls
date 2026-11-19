@@ -1,25 +1,42 @@
-import type { PlayerId } from '@souls/game-core';
+import type { PlayerId, TurnPhase } from '@souls/game-core';
 import { useEffect, useRef, useState } from 'react';
 import { CoinTossAnimation } from './CoinTossAnimation';
 import { TurnAnnouncement } from './TurnAnnouncement';
-import { TurnHandoffOverlay } from './TurnHandoffOverlay';
+import { TURN_DRAW_ANIMATION_DURATION_MS, TurnHandoffOverlay } from './TurnHandoffOverlay';
 
-type SequencePhase = 'coin-toss' | 'handoff' | 'announcement' | 'idle';
+type SequencePhase = 'coin-toss' | 'handoff' | 'draw' | 'announcement' | 'idle';
 
 export interface MatchPresentationSequenceProps {
   readonly firstPlayerId: PlayerId;
   readonly activePlayerId: PlayerId;
+  readonly turnPhase: TurnPhase;
   readonly status: 'active' | 'finished';
+  readonly isResourceAnimating: boolean;
+  readonly onResolveDraw: () => void;
   readonly onPresentationReady?: (ready: boolean) => void;
+}
+
+function handoffPhaseFor(turnPhase: TurnPhase): 'handoff' | 'draw' {
+  return turnPhase === 'draw' ? 'draw' : 'handoff';
 }
 
 /**
  * Local-only visual coordinator. It observes official state changes, but never
  * changes them and never decides which player starts.
  */
-export function MatchPresentationSequence({ firstPlayerId, activePlayerId, status, onPresentationReady }: MatchPresentationSequenceProps) {
+export function MatchPresentationSequence({
+  firstPlayerId,
+  activePlayerId,
+  turnPhase,
+  status,
+  isResourceAnimating,
+  onResolveDraw,
+  onPresentationReady
+}: MatchPresentationSequenceProps) {
   const [phase, setPhase] = useState<SequencePhase>('coin-toss');
   const [targetPlayerId, setTargetPlayerId] = useState<PlayerId>(firstPlayerId);
+  const [drawStarted, setDrawStarted] = useState(false);
+  const [drawAnimationComplete, setDrawAnimationComplete] = useState(false);
   const announcedPlayerRef = useRef(activePlayerId);
 
   useEffect(() => {
@@ -34,8 +51,54 @@ export function MatchPresentationSequence({ firstPlayerId, activePlayerId, statu
     announcedPlayerRef.current = activePlayerId;
     onPresentationReady?.(false);
     setTargetPlayerId(activePlayerId);
-    setPhase('handoff');
-  }, [activePlayerId, onPresentationReady, phase, status]);
+    setDrawStarted(false);
+    setDrawAnimationComplete(false);
+    setPhase(handoffPhaseFor(turnPhase));
+  }, [activePlayerId, onPresentationReady, phase, status, turnPhase]);
+
+  useEffect(() => {
+    if (phase !== 'draw' || !drawStarted) {
+      return;
+    }
+
+    const isReduced = typeof window !== 'undefined'
+      && typeof window.matchMedia === 'function'
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const duration = isReduced ? 180 : TURN_DRAW_ANIMATION_DURATION_MS;
+    const timer = window.setTimeout(() => setDrawAnimationComplete(true), duration);
+
+    return () => window.clearTimeout(timer);
+  }, [drawStarted, phase, targetPlayerId]);
+
+  useEffect(() => {
+    if (
+      phase !== 'draw'
+      || !drawStarted
+      || !drawAnimationComplete
+      || isResourceAnimating
+      || turnPhase !== 'positioning'
+    ) {
+      return;
+    }
+
+    setPhase('idle');
+  }, [drawAnimationComplete, drawStarted, isResourceAnimating, phase, turnPhase]);
+
+  function startDraw() {
+    if (drawStarted) {
+      return;
+    }
+
+    setDrawStarted(true);
+    onResolveDraw();
+  }
+
+  function showInitialHandoff() {
+    setTargetPlayerId(firstPlayerId);
+    setDrawStarted(false);
+    setDrawAnimationComplete(false);
+    setPhase(handoffPhaseFor(turnPhase));
+  }
 
   if (status === 'finished') {
     return null;
@@ -45,14 +108,8 @@ export function MatchPresentationSequence({ firstPlayerId, activePlayerId, statu
     return (
       <CoinTossAnimation
         firstPlayerId={firstPlayerId}
-        onComplete={() => {
-          setTargetPlayerId(firstPlayerId);
-          setPhase('handoff');
-        }}
-        onSkip={() => {
-          setTargetPlayerId(firstPlayerId);
-          setPhase('handoff');
-        }}
+        onComplete={showInitialHandoff}
+        onSkip={showInitialHandoff}
       />
     );
   }
@@ -62,6 +119,17 @@ export function MatchPresentationSequence({ firstPlayerId, activePlayerId, statu
       <TurnHandoffOverlay
         playerId={targetPlayerId}
         onContinue={() => setPhase('announcement')}
+      />
+    );
+  }
+
+  if (phase === 'draw') {
+    return (
+      <TurnHandoffOverlay
+        playerId={targetPlayerId}
+        mode="draw"
+        drawStarted={drawStarted}
+        onDraw={startDraw}
       />
     );
   }

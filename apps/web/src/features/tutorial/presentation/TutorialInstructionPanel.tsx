@@ -13,6 +13,7 @@ export interface TutorialInstructionPanelProps {
   readonly highlightedZone: TutorialZone | null;
   readonly onExploreZone: (zone: TutorialZone) => void;
   readonly onAction: () => void;
+  readonly actionLabel?: string;
   readonly onAdvance: () => void;
   readonly onExit: () => void;
 }
@@ -29,10 +30,11 @@ export function TutorialInstructionPanel({
   highlightedZone,
   onExploreZone,
   onAction,
+  actionLabel,
   onAdvance,
   onExit
 }: TutorialInstructionPanelProps) {
-  const showAction = !stepCompleted && !isCombatAnimating && ['draw', 'combat', 'retirement'].includes(step.kind);
+  const showAction = !stepCompleted && !isCombatAnimating && ['draw', 'combat', 'retirement', 'challenge'].includes(step.kind);
   const showAdvance = stepCompleted || canAdvance;
 
   return (
@@ -87,7 +89,7 @@ export function TutorialInstructionPanel({
       <div className={styles.actions}>
         {showAction ? (
           <button className={styles.primary} type="button" onClick={onAction}>
-            {step.kind === 'draw' ? 'Efetuar duas compras' : step.kind === 'retirement' ? 'Retirar carta · +1 Soul' : 'Resolver ataque'}
+            {actionLabel ?? (step.kind === 'draw' ? 'Efetuar duas compras' : step.kind === 'retirement' ? 'Retirar carta · +1 Soul' : 'Resolver ataque')}
           </button>
         ) : null}
         {showAdvance ? (

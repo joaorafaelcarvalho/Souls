@@ -568,7 +568,9 @@ export function useTutorialGame(): TutorialSession {
   }, [applyResult, isCombatAnimating, isResourceAnimating, phase, selectedCardId, state, step.kind]);
 
   const resolveDraw = useCallback(() => {
-    if (phase !== 'active' || step.kind !== 'draw' || isResourceAnimating || state.turn.phase !== 'draw') {
+    const isDrawStep = step.id === 'draw' || step.id === 'draw-failed' || step.id === 'draw-soul';
+
+    if (phase !== 'active' || !isDrawStep || isResourceAnimating || state.turn.phase !== 'draw') {
       return;
     }
 
@@ -705,6 +707,7 @@ export function useTutorialGame(): TutorialSession {
   }, [canPlaceSelectedCard, isCombatAnimating, isResourceAnimating, selectedCardId, step.id, step.kind]);
 
   const canAdvance = phase === 'active' && (stepCompleted || step.kind === 'explain');
+  const targetCard = step.targetCard;
   const commands: TutorialCommands = {
     start,
     reset,
@@ -730,9 +733,9 @@ export function useTutorialGame(): TutorialSession {
     state,
     view,
     selectedCardId,
-    highlightedCardId: step.targetCard === undefined
+    highlightedCardId: targetCard === undefined
       ? null
-      : view.viewer.hand.find((instanceId) => targetCardMatches(state, instanceId, step.targetCard)) ?? null,
+      : view.viewer.hand.find((instanceId) => targetCardMatches(state, instanceId, targetCard)) ?? null,
     message,
     matchLog,
     stepCompleted,

@@ -52,6 +52,43 @@
   gap: 0.7rem;
 }
 
+.comparisonContent {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.7rem;
+}
+
+.comparisonCard {
+  display: grid;
+  min-width: 0;
+  justify-items: center;
+  gap: 0.28rem;
+  border: 1px solid rgba(150, 113, 78, 0.4);
+  border-radius: 0.22rem;
+  padding: 0.4rem;
+  background: rgba(12, 14, 18, 0.72);
+  text-align: center;
+}
+
+.comparisonCard > article {
+  width: min(100%, 9rem);
+  aspect-ratio: 2 / 3;
+}
+
+.comparisonCard strong {
+  color: var(--souls-color-text-primary);
+  font-size: 0.58rem;
+}
+
+.comparisonLabel {
+  color: var(--souls-color-accent-gold);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
 .cardPreview {
   display: grid;
   min-width: 0;
@@ -111,6 +148,7 @@
 @media (max-width: 42rem) {
   .content { grid-template-columns: minmax(6.5rem, 0.7fr) minmax(0, 1.3fr); }
   .cardPreview > article { width: min(100%, 8.5rem); }
+  .comparisonCard > article { width: min(100%, 7.5rem); }
 }
 
 .panel {
