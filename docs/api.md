@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-A API é uma aplicação Fastify mínima em [apps/api](../apps/api). Nesta fase existe apenas um endpoint técnico. Não existem endpoints de partida, contas, autenticação, matchmaking, WebSockets, persistência ou autorização.
+A API é uma aplicação Fastify em [apps/api](../apps/api). Além do endpoint técnico, expõe a criação/entrada em salas privadas e o transporte WebSocket do PvP Online. As salas e partidas vivem em memória.
 
 ## Endpoint implementado
 
@@ -18,6 +18,20 @@ Resposta HTTP 200:
 ```
 
 Este endpoint confirma que o processo Fastify está a responder. Não é um health check de dependências externas, porque não existem dependências externas configuradas.
+
+## PvP Online
+
+### `POST /online/rooms`
+
+Cria uma sala privada e devolve `room.roomId`, `room.roomCode`, `room.selfPlayerId` e `sessionToken`.
+
+### `POST /online/rooms/join`
+
+Recebe `{ "roomCode": "AB7K2Q" }`, associa o segundo participante e devolve a credencial privada dessa sessão.
+
+### `GET/Upgrade /online`
+
+O endpoint WebSocket recebe primeiro um `hello` com `roomId` e `sessionToken`. Depois aceita comandos de lobby e partida e publica snapshots autorizados. O token não é colocado na URL.
 
 ## Execução
 
@@ -37,13 +51,6 @@ $env:PORT = "3001"
 npm run dev:api
 ```
 
-## Separação futura
+## Limites
 
-A evolução prevista é:
-
-1. a interface recebe uma intenção tipada;
-2. valida o formato de entrada;
-3. um caso de uso coordena o game-core;
-4. o resultado autorizado devolve novo estado e eventos.
-
-O protocolo, os contratos definitivos, a autenticação e o transporte em tempo real ainda não foram escolhidos. Não existe uma API fictícia para esses comportamentos.
+Não há contas de utilizador, matchmaking público, persistência, ranking ou escalabilidade horizontal. Reiniciar o processo elimina as salas e partidas em memória. Consulte [SOULS-PVP-ONLINE-v1.0-implementation.md](./SOULS-PVP-ONLINE-v1.0-implementation.md) para o protocolo, configuração e teste em dois computadores.

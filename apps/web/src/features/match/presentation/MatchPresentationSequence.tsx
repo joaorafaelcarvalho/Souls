@@ -12,6 +12,7 @@ export interface MatchPresentationSequenceProps {
   readonly turnPhase: TurnPhase;
   readonly status: 'active' | 'finished';
   readonly isResourceAnimating: boolean;
+  readonly viewerPlayerId?: PlayerId;
   readonly onResolveDraw: () => void;
   readonly onPresentationReady?: (ready: boolean) => void;
 }
@@ -21,8 +22,9 @@ function handoffPhaseFor(turnPhase: TurnPhase): 'handoff' | 'draw' {
 }
 
 /**
- * Local-only visual coordinator. It observes official state changes, but never
- * changes them and never decides which player starts.
+ * Shared visual coordinator for local and online sessions. It observes
+ * official state changes, but never changes them and never decides which
+ * player starts.
  */
 export function MatchPresentationSequence({
   firstPlayerId,
@@ -30,6 +32,7 @@ export function MatchPresentationSequence({
   turnPhase,
   status,
   isResourceAnimating,
+  viewerPlayerId,
   onResolveDraw,
   onPresentationReady
 }: MatchPresentationSequenceProps) {
@@ -38,6 +41,7 @@ export function MatchPresentationSequence({
   const [drawStarted, setDrawStarted] = useState(false);
   const [drawAnimationComplete, setDrawAnimationComplete] = useState(false);
   const announcedPlayerRef = useRef(activePlayerId);
+  const canResolveDraw = viewerPlayerId === undefined || viewerPlayerId === activePlayerId;
 
   useEffect(() => {
     onPresentationReady?.(status === 'finished' || phase === 'idle');
@@ -55,6 +59,12 @@ export function MatchPresentationSequence({
     setDrawAnimationComplete(false);
     setPhase(handoffPhaseFor(turnPhase));
   }, [activePlayerId, onPresentationReady, phase, status, turnPhase]);
+
+  useEffect(() => {
+    if (phase === 'draw' && !canResolveDraw && turnPhase !== 'draw') {
+      setPhase('idle');
+    }
+  }, [canResolveDraw, phase, turnPhase]);
 
   useEffect(() => {
     if (phase !== 'draw' || !drawStarted) {
@@ -85,7 +95,7 @@ export function MatchPresentationSequence({
   }, [drawAnimationComplete, drawStarted, isResourceAnimating, phase, turnPhase]);
 
   function startDraw() {
-    if (drawStarted) {
+    if (drawStarted || !canResolveDraw) {
       return;
     }
 
@@ -129,6 +139,7 @@ export function MatchPresentationSequence({
         playerId={targetPlayerId}
         mode="draw"
         drawStarted={drawStarted}
+        canDraw={canResolveDraw}
         onDraw={startDraw}
       />
     );

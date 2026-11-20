@@ -1,29 +1,27 @@
 # Segurança backend
 
-Este documento descreve limites e trabalho futuro. Não existe ainda uma implementação de autenticação ou autorização.
+Este documento descreve a segurança da sessão online anónima e os limites que continuam fora do escopo. Não existe autenticação de contas.
 
 ## Estado atual
 
-- apenas `GET /health`;
-- não há dados de utilizadores;
-- não há sessões;
-- não há credenciais;
-- não há persistência;
-- não há WebSockets;
+- há `GET /health`, endpoints de sala e WebSocket;
+- não há contas de utilizadores;
+- há tokens aleatórios de sessão anónima associados a cada participante;
+- o código público da sala não autentica nem identifica um jogador;
+- o estado não persiste;
 - o servidor escuta localmente por omissão em `127.0.0.1`.
+
+Mensagens WebSocket têm limite de tamanho e parser explícito. O servidor valida origem, token, pertença à sala, jogador ativo, partida, versão, fase, IDs de cartas e limites de coordenadas. A visão por jogador exclui mãos, baralhos futuros e descartes privados do adversário.
 
 ## Trabalho futuro
 
-Antes de aceitar partidas em rede será necessário decidir e documentar:
+Fora do escopo desta versão:
 
-- autenticação e gestão de identidade;
-- autorização sobre intenções e partidas;
-- validação de payloads;
-- limites de tamanho, frequência e concorrência;
-- tratamento de erros sem exposição de dados;
-- logs e dados sensíveis;
-- origem permitida e política de CORS;
-- transporte seguro e gestão de segredos;
-- proteção contra reenvio e ordem inválida de ações.
+- autenticação de contas e gestão de identidade persistente;
+- autorização externa a tokens anónimos de sala;
+- rotação/revogação persistente de credenciais;
+- observabilidade e auditoria de logs sensíveis;
+- limites distribuídos quando existirem várias instâncias;
+- HTTPS/WSS e gestão de segredos no deployment.
 
-Não introduzir estes mecanismos antecipadamente como se fossem requisitos já aprovados.
+HTTPS/WSS, gestão de segredos, observabilidade e limites distribuídos devem ser configurados no deployment. O token de sessão não é uma conta nem uma credencial reutilizável depois de a sala expirar.

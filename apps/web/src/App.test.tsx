@@ -178,6 +178,18 @@ describe('application entry and local match prototype', () => {
     expect(screen.getByTestId('main-menu')).toBeInTheDocument();
   });
 
+  it('opens the real PvP Online private-room entry screen', () => {
+    vi.useFakeTimers();
+    render(<App random={fixedRandom} />);
+    act(() => vi.advanceTimersByTime(2_000));
+
+    fireEvent.click(screen.getByRole('button', { name: /^JOGAR/ }));
+    fireEvent.click(screen.getByRole('button', { name: /pvp online/i }));
+
+    expect(screen.getByTestId('online-room-screen')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'CRIAR SALA' })).toBeEnabled();
+  });
+
   it('opens the Player vs AI preparation screen and starts with a selected difficulty', () => {
     vi.useFakeTimers();
     render(<App random={fixedRandom} />);

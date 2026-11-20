@@ -1,0 +1,166 @@
+.screen {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  color: var(--souls-color-text-primary);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(5, 6, 10, 0.5), rgba(7, 8, 12, 0.88)),
+    url('/images/backgrounds/souls-background.png') center / cover no-repeat;
+  filter: saturate(0.78) brightness(0.72);
+}
+
+.panel {
+  display: grid;
+  width: min(92vw, 38rem);
+  gap: 0.8rem;
+  border: 1px solid rgba(150, 113, 78, 0.76);
+  padding: clamp(1.2rem, 4vw, 2.2rem);
+  background: rgba(15, 14, 19, 0.9);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.45), inset 0 1px rgba(242, 234, 219, 0.08);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--souls-color-accent-gold);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.panel h1 {
+  margin: 0;
+  color: var(--souls-color-accent-gold);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.45rem, 5vw, 2.4rem);
+  letter-spacing: 0.15em;
+}
+
+.subtitle,
+.status,
+.waiting {
+  margin: 0;
+  color: var(--souls-color-text-secondary);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.actions button,
+.joinBox button,
+.back {
+  border: 1px solid rgba(150, 113, 78, 0.78);
+  padding: 0.7rem 1rem;
+  background: var(--souls-gradient-iron);
+  color: var(--souls-color-text-primary);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+}
+
+.actions button:disabled,
+.joinBox button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.actions .primary {
+  border-color: var(--souls-color-accent-gold);
+  background: linear-gradient(180deg, rgba(102, 77, 48, 0.9), rgba(25, 20, 19, 0.98));
+}
+
+.joinBox {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+  text-align: left;
+}
+
+.joinBox label,
+.deckLabel {
+  grid-column: 1 / -1;
+  color: var(--souls-color-accent-bronze);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.joinBox input,
+.panel select {
+  min-width: 0;
+  border: 1px solid rgba(150, 113, 78, 0.65);
+  padding: 0.7rem;
+  background: rgba(3, 4, 8, 0.75);
+  color: var(--souls-color-text-primary);
+  font: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.error {
+  margin: 0;
+  color: #ef9d92;
+  font-size: 0.75rem;
+}
+
+.back {
+  justify-self: center;
+  border-color: transparent;
+  background: transparent;
+  color: var(--souls-color-text-secondary);
+}
+
+.participants {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.participant {
+  display: grid;
+  gap: 0.2rem;
+  border: 1px solid rgba(150, 113, 78, 0.45);
+  padding: 0.7rem;
+  background: rgba(3, 4, 8, 0.5);
+}
+
+.participant span,
+.participant strong {
+  letter-spacing: 0.12em;
+}
+
+.participant strong {
+  color: var(--souls-color-accent-gold);
+  font-size: 0.8rem;
+}
+
+.participant small,
+.deckSummary {
+  color: var(--souls-color-text-secondary);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+
+.deckLabel {
+  text-align: left;
+}
+
+.deckSummary {
+  min-height: 1.2rem;
+}

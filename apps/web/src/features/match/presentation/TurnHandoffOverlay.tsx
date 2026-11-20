@@ -8,6 +8,7 @@ export interface TurnHandoffOverlayProps {
   readonly playerId: PlayerId;
   readonly mode?: 'positioning' | 'draw';
   readonly drawStarted?: boolean;
+  readonly canDraw?: boolean;
   readonly onContinue?: () => void;
   readonly onDraw?: () => void;
 }
@@ -75,6 +76,7 @@ export function TurnHandoffOverlay({
   playerId,
   mode = 'positioning',
   drawStarted = false,
+  canDraw = true,
   onContinue,
   onDraw
 }: TurnHandoffOverlayProps) {
@@ -88,16 +90,24 @@ export function TurnHandoffOverlay({
         <h2 id="turn-handoff-title">Jogador {playerId}</h2>
         {isDraw ? (
           <>
-            <p>É a tua vez. Efetua as duas compras obrigatórias antes de começares o posicionamento.</p>
-            <DrawVisual playing={drawStarted} />
-            <button
-              type="button"
-              autoFocus={!drawStarted}
-              disabled={drawStarted}
-              onClick={() => onDraw?.()}
-            >
-              {drawStarted ? 'Compras em curso…' : 'Efetuar duas compras'}
-            </button>
+            <p>
+              {canDraw
+                ? 'É a tua vez. Efetua as duas compras obrigatórias antes de começares o posicionamento.'
+                : `É a vez do Jogador ${playerId}. Aguarda que as duas compras obrigatórias terminem.`}
+            </p>
+            <DrawVisual playing={canDraw && drawStarted} />
+            {canDraw ? (
+              <button
+                type="button"
+                autoFocus={!drawStarted}
+                disabled={drawStarted}
+                onClick={() => onDraw?.()}
+              >
+                {drawStarted ? 'Compras em curso…' : 'Efetuar duas compras'}
+              </button>
+            ) : (
+              <p role="status">A aguardar o Jogador {playerId}…</p>
+            )}
           </>
         ) : (
           <>

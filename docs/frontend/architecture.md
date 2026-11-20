@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O frontend React apresenta o estado autorizado e o conteúdo validado pelo game-content. O protótipo local chama diretamente o game-core; não existe comunicação com a API.
+O frontend React apresenta o estado autorizado e o conteúdo validado pelo game-content. O modo local chama diretamente o game-core; o PvP Online usa `useOnlineGame` para comunicar intenções ao servidor Fastify por WebSocket.
 
 ## Organização
 
@@ -14,6 +14,9 @@ apps/web/src/
 │   │   └── presentation/       # Card reutilizável
 │   ├── game-board/
 │   │   └── presentation/       # grelha vertical 6×4
+│   ├── online/
+│   │   ├── application/        # transporte e sessão online
+│   │   └── presentation/       # criação, entrada e lobby
 │   └── match/
 │       ├── application/        # controlador local
 │       └── presentation/       # estado e mão
@@ -44,6 +47,6 @@ A composição atual coloca:
 
 As casas usam proporção vertical `2 / 3`, sem coordenadas ou etiquetas técnicas visíveis.
 
-## Evolução prevista
+## Sessão online
 
-Quando existir uma API de partidas, um adaptador substituirá o controlador local. Os componentes continuarão a receber definições, instâncias e callbacks tipados; o game-core continuará responsável pelos resultados.
+O frontend guarda apenas `roomId`, token da própria sessão, versão e `AuthorizedGameView`. O servidor mantém o `GameState` completo, valida os comandos e filtra eventos privados. A ligação tenta reconectar enquanto o processo servidor continua disponível. Os componentes continuam a receber definições, instâncias e callbacks tipados; o game-core continua responsável pelos resultados.

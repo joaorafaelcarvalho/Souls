@@ -14,15 +14,17 @@ apps/api/src/
 │   ├── server.ts
 │   └── ...
 ├── modules/
-│   └── health/
+│   ├── health/
+│   └── online/
+│       ├── application/onlineRoomService.ts
+│       ├── infrastructure/loadServerCardCatalog.ts
 │       └── interfaces/
-│           └── registerHealthRoute.ts
 └── main.ts
 ```
 
 ### Application
 
-Casos de uso futuros coordenarão comandos de partida e chamarão o game-core. Ainda não há um caso de uso de partida.
+`OnlineRoomService` coordena salas, tokens anónimos, lobby, versões e comandos. Cada comando válido chama diretamente uma operação do game-core e publica uma projeção por jogador.
 
 ### Domain
 
@@ -30,11 +32,11 @@ O domínio de jogo é partilhado em [game-core](../../packages/game-core). O bac
 
 ### Infrastructure
 
-Persistência e integrações futuras devem entrar numa camada própria. Não há base de dados nem serviço externo nesta fase.
+O catálogo do servidor é descoberto no workspace e validado através de game-content. Salas e partidas usam armazenamento em memória; não há base de dados nem serviço externo.
 
 ### Interfaces
 
-As rotas e contratos de entrada/saída ficam em módulos de interface. A rota atual é um health check técnico.
+As rotas HTTP ficam em `registerOnlineRoutes`; o Upgrade WebSocket fica em `registerOnlineWebSocket`; o parser rejeita payloads desconhecidos ou demasiado grandes.
 
 ## Execução
 
@@ -45,4 +47,4 @@ As rotas e contratos de entrada/saída ficam em módulos de interface. A rota at
 
 ## Direção futura
 
-O backend poderá receber intenções, validar a forma, carregar uma partida autorizada, executar game-core e devolver estado/eventos. O protocolo, a persistência e a autorização continuam pendentes.
+O backend recebe intenções, valida a sessão, a sala, o participante, a versão e a fase, executa game-core e devolve eventos/snapshots autorizados. Persistência após reinício e coordenação entre instâncias continuam pendentes.

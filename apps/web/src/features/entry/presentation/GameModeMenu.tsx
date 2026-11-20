@@ -3,11 +3,12 @@ import styles from './GameModeMenu.module.css';
 export interface GameModeMenuProps {
   readonly onLocalGame: () => void;
   readonly onPve: () => void;
+  readonly onOnline?: () => void;
   readonly onTutorial: () => void;
   readonly onBack: () => void;
 }
 
-export function GameModeMenu({ onLocalGame, onPve, onTutorial, onBack }: GameModeMenuProps) {
+export function GameModeMenu({ onLocalGame, onPve, onOnline, onTutorial, onBack }: GameModeMenuProps) {
   return (
     <main className={styles.screen} data-testid="game-mode-menu" aria-label="Escolher modo de jogo">
       <div className={styles.backdrop} aria-hidden="true" />
@@ -25,6 +26,12 @@ export function GameModeMenu({ onLocalGame, onPve, onTutorial, onBack }: GameMod
             <span>JOGADOR VS IA</span>
             <small>ENFRENTAR A INTELIGÊNCIA ARTIFICIAL</small>
           </button>
+          {onOnline === undefined ? null : (
+            <button className={styles.button} type="button" onClick={onOnline}>
+              <span>PVP ONLINE</span>
+              <small>SALA PRIVADA EM TEMPO REAL</small>
+            </button>
+          )}
           <button className={styles.button} type="button" onClick={onTutorial}>
             <span>TUTORIAL</span>
             <small>APRENDER A JOGAR</small>

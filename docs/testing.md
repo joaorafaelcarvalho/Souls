@@ -7,7 +7,9 @@ Os testes concentram risco onde existe comportamento real:
 - game-core: regras, validação de colocação, instâncias, progressão e transformações imutáveis;
 - game-content: catálogo e validação;
 - API: `/health`;
+- API: salas HTTP, validação de baralhos, privacidade, versões, deduplicação, expiração e WebSocket real;
 - frontend: catálogo real, componente Card, tabuleiro, casas válidas e integração mão/tabuleiro.
+- manifesto de áudio: IDs, caminhos, contextos e bindings sem carregar ficheiros inexistentes.
 
 ## Comandos
 
@@ -33,7 +35,7 @@ npm run build
 
 - consulta remota do catálogo;
 - persistência;
-- sincronização frontend/backend;
+- teste visual com dois browsers reais e dois computadores;
 - acessibilidade visual completa em browsers reais.
 
 ## Limitações
@@ -42,3 +44,7 @@ npm run build
 - os níveis 0 e valores das cinco cartas são fixtures de teste;
 - não há direção artística final;
 - a validação visual de proporção depende também de browser real.
+
+O teste de integração online em [online-room.test.ts](../apps/api/tests/online-room.test.ts) usa dois callbacks de cliente para validar as duas projeções e uma ligação WebSocket real para autenticação. Ainda é necessário executar o cenário manual com duas janelas para validar a apresentação completa das animações.
+
+A avaliação auditiva não é substituída pelos testes automatizados; requer assets reais e escuta humana.

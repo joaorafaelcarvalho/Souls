@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O protótipo local mantém o `GameState` completo dentro do adaptador [useLocalGame](../../apps/web/src/features/match/application/useLocalGame.ts), mas a apresentação React não recebe esse estado privado. Antes de renderizar, o adaptador cria uma [AuthorizedGameView](../../apps/web/src/features/match/application/authorizedGameView.ts) através de `createAuthorizedGameView`.
+O protótipo local mantém o `GameState` completo dentro do adaptador [useLocalGame](../../apps/web/src/features/match/application/useLocalGame.ts), mas a apresentação React não recebe esse estado privado. A projeção pura vive em [game-online](../../packages/game-online/src/index.ts), e o adaptador local reexporta-a para compatibilidade.
 
 ## Identidades
 
@@ -27,9 +27,9 @@ Assim, a árvore React não precisa de consultar `state.players[1].hand` e `stat
 
 ## Comandos
 
-As intenções da interface passam por [MatchCommands](../../apps/web/src/features/match/application/MatchCommands.ts): selecionar, posicionar, retirar, avançar de fase, resolver compra/ataque, controlar a reprodução e reiniciar. A implementação local encaminha estes comandos para o game-core. Uma sessão online poderá manter o mesmo contrato e trocar apenas a implementação/transportação para um servidor autoritativo.
+As intenções da interface passam por [MatchCommands](../../apps/web/src/features/match/application/MatchCommands.ts): selecionar, posicionar, retirar, avançar de fase, resolver compra/ataque, controlar a reprodução e reiniciar. A implementação local encaminha estes comandos para o game-core. O adaptador [useOnlineGame](../../apps/web/src/features/online/application/useOnlineGame.ts) mantém o mesmo contrato, mas envia intenções pelo WebSocket; o servidor executa game-core e devolve a visão autorizada.
 
-Não foram adicionados WebSockets, autenticação, salas, sincronização de rede ou regras novas. `TurnHandoffOverlay` também não é dependência do motor nem do tabuleiro; qualquer fluxo de troca de jogador permanece exclusivo da composição local.
+O token online é uma identidade anónima de sala, não uma conta. `TurnHandoffOverlay` continua exclusivo da apresentação e não pertence ao motor; no online o turno e a fase são indicados pelo snapshot oficial.
 
 ## Limites
 

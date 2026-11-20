@@ -4,13 +4,22 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare:dependencies": "npm --workspace @souls/game-core run build && npm --workspace @souls/game-content run build && npm --workspace @souls/game-online run build",
+    "predev": "npm run prepare:dependencies",
     "dev": "node --experimental-strip-types --watch src/main.ts",
+    "pretest": "npm run prepare:dependencies",
     "start": "node dist/main.js",
+    "pretypecheck": "npm run prepare:dependencies",
     "typecheck": "tsc -p tsconfig.test.json --noEmit",
     "test": "vitest run",
+    "prebuild": "npm run prepare:dependencies",
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "fastify": "^5.4.0"
+    "@souls/game-content": "^0.1.0",
+    "@souls/game-core": "^0.1.0",
+    "@souls/game-online": "^0.1.0",
+    "fastify": "^5.4.0",
+    "ws": "^8.22.1"
   }
 }

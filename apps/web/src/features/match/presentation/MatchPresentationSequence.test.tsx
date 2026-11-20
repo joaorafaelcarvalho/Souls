@@ -142,4 +142,38 @@ describe('MatchPresentationSequence', () => {
 
     expect(screen.queryByTestId('turn-handoff-overlay')).not.toBeInTheDocument();
   });
+
+  it('does not offer the draw action to the non-active online viewer', () => {
+    vi.useFakeTimers();
+    const onResolveDraw = vi.fn();
+    const { rerender } = render(
+      <MatchPresentationSequence
+        firstPlayerId={1}
+        activePlayerId={1}
+        viewerPlayerId={2}
+        turnPhase="draw"
+        status="active"
+        isResourceAnimating={false}
+        onResolveDraw={onResolveDraw}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Saltar' }));
+    expect(screen.getByTestId('turn-handoff-overlay')).toHaveTextContent('A aguardar o Jogador 1');
+    expect(screen.queryByRole('button', { name: 'Efetuar duas compras' })).not.toBeInTheDocument();
+    expect(onResolveDraw).not.toHaveBeenCalled();
+
+    rerender(
+      <MatchPresentationSequence
+        firstPlayerId={1}
+        activePlayerId={1}
+        viewerPlayerId={2}
+        turnPhase="positioning"
+        status="active"
+        isResourceAnimating={false}
+        onResolveDraw={onResolveDraw}
+      />
+    );
+    expect(screen.queryByTestId('turn-handoff-overlay')).not.toBeInTheDocument();
+  });
 });
