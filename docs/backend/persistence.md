@@ -2,7 +2,9 @@
 
 ## Estado atual
 
-Não existe base de dados, ORM, migração, cache ou armazenamento de partidas. O endpoint de health não depende de persistência.
+Não existe base de dados, ORM, migração ou cache. O serviço online mantém salas, tokens, baralhos validados, estado e versões apenas em memória.
+
+O reinício do processo encerra todas as salas. A reconexão só funciona enquanto o mesmo processo continua vivo e dentro do período de expiração.
 
 ## Direção possível
 

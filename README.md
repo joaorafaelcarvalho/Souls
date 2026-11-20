@@ -1,14 +1,14 @@
 # SOULS
 
-SOULS é a fundação local de um jogo estratégico de cartas por turnos para dois jogadores. A entrega atual inclui o motor de regras, o catálogo modular com cinco cartas de teste e um protótipo frontend local jogável.
+SOULS é um jogo estratégico de cartas por turnos para dois jogadores. A entrega atual inclui o motor de regras, o catálogo modular, os modos locais e uma primeira partida PvP Online privada com servidor autoritativo.
 
-A referência normativa das mecânicas é o [regulamento SOULS v0.7](./docs/game-rules.md). O backend ainda não expõe partidas ou catálogo por HTTP.
+A referência normativa das mecânicas é o [regulamento SOULS v0.7](./docs/game-rules.md). O backend expõe salas privadas online por HTTP e WebSocket; o catálogo continua a ser carregado localmente no processo servidor.
 
 ## Estado atual
 
 Implementado:
 
-- workspace npm com [apps/web](./apps/web), [apps/api](./apps/api), [packages/game-core](./packages/game-core) e [packages/game-content](./packages/game-content);
+- workspace npm com [apps/web](./apps/web), [apps/api](./apps/api), [packages/game-core](./packages/game-core), [packages/game-content](./packages/game-content) e [packages/game-online](./packages/game-online);
 - TypeScript estrito, ESLint, Vitest e React Testing Library;
 - catálogo JSON com cinco cartas originais e vinte cartas da Card Expansion v1;
 - UUID permanente para cada CardDefinition e UUID individual para cada CardInstance;
@@ -29,15 +29,22 @@ Implementado:
 - loading cinematográfico inicial e menu principal com entrada para a partida existente;
 - protótipo React com mão horizontal, tabuleiro vertical 6×4, cartas completas e estado real;
 - composição responsiva em três zonas: jogador 2 à esquerda, tabuleiro ao centro e informação do jogo/ronda à direita;
-- endpoint Fastify `GET /health`.
+- endpoint Fastify `GET /health`;
+- salas privadas online com código de convite, dois participantes e lobby;
+- servidor autoritativo online que reutiliza `game-core`, valida baralhos no catálogo e processa comandos versionados;
+- WebSocket persistente, tokens anónimos de sessão, reconexão temporária e encerramento por expiração;
+- projeções autorizadas sem mão ou baralho futuro do adversário;
+- revanche online mediante aceitação dos dois participantes;
+- ecrãs PvP Online integrados no menu e no tabuleiro existente.
+- manifesto de Sound Design v1.0 com prompts, caminhos, mixagem e rastreabilidade pendente; não existem ainda assets sonoros finais.
 
 Os níveis 0 e os valores das cinco cartas são temporários para testes e não são balanceamento final.
 
 Ainda não implementado:
 
-- comunicação frontend/backend e contratos HTTP de partidas;
+- persistência de salas após reinício e coordenação entre múltiplos processos;
 - consulta remota do catálogo;
-- autenticação, matchmaking, WebSockets, persistência e serviços externos;
+- autenticação de contas, matchmaking, rankings, chat e serviços externos;
 - tutorial avançado para cartas de níveis superiores, IA tutorial e progresso remoto;
 - cartas definitivas, balanceamento ou direção artística.
 
@@ -50,6 +57,8 @@ npm run dev:web
 
 Abra [http://localhost:5173/](http://localhost:5173/). Para a API técnica, use outro terminal com 
 `npm run dev:api`.
+
+O PvP Online usa `http://localhost:3000` e `ws://localhost:3000/online` por omissão. Consulte [.env.example](./.env.example) e [SOULS-PVP-ONLINE-v1.0-implementation.md](./docs/SOULS-PVP-ONLINE-v1.0-implementation.md) para testar dois clientes na mesma rede.
 
 Para executar o laboratório de balanceamento:
 
@@ -90,6 +99,8 @@ npm run build
 - [Card Expansion v1](./docs/card-expansion-v1.md)
 - [Animações de combate](./docs/combat-animations.md)
 - [API](./docs/api.md)
+- [Implementação PvP Online v1.0](./docs/SOULS-PVP-ONLINE-v1.0-implementation.md)
+- [Sound Design v1.0](./docs/SOULS-SOUND-DESIGN-v1.0.md)
 
 A auditoria do npm reportou vulnerabilidades transitivas. Não foi executado 
 `npm audit fix`.

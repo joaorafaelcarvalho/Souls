@@ -4,6 +4,10 @@
 
 ### Adicionado
 
+- PvP Online v1.0 com salas privadas em memória, códigos de convite, identidades anónimas de sessão, lobby de baralhos, servidor autoritativo baseado no game-core, WebSocket, projeções privadas, versões/command IDs, reconexão temporária e revanche consensual;
+- pacote game-online com contratos de rede e visão autorizada partilhada entre API e frontend;
+- manifesto de Sound Design v1.0 com IDs de música/SFX, contextos, bindings de eventos, mixagem padrão e prompts de produção original; assets e Audio Manager permanecem pendentes;
+
 - modal de passagem de turno integrado com as duas compras obrigatórias, WebP de saque congelado na primeira frame antes do clique e animação sincronizada até ao posicionamento;
 - tutorial concluído com compras falhadas jogáveis, comparação de níveis superiores e desafio final de posicionamento/combate;
 - seleção de cartas do campo preservada durante a seleção de uma carta da mão, permitindo executar a retirada estratégica válida;
@@ -64,7 +68,7 @@
 ### Limitações conhecidas
 
 - as cinco cartas têm nível 0 e valores temporários para testes;
-- não existe comunicação frontend/backend, persistência ou multijogador remoto;
+- não existe persistência após reinício nem sincronização entre múltiplas instâncias; o teste visual com dois browsers ainda é manual;
 - as ilustrações PNG são recursos fornecidos para o protótipo e a direção artística definitiva continua pendente;
 - npm reporta vulnerabilidades transitivas; não foi aplicado 
 pm audit fix`.

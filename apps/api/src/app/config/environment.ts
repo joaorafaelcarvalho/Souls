@@ -1,6 +1,7 @@
 export interface ApiConfig {
   readonly host: string;
   readonly port: number;
+  readonly webOrigin: string;
 }
 
 export type Environment = Readonly<Record<string, string | undefined>>;
@@ -22,6 +23,7 @@ function parsePort(value: string | undefined): number {
 export function loadConfig(environment: Environment = process.env): ApiConfig {
   return {
     host: environment.HOST ?? '127.0.0.1',
-    port: parsePort(environment.PORT)
+    port: parsePort(environment.PORT),
+    webOrigin: environment.WEB_ORIGIN ?? 'http://localhost:5173'
   };
 }

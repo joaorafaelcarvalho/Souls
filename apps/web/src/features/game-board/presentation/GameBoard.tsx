@@ -6,7 +6,8 @@ import {
   type BoardState,
   type CardDefinition,
   type CardInstance,
-  type BoardRow
+  type BoardRow,
+  type PlayerId
 } from '@souls/game-core';
 import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import type { CombatPlaybackState } from '../../combat/application/CombatAnimationSequencer';
@@ -26,6 +27,7 @@ export interface GameBoardProps {
   readonly playerPanel?: ReactNode;
   readonly combatPlayback?: CombatPlaybackState | null;
   readonly highlightedRows?: readonly BoardRow[];
+  readonly perspectivePlayerId?: PlayerId;
 }
 
 interface BoardDimensions {
@@ -87,7 +89,8 @@ export function GameBoard({
   opponentPanel,
   playerPanel,
   combatPlayback,
-  highlightedRows
+  highlightedRows,
+  perspectivePlayerId
 }: GameBoardProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const boardShellRef = useRef<HTMLElement>(null);
@@ -166,8 +169,9 @@ export function GameBoard({
       <div ref={viewportRef} className={styles.gridViewport}>
         <div className={styles.grid} data-testid="game-board" style={boardStyle}>
           {Array.from({ length: BOARD_ROWS * BOARD_COLUMNS }, (_, index) => {
-            const row = Math.floor(index / BOARD_COLUMNS);
+            const visualRow = Math.floor(index / BOARD_COLUMNS);
             const column = index % BOARD_COLUMNS;
+            const row = perspectivePlayerId === 2 ? BOARD_ROWS - 1 - visualRow : visualRow;
             const position = getBoardPosition(row, column);
             const occupantId = board.occupants[position.key];
             const instance = occupantId === null ? undefined : cardInstances?.[occupantId];

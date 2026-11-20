@@ -2,30 +2,31 @@
 
 ## Objetivo
 
-SOULS usa um workspace local com quatro áreas de responsabilidade:
+SOULS usa um workspace local com aplicações e pacotes separados por responsabilidade:
 
 ```text
 apps/web ────────┐
                  ├── regras e estados ── packages/game-core
 apps/api ────────┘              ↑
-                                │ contratos de conteúdo
-                         packages/game-content
+                   conteúdo ───┴── packages/game-content
+                   rede/projeção ── packages/game-online
 ```
 
-O frontend apresenta o estado e o conteúdo. O backend poderá consultar definições e usar o motor numa evolução futura. Nenhum destes módulos duplica o combate.
+O frontend apresenta o estado autorizado e o conteúdo. O backend mantém as sessões online e usa diretamente o motor; nenhum destes módulos duplica o combate.
 
 ## Workspace
 
 | Caminho | Responsabilidade atual | Dependências permitidas |
 | --- | --- | --- |
 | [apps/web](../apps/web) | React/Vite, catálogo visual, imagens e protótipo local | React, Vite, game-core, game-content |
-| [apps/api](../apps/api) | Fastify, configuração e interfaces HTTP técnicas | Fastify; game-core/game-content quando houver casos de uso |
+| [apps/api](../apps/api) | Fastify, salas online em memória, WebSocket e configuração | Fastify, ws, game-core/game-content/game-online |
 | [packages/game-core](../packages/game-core) | modelos, instâncias, progressão e regras determinísticas | TypeScript sem frameworks ou conteúdo |
 | [packages/game-content](../packages/game-content) | definições JSON, catálogo, carregamento e validação | contratos do game-core; sem DOM ou regras de combate |
 | [packages/game-ai](../packages/game-ai) | observação sanitizada, opções legais e decisões de agentes | game-core; sem React, DOM ou infraestrutura |
+| [packages/game-online](../packages/game-online) | contratos de rede e projeção autorizada pura | game-core; sem React, DOM ou transporte |
 | [docs](.) | fonte normativa e documentação técnica | nenhuma |
 
-O workspace não contém base de dados, serviços externos, autenticação, comunicação em tempo real ou deploy.
+O workspace não contém base de dados, contas persistentes, serviços externos ou deploy. A comunicação em tempo real do PvP Online é feita pelo WebSocket em `apps/api`.
 
 ## Catálogo e UUIDs
 
@@ -62,7 +63,7 @@ No game-core e game-content não há infraestrutura de armazenamento. No backend
 
 ### Presentation e interfaces
 
-A apresentação React transforma contratos em componentes visuais e carrega imagens públicas. As interfaces Fastify expõem apenas o contrato técnico `/health` atual. Nenhuma destas camadas decide resultados de combate.
+A apresentação React transforma contratos em componentes visuais e carrega imagens públicas. As interfaces Fastify expõem `/health`, criação/entrada em salas e o WebSocket online. Nenhuma destas camadas decide resultados de combate.
 
 A resolução de ataque pode devolver `GameOperationResult.combatTrace`, um traço puro de colunas, trocas e eventos produzido pelo próprio game-core. O traço não contém tempos nem dependências de browser. [CombatAnimationSequencer](./combat-animations.md) consome-o no frontend, mantém o estado visual anterior durante a reprodução e publica o estado oficial apenas no fim.
 
@@ -70,7 +71,7 @@ A resolução de ataque pode devolver `GameOperationResult.combatTrace`, um tra�
 
 O adaptador local mantém o `GameState` completo para executar as operações do motor, mas a apresentação recebe apenas a [AuthorizedGameView](./frontend/authorized-match-view.md). Esta visão separa `activePlayerId` — identidade usada pelas regras para a ação atual — de `viewerPlayerId` — identidade autorizada a ver uma mão privada. O catálogo, o tabuleiro, as estatísticas e as contagens públicas continuam disponíveis; mãos, baralhos e descartes privados do adversário não são expostos.
 
-As interações passam pelo contrato [MatchCommands](../apps/web/src/features/match/application/MatchCommands.ts), permitindo substituir o adaptador local por uma sessão autoritativa no futuro sem levar WebSockets ou autenticação para o motor. O [TurnHandoffOverlay](./components/TurnHandoffOverlay.md) permanece uma preocupação exclusiva da composição PvP Local.
+As interações passam pelo contrato [MatchCommands](../apps/web/src/features/match/application/MatchCommands.ts). O adaptador local executa-as localmente; o [useOnlineGame](../apps/web/src/features/online/application/useOnlineGame.ts) envia-as ao servidor autoritativo através dos contratos de [game-online](../packages/game-online/src/index.ts). WebSockets, tokens e Fastify ficam fora do game-core. O [TurnHandoffOverlay](./components/TurnHandoffOverlay.md) permanece uma preocupação exclusiva da apresentação, partilhada pelos modos local e online.
 
 O [TutorialScreen](../apps/web/src/features/tutorial/presentation/TutorialScreen.tsx) é um modo de apresentação independente. O seu controlador cria cenários determinísticos através dos contratos oficiais do game-core, valida o progresso pedagógico depois dos resultados normativos e não partilha nem modifica o estado de uma partida PvP.
 
@@ -102,13 +103,13 @@ Implementado:
 - imagens públicas separadas;
 - preparação, compras, posicionamento, ataques e vitória;
 - protótipo local com consulta ao catálogo.
-- visão autorizada da partida e contrato de comandos reutilizável para preparar uma futura sessão online.
+- visão autorizada da partida e contrato de comandos reutilizável para a sessão online;
+- salas privadas em memória, tokens anónimos, lobby, validação servidor, comandos versionados, WebSocket, reconexão temporária e revanche consensual.
 
 Ainda pendente:
 
-- contratos HTTP de partidas;
 - consulta do catálogo através da API;
-- persistência, sessões e autoridade de servidor;
+- persistência após reinício e coordenação entre múltiplas instâncias;
 - conteúdo definitivo e balanceamento.
 
 Qualquer evolução deve manter o regulamento em [game-rules.md](./game-rules.md), o catálogo em [cards.md](./cards.md) e as decisões em [decisions.md](./decisions.md).

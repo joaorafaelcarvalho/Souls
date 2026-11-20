@@ -18,6 +18,7 @@ O componente [Card](./Card.md) é a representação reutilizável da definição
 - [LoadingScreen](./LoadingScreen.md)
 - [MainMenu](./MainMenu.md)
 - [GameModeMenu](./GameModeMenu.md)
+- [OnlineRoomScreen](./OnlineRoomScreen.md)
 - [ReturnToMenuDialog](./ReturnToMenuDialog.md)
 - [CoinTossAnimation](./CoinTossAnimation.md)
 - [TurnHandoffOverlay](./TurnHandoffOverlay.md)

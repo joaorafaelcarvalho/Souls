@@ -25,6 +25,8 @@ import { TutorialScreen } from './features/tutorial/presentation/TutorialScreen'
 import { DeckBuilderPage } from './features/decks/presentation/DeckBuilderPage';
 import { DeckPreparationScreen } from './features/decks/presentation/DeckPreparationScreen';
 import { PvePreparationScreen } from './features/pve/presentation/PvePreparationScreen';
+import { OnlineRoomScreen } from './features/online/presentation/OnlineRoomScreen';
+import { useOnlineGame, type OnlineConnectionConfig } from './features/online/application/useOnlineGame';
 import type { PlayerDeckPair } from './features/decks/application/deckTypes';
 import styles from './App.module.css';
 
@@ -89,26 +91,11 @@ export interface AppProps {
 
 export default function App({ random = systemRandomSource }: AppProps) {
   const [selectedPlayerDecks, setSelectedPlayerDecks] = useState<PlayerDeckPair | null>(null);
+  const [onlineConfig, setOnlineConfig] = useState<OnlineConnectionConfig | null>(null);
   const [pveConfig, setPveConfig] = useState<{ readonly difficulty: AiDifficulty } | null>(null);
   const [presentationReady, setPresentationReady] = useState(true);
   const [deckStartToken, setDeckStartToken] = useState(0);
-  const {
-    combatPlayback,
-    combatSpeed,
-    canPlaceSelectedCard,
-    commands,
-    isCombatAnimating,
-    isResourceAnimating,
-    isAiTurn,
-    isPve,
-    matchId,
-    matchLog,
-    message,
-    selectedCardId,
-    resourceDamageByPlayer,
-    resourcePlaybackKey,
-    view
-  } = useLocalGame({
+  const localGame = useLocalGame({
     random,
     restartKey: deckStartToken,
     ...(selectedPlayerDecks === null ? {} : { playerDecks: selectedPlayerDecks }),
@@ -118,13 +105,30 @@ export default function App({ random = systemRandomSource }: AppProps) {
       aiPresentationReady: presentationReady
     })
   });
+  const onlineGame = useOnlineGame(onlineConfig);
   const [inspectedCardId, setInspectedCardId] = useState<CardInstanceId | null>(null);
   const [resultVisible, setResultVisible] = useState(true);
   const [rulesOpen, setRulesOpen] = useState(false);
   const [returnMenuOpen, setReturnMenuOpen] = useState(false);
-  const [entryScreen, setEntryScreen] = useState<'loading' | 'menu' | 'mode-menu' | 'codex' | 'deck-builder' | 'deck-preparation' | 'pve-preparation' | 'game' | 'tutorial'>('loading');
+  const [entryScreen, setEntryScreen] = useState<'loading' | 'menu' | 'mode-menu' | 'codex' | 'deck-builder' | 'deck-preparation' | 'pve-preparation' | 'online-lobby' | 'game' | 'tutorial'>('loading');
   const [isMenuLeaving, setIsMenuLeaving] = useState(false);
   const entryTransitionTimerRef = useRef<number | null>(null);
+  const isOnline = onlineConfig !== null;
+  const view = isOnline && onlineGame.view !== null ? onlineGame.view : localGame.view;
+  const combatPlayback = isOnline ? onlineGame.combatPlayback : localGame.combatPlayback;
+  const combatSpeed = isOnline ? onlineGame.combatSpeed : localGame.combatSpeed;
+  const canPlaceSelectedCard = isOnline ? onlineGame.canPlaceSelectedCard : localGame.canPlaceSelectedCard;
+  const commands = isOnline ? onlineGame.commands : localGame.commands;
+  const isCombatAnimating = isOnline ? onlineGame.isCombatAnimating : localGame.isCombatAnimating;
+  const isResourceAnimating = isOnline ? onlineGame.isResourceAnimating : localGame.isResourceAnimating;
+  const isAiTurn = isOnline ? false : localGame.isAiTurn;
+  const isPve = isOnline ? false : localGame.isPve;
+  const matchId = isOnline ? (onlineGame.matchId ?? 'online-waiting') : localGame.matchId;
+  const matchLog = isOnline ? onlineGame.matchLog : localGame.matchLog;
+  const message = isOnline ? onlineGame.message : localGame.message;
+  const selectedCardId = isOnline ? onlineGame.selectedCardId : localGame.selectedCardId;
+  const resourceDamageByPlayer = isOnline ? onlineGame.resourceDamageByPlayer : localGame.resourceDamageByPlayer;
+  const resourcePlaybackKey = isOnline ? onlineGame.resourcePlaybackKey : localGame.resourcePlaybackKey;
   const selectedCardInHand = selectedCardId !== null && view.viewer.hand.includes(selectedCardId);
   const selectedCardOnBoard = selectedCardId !== null && Object.values(view.board.occupants).includes(selectedCardId);
   const selectedCardDefinition = selectedCardId === null
@@ -134,12 +138,19 @@ export default function App({ random = systemRandomSource }: AppProps) {
     ? undefined
     : view.cardDefinitions[view.visibleCardInstances[inspectedCardId]?.cardDefinitionId ?? ''];
   const isActionAnimating = isCombatAnimating || isResourceAnimating;
+  const opponentPlayerId = view.viewerPlayerId === 1 ? 2 : 1;
 
   useEffect(() => () => {
     if (entryTransitionTimerRef.current !== null) {
       window.clearTimeout(entryTransitionTimerRef.current);
     }
   }, []);
+
+  useEffect(() => {
+    if (entryScreen === 'online-lobby' && onlineConfig !== null && onlineGame.view !== null) {
+      setEntryScreen('game');
+    }
+  }, [entryScreen, onlineConfig, onlineGame.view]);
 
   function startLocalGame(playerDecks: PlayerDeckPair) {
     if (isMenuLeaving) {
@@ -253,6 +264,11 @@ export default function App({ random = systemRandomSource }: AppProps) {
     setEntryScreen('pve-preparation');
   }
 
+  function openOnlineLobby() {
+    setOnlineConfig(null);
+    setEntryScreen('online-lobby');
+  }
+
   if (entryScreen === 'loading') {
     return <LoadingScreen onComplete={() => setEntryScreen('menu')} />;
   }
@@ -266,6 +282,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
       <GameModeMenu
         onLocalGame={openDeckPreparation}
         onPve={openPvePreparation}
+        onOnline={openOnlineLobby}
         onTutorial={enterTutorial}
         onBack={() => setEntryScreen('menu')}
       />
@@ -300,6 +317,20 @@ export default function App({ random = systemRandomSource }: AppProps) {
     );
   }
 
+  if (entryScreen === 'online-lobby') {
+    return (
+      <OnlineRoomScreen
+        session={onlineGame}
+        onConnected={setOnlineConfig}
+        onBack={() => {
+          onlineGame.commands.reset();
+          setOnlineConfig(null);
+          setEntryScreen('mode-menu');
+        }}
+      />
+    );
+  }
+
   if (entryScreen === 'tutorial') {
     return (
       <TutorialScreen
@@ -319,6 +350,14 @@ export default function App({ random = systemRandomSource }: AppProps) {
     setInspectedCardId(null);
     setResultVisible(true);
     commands.reset();
+  }
+
+  function handleRematch() {
+    if (isOnline) {
+      onlineGame.acceptRematch();
+      return;
+    }
+    handleReset();
   }
 
   function requestReturnToMenu() {
@@ -342,6 +381,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
     setPveConfig(null);
     setPresentationReady(true);
     setSelectedPlayerDecks(null);
+    setOnlineConfig(null);
     setIsMenuLeaving(false);
     setEntryScreen('menu');
   }
@@ -404,6 +444,12 @@ export default function App({ random = systemRandomSource }: AppProps) {
     if (isAiTurn) {
       return <span>A IA está a jogar…</span>;
     }
+    if (isOnline && onlineGame.connectionState !== 'connected') {
+      return <span>LIGAÇÃO INTERROMPIDA</span>;
+    }
+    if (isOnline && view.activePlayerId !== view.viewerPlayerId) {
+      return <span>A AGUARDAR O ADVERSÁRIO</span>;
+    }
     if (view.status === 'finished') {
       return <button type="button" onClick={handleReset}>Recomeçar demonstração</button>;
     }
@@ -442,20 +488,21 @@ export default function App({ random = systemRandomSource }: AppProps) {
       <section className={styles.boardStage} aria-label="Área central do tabuleiro">
         <GameBoard
           board={view.board}
+          perspectivePlayerId={isOnline ? view.viewerPlayerId : 1}
           cardDefinitions={view.cardDefinitions}
           cardInstances={view.visibleCardInstances}
           combatPlayback={combatPlayback}
           getCellState={getCellState}
           onCellClick={handleCellClick}
-          opponentPanel={<PlayerStatus player={view.players[2]} {...(isPve ? { label: 'A IA' } : {})} isActive={view.activePlayerId === 2} position="top" damageAmount={combatDamageFor(combatPlayback, 2) || resourceDamageFor(resourceDamageByPlayer, 2)} soulDelta={combatSoulDeltaFor(combatPlayback, 2)} feedbackKey={resourcePlaybackKey} feedbackSpeed={combatPlayback?.speed ?? 1} />}
-          playerPanel={<PlayerStatus player={view.players[1]} isActive={view.activePlayerId === 1} position="bottom" damageAmount={combatDamageFor(combatPlayback, 1) || resourceDamageFor(resourceDamageByPlayer, 1)} soulDelta={combatSoulDeltaFor(combatPlayback, 1)} feedbackKey={combatPlayback === null ? resourcePlaybackKey : `${combatPlayback.column}-${combatPlayback.exchangeIndex}-p1`} feedbackSpeed={combatPlayback?.speed ?? 1} />}
+          opponentPanel={<PlayerStatus player={view.players[opponentPlayerId]} {...(isPve ? { label: 'A IA' } : {})} isActive={view.activePlayerId === opponentPlayerId} position="top" damageAmount={combatDamageFor(combatPlayback, opponentPlayerId) || resourceDamageFor(resourceDamageByPlayer, opponentPlayerId)} soulDelta={combatSoulDeltaFor(combatPlayback, opponentPlayerId)} feedbackKey={resourcePlaybackKey} feedbackSpeed={combatPlayback?.speed ?? 1} />}
+          playerPanel={<PlayerStatus player={view.players[view.viewerPlayerId]} isActive={view.activePlayerId === view.viewerPlayerId} position="bottom" damageAmount={combatDamageFor(combatPlayback, view.viewerPlayerId) || resourceDamageFor(resourceDamageByPlayer, view.viewerPlayerId)} soulDelta={combatSoulDeltaFor(combatPlayback, view.viewerPlayerId)} feedbackKey={combatPlayback === null ? resourcePlaybackKey : `${combatPlayback.column}-${combatPlayback.exchangeIndex}-p${view.viewerPlayerId}`} feedbackSpeed={combatPlayback?.speed ?? 1} />}
         />
       </section>
 
       <aside className={styles.rightRail} aria-label="Informações da ronda">
         <div className={styles.turnPanel} aria-label="Informações da ronda">
           <span className={styles.round}>Ronda {view.turn.round}</span>
-          <strong>{isPve && isAiTurn ? 'A IA' : 'Jogador ' + view.activePlayerId}</strong>
+          <strong>{isPve && isAiTurn ? 'A IA' : isOnline ? (view.activePlayerId === view.viewerPlayerId ? 'O TEU TURNO' : 'TURNO DO ADVERSÁRIO') : 'Jogador ' + view.activePlayerId}</strong>
           <span>{phaseLabels[view.turn.phase]}</span>
           {view.turn.phase === 'first-round-positioning' || view.turn.phase === 'positioning' ? (
             <span>Ações de posicionamento: {Math.max(0, 2 - view.turn.placementsMade)}/2</span>
@@ -513,7 +560,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
             cardDefinitions={view.cardDefinitions}
             cardIds={view.viewer.hand}
             cardInstances={view.visibleCardInstances}
-            disabled={isActionAnimating || isAiTurn || view.status === 'finished'}
+            disabled={isActionAnimating || isAiTurn || (isOnline && view.activePlayerId !== view.viewerPlayerId) || view.status === 'finished'}
             onSelect={handleHandSelect}
             selectedCardId={selectedCardId}
           />
@@ -524,7 +571,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
 
       <GameRulesDialog open={rulesOpen} onClose={() => setRulesOpen(false)} />
 
-      <GameResultOverlay view={view} visible={resultVisible} {...(isPve ? { playerLabels: { 1: 'Jogador', 2: 'A IA' } } : {})} onMenu={goToMainMenu} onRematch={handleReset} />
+      <GameResultOverlay view={view} visible={resultVisible} {...(isPve ? { playerLabels: { 1: 'Jogador', 2: 'A IA' } } : {})} onMenu={goToMainMenu} onRematch={handleRematch} />
 
       <MatchPresentationSequence
         key={matchId}
@@ -533,6 +580,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
         status={view.status}
         turnPhase={view.turn.phase}
         isResourceAnimating={isResourceAnimating}
+        viewerPlayerId={view.viewerPlayerId}
         onResolveDraw={commands.resolveDraw}
         onPresentationReady={setPresentationReady}
       />
