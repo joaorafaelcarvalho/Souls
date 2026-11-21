@@ -31,6 +31,7 @@ import {
   type CombatAnimationSpeed,
   type CombatPlaybackState
 } from '../../combat/application/CombatAnimationSequencer';
+import type { AudioCardContext } from '../../../shared/audio/audioEvents';
 import { createAuthorizedGameView, type AuthorizedGameView } from './authorizedGameView';
 import { formatCombatColumnTrace, formatGameEvents } from './formatGameEvents';
 import type { MatchCommands } from './MatchCommands';
@@ -124,6 +125,9 @@ export interface LocalGameOptions {
     readonly difficulty: AiDifficulty;
   };
   readonly aiPresentationReady?: boolean;
+  readonly onEvents?: (events: readonly GameEvent[]) => void;
+  readonly onCombatPlayback?: (playback: CombatPlaybackState, context: AudioCardContext) => void;
+  readonly onReset?: () => void;
 }
 
 export interface LocalGameSession {
@@ -198,6 +202,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
       window.clearTimeout(drawTimerRef.current);
       drawTimerRef.current = null;
     }
+    options.onReset?.();
     sequencer.cancel();
     setMatchId((current) => current + 1);
     setState(createDemoGame(options.random, options.playerDecks));
@@ -207,19 +212,23 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
     setIsCombatAnimating(false);
     setMessage('Nova partida iniciada com os baralhos selecionados.');
     setMatchLog(initialLog);
-  }, [options.playerDecks, options.random, options.restartKey, sequencer, sessionSignature]);
+  }, [options.onReset, options.playerDecks, options.random, options.restartKey, sequencer, sessionSignature]);
 
   const aiPlayerId = options.ai?.playerId;
   const playerLabels = options.ai === undefined ? undefined : { 1: 'Jogador', 2: 'A IA' } as const;
+  const onEvents = options.onEvents;
+  const onCombatPlayback = options.onCombatPlayback;
+  const onReset = options.onReset;
 
   const applyResult = useCallback((result: GameOperationResult, previousState: GameState) => {
+    onEvents?.(result.events);
     const newEntries = formatGameEvents(result.events, previousState, result.state, playerLabels === undefined ? {} : { playerLabels });
 
     setState(result.state);
     setSelectedCardId(null);
     setMessage(eventMessage(result.events, aiPlayerId));
     setMatchLog((entries) => [...entries, ...newEntries].slice(-100));
-  }, [aiPlayerId, playerLabels]);
+  }, [aiPlayerId, onEvents, playerLabels]);
 
   const commit = useCallback((
     operation: () => GameOperationResult,
@@ -244,6 +253,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
       return;
     }
     setSelectedCardId(null);
+    onEvents?.(first.events);
     setDrawPlayback({
       result,
       segments,
@@ -256,7 +266,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
       ...entries,
       ...formatGameEvents(first.events, previousState, result.state, playerLabels === undefined ? {} : { playerLabels })
     ].slice(-100));
-  }, [aiPlayerId, applyResult, playerLabels]);
+  }, [aiPlayerId, applyResult, onEvents, playerLabels]);
 
   const advanceDrawPlayback = useCallback(() => {
     const playback = drawPlayback;
@@ -279,12 +289,13 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
       currentDamageByPlayer: next.damageByPlayer,
       damageByPlayer
     });
+    onEvents?.(next.events);
     setMessage(eventMessage(next.events, aiPlayerId));
     setMatchLog((entries) => [
       ...entries,
       ...formatGameEvents(next.events, playback.result.state, playback.result.state, playerLabels === undefined ? {} : { playerLabels })
     ].slice(-100));
-  }, [aiPlayerId, drawPlayback, playerLabels]);
+  }, [aiPlayerId, drawPlayback, onEvents, playerLabels]);
 
   useEffect(() => {
     if (drawPlayback === null || drawTimerRef.current !== null) return;
@@ -415,6 +426,10 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
         trace,
         {
           onStep: (playback) => {
+            onCombatPlayback?.(playback, {
+              cardInstances: previousState.cardInstances,
+              cardDefinitions: previousState.cardDefinitions
+            });
             setCombatPlayback(playback);
 
             if (playback.stage !== 'consequences' || presentedColumns.has(playback.column)) {
@@ -435,6 +450,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
             setMatchLog((current) => [...current, ...entries].slice(-100));
           },
           onComplete: () => {
+            onEvents?.(trace.trailingEvents);
             const trailingEntries = formatGameEvents(trace.trailingEvents, previousState, result.state, playerLabels === undefined ? {} : { playerLabels });
             setState(result.state);
             setSelectedCardId(null);
@@ -453,7 +469,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
     } catch (error) {
       setMessage(error instanceof GameRuleError ? error.message : 'Não foi possível resolver o ataque.');
     }
-  }, [aiPlayerId, applyResult, combatSpeed, isCombatAnimating, isResourceAnimating, playerLabels, sequencer, state]);
+  }, [aiPlayerId, applyResult, combatSpeed, isCombatAnimating, isResourceAnimating, onCombatPlayback, onEvents, playerLabels, sequencer, state]);
 
   const runAiStep = useCallback(() => {
     const ai = options.ai;
@@ -536,6 +552,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
   }, [sequencer]);
 
   const reset = useCallback(() => {
+    onReset?.();
     sequencer.cancel();
     if (aiTimerRef.current !== null) {
       window.clearTimeout(aiTimerRef.current);
@@ -556,7 +573,7 @@ export function useLocalGame(options: LocalGameOptions = {}): LocalGameSession {
     setIsCombatAnimating(false);
     setMessage('Nova demonstração local iniciada.');
     setMatchLog(initialLog);
-  }, [options.ai, options.random, options.restartKey, sequencer]);
+  }, [onReset, options.ai, options.random, options.restartKey, options.playerDecks, sequencer]);
 
   const canPlaceSelectedCard = useCallback((instanceId: CardInstanceId, row: number, column: number) => {
     if (state.status === 'finished') {

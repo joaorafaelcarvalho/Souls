@@ -17,6 +17,7 @@
     "balance:audit": "npm --workspace @souls/balance-lab run audit",
     "balance:audit-v071": "npm --workspace @souls/balance-lab run audit:v071",
     "balance:audit-v072": "npm --workspace @souls/balance-lab run audit:v072",
+    "fixtures:validate": "npm --workspace @souls/game-core run build && node scripts/validate-game-fixtures.mjs",
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test:ci": "npm run test --workspaces --if-present",

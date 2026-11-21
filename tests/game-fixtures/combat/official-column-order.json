@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "id": "combat/official-column-order",
+  "kind": "combat-column",
+  "description": "Fixture portátil do exemplo oficial de ataque combinado e ordem defesa → melee.",
+  "input": {
+    "attackingCards": [
+      {
+        "id": "attacker-melee",
+        "ownerId": 1,
+        "category": "melee",
+        "attack": 700,
+        "defense": 0
+      },
+      {
+        "id": "attacker-ranged",
+        "ownerId": 1,
+        "category": "ranged",
+        "attack": 300,
+        "defense": 0
+      }
+    ],
+    "defenderPlayerId": 2,
+    "targets": [
+      {
+        "kind": "offense",
+        "card": {
+          "id": "defender-ranged",
+          "ownerId": 2,
+          "category": "ranged",
+          "attack": 100,
+          "defense": 0
+        }
+      },
+      {
+        "kind": "defense",
+        "card": {
+          "id": "defender-defense",
+          "ownerId": 2,
+          "category": "melee",
+          "attack": 0,
+          "defense": 300
+        }
+      },
+      {
+        "kind": "offense",
+        "card": {
+          "id": "defender-melee",
+          "ownerId": 2,
+          "category": "melee",
+          "attack": 300,
+          "defense": 0
+        }
+      }
+    ]
+  },
+  "expected": {
+    "kind": "column",
+    "outcome": "offense-attacker-wins",
+    "initialAttackPower": 1000,
+    "remainingAttack": 0,
+    "destroyedCardIds": ["defender-defense", "defender-melee"],
+    "hpDamage": 400,
+    "hpDamageTarget": 2,
+    "soulAwards": [
+      { "playerId": 2, "amount": 1 },
+      { "playerId": 2, "amount": 1 }
+    ],
+    "exchanges": [
+      {
+        "kind": "defense",
+        "targetId": "defender-defense",
+        "outcome": "destroyed",
+        "attackPower": 1000,
+        "remainingAttack": 700,
+        "destroyedCardIds": ["defender-defense"],
+        "hpDamage": 0,
+        "soulAwards": [
+          { "playerId": 2, "amount": 1 }
+        ]
+      },
+      {
+        "kind": "offense",
+        "targetId": "defender-melee",
+        "outcome": "attacker-wins",
+        "attackPower": 700,
+        "remainingAttack": 0,
+        "destroyedCardIds": ["defender-melee"],
+        "hpDamage": 400,
+        "hpDamageTarget": 2,
+        "soulAwards": [
+          { "playerId": 2, "amount": 1 }
+        ]
+      }
+    ]
+  }
+}

@@ -1,4 +1,5 @@
 import type { TutorialStep, TutorialZone } from '../application/tutorialSteps';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './TutorialInstructionPanel.module.css';
 
 export interface TutorialInstructionPanelProps {
@@ -34,6 +35,7 @@ export function TutorialInstructionPanel({
   onAdvance,
   onExit
 }: TutorialInstructionPanelProps) {
+  const { playSfx } = useAudio();
   const showAction = !stepCompleted && !isCombatAnimating && ['draw', 'combat', 'retirement', 'challenge'].includes(step.kind);
   const showAdvance = stepCompleted || canAdvance;
 
@@ -59,7 +61,10 @@ export function TutorialInstructionPanel({
               className={[exploredZones.has(zone) ? styles.zoneVisited : '', highlightedZone === zone ? styles.zoneActive : ''].filter(Boolean).join(' ')}
               key={zone}
               type="button"
-              onClick={() => onExploreZone(zone)}
+              onClick={() => {
+                void playSfx('sfx.ui.click');
+                onExploreZone(zone);
+              }}
             >
               {zone === 'defense' ? 'DEFESA' : zone.toUpperCase()}
             </button>
@@ -88,14 +93,23 @@ export function TutorialInstructionPanel({
 
       <div className={styles.actions}>
         {showAction ? (
-          <button className={styles.primary} type="button" onClick={onAction}>
+          <button className={styles.primary} type="button" onClick={() => {
+            void playSfx('sfx.ui.click');
+            onAction();
+          }}>
             {actionLabel ?? (step.kind === 'draw' ? 'Efetuar duas compras' : step.kind === 'retirement' ? 'Retirar carta · +1 Soul' : 'Resolver ataque')}
           </button>
         ) : null}
         {showAdvance ? (
-          <button className={styles.primary} type="button" onClick={onAdvance}>Continuar</button>
+          <button className={styles.primary} type="button" onClick={() => {
+            void playSfx('sfx.ui.click');
+            onAdvance();
+          }}>Continuar</button>
         ) : null}
-        <button className={styles.secondary} type="button" onClick={onExit}>Voltar ao menu</button>
+        <button className={styles.secondary} type="button" onClick={() => {
+          void playSfx('sfx.ui.click');
+          onExit();
+        }}>Voltar ao menu</button>
       </div>
     </section>
   );

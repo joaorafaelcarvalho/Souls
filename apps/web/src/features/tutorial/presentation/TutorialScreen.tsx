@@ -6,6 +6,7 @@ import { PlayerStatus } from '../../match/presentation/PlayerStatus';
 import { useTutorialGame } from '../application/useTutorialGame';
 import { TutorialCardAttributePanel } from './TutorialCardAttributePanel';
 import { TutorialInstructionPanel } from './TutorialInstructionPanel';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './TutorialScreen.module.css';
 
 export interface TutorialScreenProps {
@@ -53,7 +54,12 @@ function Completion({ onRestart, onPlayNow, onExit }: { readonly onRestart: () =
 }
 
 export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
-  const tutorial = useTutorialGame();
+  const audio = useAudio();
+  const tutorial = useTutorialGame({
+    onEvents: audio.playGameEvents,
+    onCombatPlayback: audio.playCombatPlayback,
+    onReset: audio.stopAllSfx
+  });
 
   if (tutorial.phase === 'intro') {
     return <Intro onStart={tutorial.commands.start} onExit={onExit} />;

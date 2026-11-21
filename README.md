@@ -36,7 +36,7 @@ Implementado:
 - projeções autorizadas sem mão ou baralho futuro do adversário;
 - revanche online mediante aceitação dos dois participantes;
 - ecrãs PvP Online integrados no menu e no tabuleiro existente.
-- manifesto de Sound Design v1.0 com prompts, caminhos, mixagem e rastreabilidade pendente; não existem ainda assets sonoros finais.
+- Audio Engine v1.0 com Audio Manager centralizado, 19 assets licenciados reais integrados, música por contexto, eventos oficiais, timeline de combate, controlos persistentes, diagnóstico e rastreabilidade de licenças; o menu usa Dark Place e existem temas oficiais de combate, vitória e derrota.
 
 Os níveis 0 e os valores das cinco cartas são temporários para testes e não são balanceamento final.
 
@@ -80,6 +80,10 @@ npm run build
 - [AGENTS.md](./AGENTS.md)
 - [CHANGELOG.md](./CHANGELOG.md)
 - [Arquitetura](./docs/architecture.md)
+- [Arquitetura atual](./docs/architecture/CURRENT-ARCHITECTURE.md)
+- [Plano de migração multiplataforma](./docs/architecture/MULTIPLATFORM-MIGRATION-PLAN.md)
+- [Arquitetura Flutter futura](./docs/mobile/FLUTTER-ARCHITECTURE.md)
+- [SOULS Multiplatform Architecture v1.0](./SOULS-MULTIPLATFORM-v1.0-architecture.md)
 - [Catálogo de cartas](./docs/cards.md)
 - [Regulamento SOULS v0.7](./docs/game-rules.md)
 - [Mecânicas](./docs/game-mechanics.md)
@@ -101,6 +105,9 @@ npm run build
 - [API](./docs/api.md)
 - [Implementação PvP Online v1.0](./docs/SOULS-PVP-ONLINE-v1.0-implementation.md)
 - [Sound Design v1.0](./docs/SOULS-SOUND-DESIGN-v1.0.md)
+- [Licenças e créditos de áudio](./SOULS-AUDIO-LICENSES.md)
+
+Para validar fixtures portáteis do `game-core`, execute `npm run fixtures:validate`.
 
 A auditoria do npm reportou vulnerabilidades transitivas. Não foi executado 
 `npm audit fix`.

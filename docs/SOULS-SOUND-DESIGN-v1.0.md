@@ -2,19 +2,18 @@
 
 ## Estado da entrega
 
-Esta entrega prepara a identidade sonora e o contrato de assets, mas não contém ficheiros de áudio finais.
+Esta entrega contém a infraestrutura de reprodução, a integração com os acontecimentos existentes e uma seleção de assets de áudio reais com licenças confirmadas.
 
-A auditoria encontrou:
+A auditoria confirmou:
 
-- nenhum Audio Manager;
-- nenhum manifesto de áudio anterior;
-- nenhum controlo de volume ou mute;
-- nenhum ficheiro WAV, OGG, MP3 ou outro asset sonoro;
-- nenhum callback de áudio na timeline de combate.
+- Audio Manager centralizado em `apps/web/src/shared/audio/audioManager.ts`;
+- provider React persistente, controlos de volume/mute e preferências locais;
+- callbacks de áudio nos controladores local, online, tutorial e na timeline de combate;
+- Os 19 IDs têm assets licenciados integrados. O menu usa o loop CC0 `Dark Place`; combate, vitória e derrota usam as faixas CC-BY correspondentes.
 
-Não existe uma ferramenta de geração de áudio disponível nesta sessão. Por isso, não foram criados ficheiros vazios, sons sintéticos provisórios ou assets de origem desconhecida. A produção sonora e a reprodução no jogo continuam pendentes.
+Não existe uma ferramenta de conversão de áudio disponível nesta sessão. Por isso, foram mantidos os formatos originais (OGG, MP3 e WAV), sem criar ficheiros vazios ou música sintética. A licença e a rastreabilidade estão em [SOULS-AUDIO-LICENSES.md](../SOULS-AUDIO-LICENSES.md); a implementação técnica está descrita em [SOULS-AUDIO-ENGINE-v1.0-implementation.md](./SOULS-AUDIO-ENGINE-v1.0-implementation.md).
 
-O manifesto tipado está em [audioManifest.ts](../apps/web/src/shared/audio/audioManifest.ts) e os seus testes verificam IDs, caminhos, bindings e estados pendentes.
+O manifesto tipado está em [audioManifest.ts](../apps/web/src/shared/audio/audioManifest.ts) e os seus testes verificam IDs, caminhos, bindings e estados `ready`/`missing`.
 
 ## 1. Conceito artístico
 
@@ -33,57 +32,49 @@ Evitar música eletrónica moderna evidente, batidas pop, melodias alegres, voze
 
 ## 2. Manifesto de assets
 
-Todos os itens abaixo estão marcados como `missing` e `license: pending` até serem fornecidos e avaliados. Os caminhos são os destinos web esperados em `apps/web/public`.
+Os caminhos abaixo são os destinos web em `apps/web/public`. Os assets disponíveis estão marcados como `ready`, com licença e origem no manifesto.
 
 | ID | Caminho de distribuição | Duração sugerida | Loop | Estado |
 |---|---|---:|:---:|---|
-| `music.menu` | `/audio/music/menu.ogg` | 90–150 s | sim | em falta |
-| `music.battle` | `/audio/music/battle.ogg` | 120–180 s | sim | em falta |
-| `music.victory` | `/audio/music/victory.ogg` | 15–30 s | não | em falta |
-| `music.defeat` | `/audio/music/defeat.ogg` | 15–30 s | não | em falta |
-| `sfx.ui.hover` | `/audio/sfx/ui/hover.ogg` | 0,1–0,2 s | não | em falta |
-| `sfx.ui.click` | `/audio/sfx/ui/click.ogg` | 0,1–0,3 s | não | em falta |
-| `sfx.card.select` | `/audio/sfx/card/select.ogg` | 0,2–0,4 s | não | em falta |
-| `sfx.card.draw` | `/audio/sfx/card/draw.ogg` | 0,3–0,7 s | não | em falta |
-| `sfx.card.place` | `/audio/sfx/card/place.ogg` | 0,2–0,5 s | não | em falta |
-| `sfx.card.summon` | `/audio/sfx/card/summon.ogg` | 0,5–1,2 s | não | em falta |
-| `sfx.card.draw-failed` | `/audio/sfx/card/draw-failed.ogg` | 0,3–0,8 s | não | em falta |
-| `sfx.combat.melee` | `/audio/sfx/combat/melee-01.ogg` | 0,3–0,8 s | não | em falta |
-| `sfx.combat.ranged` | `/audio/sfx/combat/ranged-01.ogg` | 0,3–0,9 s | não | em falta |
-| `sfx.combat.impact` | `/audio/sfx/combat/impact.ogg` | 0,2–0,6 s | não | em falta |
-| `sfx.combat.block` | `/audio/sfx/combat/block.ogg` | 0,3–0,7 s | não | em falta |
-| `sfx.combat.destroy` | `/audio/sfx/combat/destroy.ogg` | 0,8–1,5 s | não | em falta |
-| `sfx.soul.gain` | `/audio/sfx/soul/gain.ogg` | 0,4–1,0 s | não | em falta |
-| `sfx.soul.spend` | `/audio/sfx/soul/spend.ogg` | 0,3–0,8 s | não | em falta |
-| `sfx.player.damage` | `/audio/sfx/player/damage.ogg` | 0,2–0,6 s | não | em falta |
+| `music.menu` | `/audio/music/menu.ogg` | 90–150 s | sim | CC0 / disponível; Dark Place |
+| `music.battle` | `/audio/music/battle-theme.mp3` | 240–300 s | sim | CC-BY 4.0 / disponível; duração observada 248,21 s |
+| `music.victory` | `/audio/music/victory-theme.mp3` | 90–150 s | não | CC-BY 3.0 / disponível; duração observada 117,87 s |
+| `music.defeat` | `/audio/music/defeat-theme.mp3` | 60–90 s | não | CC-BY 3.0 / disponível; duração observada 77,15 s |
+| `sfx.ui.hover` | `/audio/sfx/ui/hover.ogg` | 0,1–0,2 s | não | CC0 / disponível |
+| `sfx.ui.click` | `/audio/sfx/ui/click.ogg` | 0,1–0,3 s | não | CC0 / disponível |
+| `sfx.card.select` | `/audio/sfx/card/select.ogg` | 0,2–0,4 s | não | CC0 / disponível |
+| `sfx.card.draw` | `/audio/sfx/card/draw.ogg` | 0,3–0,7 s | não | CC0 / disponível |
+| `sfx.card.place` | `/audio/sfx/card/place.ogg` | 0,2–0,5 s | não | CC0 / disponível |
+| `sfx.card.summon` | `/audio/sfx/card/summon.ogg` | 0,5–1,2 s | não | CC0 / disponível |
+| `sfx.card.draw-failed` | `/audio/sfx/card/draw-failed.ogg` | 0,3–0,8 s | não | CC0 / disponível |
+| `sfx.combat.melee` | `/audio/sfx/combat/melee-01.ogg` | 0,3–0,8 s | não | CC0 / disponível |
+| `sfx.combat.ranged` | `/audio/sfx/combat/ranged-01.wav` | 0,3–0,9 s | não | CC0 / disponível |
+| `sfx.combat.impact` | `/audio/sfx/combat/impact.ogg` | 0,2–0,6 s | não | CC0 / disponível |
+| `sfx.combat.block` | `/audio/sfx/combat/block.ogg` | 0,3–0,7 s | não | CC0 / disponível |
+| `sfx.combat.destroy` | `/audio/sfx/combat/destroy.ogg` | 0,8–1,5 s | não | CC0 / disponível |
+| `sfx.soul.gain` | `/audio/sfx/soul/gain.ogg` | 0,4–1,0 s | não | CC0 / disponível |
+| `sfx.soul.spend` | `/audio/sfx/soul/spend.ogg` | 0,3–0,8 s | não | CC0 / disponível |
+| `sfx.player.damage` | `/audio/sfx/player/damage.ogg` | 0,2–0,6 s | não | CC0 / disponível |
 
-O manifesto também reserva `melee-02/03.ogg` e `ranged-02.ogg` como variações. Masters devem ser entregues em WAV; a distribuição deve ter OGG e MP3 quando a ferramenta de produção os disponibilizar.
+O manifesto inclui três variantes melee e três variantes ranged. Os efeitos ranged permanecem em WAV porque não havia conversor local disponível; o browser suporta o formato e a origem CC0 está registada.
 
 ## 3. Música
 
-### `music.menu` — Whispers of the Fallen Kingdom
+### `music.menu` — Dark Place (loop)
 
-Ambiente sombrio de castelo abandonado, cordas graves, coro sem palavras, sinos distantes e evolução lenta. Deve criar mistério sem impactos fortes e terminar num loop sem corte audível.
+Loop ambiente oficial de SkyleTheFrench, usado no menu principal, lobby e tutorial. A faixa original `dark_place.ogg` foi mantida sem conversão e é reproduzida em loop através do Audio Manager.
 
-Prompt de produção:
+### `music.battle` — Dark Souls Type Boss Theme
 
-> Original dark fantasy medieval orchestral ambience for a gothic card strategy game. Ancient ruined kingdom at night, distant wordless choir, deep cellos, low strings, subtle medieval instruments, haunting bells, mystical atmosphere, slow evolving cinematic composition, melancholic and mysterious, restrained dynamics, immersive seamless loop, instrumental only, no modern electronic drums, no vocals, no recognizable existing melodies.
+Tema de combate oficial selecionado para as partidas, composto por Philémon Weber (ProjectHelmet / Helmet) e utilizado sem conversão. O loop do manifesto fica ativo durante toda a partida e o Audio Manager não o reinicia por turnos, fases ou animações.
 
-### `music.battle` — The Last Covenant
+### `music.victory` — The Precipice of Victory
 
-Tema de combate estratégico com tensão gradual, cordas, percussão medieval contida e coro sombrio. Deve suportar vários turnos sem ficar agressivo ou repetitivo.
+Faixa oficial de resultado composta por Jonathan Shaw (InspectorJ), reproduzida uma vez quando a vitória oficial do jogador local é confirmada. A licença CC-BY 3.0 e a atribuição estão registadas em [SOULS-AUDIO-LICENSES.md](../SOULS-AUDIO-LICENSES.md).
 
-Prompt de produção:
+### `music.defeat` — The Fallen
 
-> Original epic dark fantasy orchestral battle soundtrack for a medieval tactical card game. Deep cinematic strings, restrained war drums, ancient wordless choir, ominous brass, mystical atmosphere, tense strategic pacing, gradual intensity, gothic ruined castle setting, powerful but controlled, seamless looping battle music, instrumental only, no modern electronic beats, no identifiable existing compositions.
-
-### `music.victory` — Crown of Ashes
-
-Triunfo solene e melancólico, com abertura marcante, cordas ascendentes e coro discreto. Deve terminar naturalmente no ecrã de resultado.
-
-### `music.defeat` — The Fading Soul
-
-Queda elegante e melancólica, com cello grave, coro distante e sinos fúnebres subtis. Deve terminar suavemente sem excesso dramático.
+Faixa oficial de resultado composta por Jonathan Shaw (InspectorJ), reproduzida uma vez quando a derrota oficial do jogador local é confirmada. A licença CC-BY 3.0 e a atribuição estão registadas em [SOULS-AUDIO-LICENSES.md](../SOULS-AUDIO-LICENSES.md).
 
 O lobby e o tutorial reutilizam `music.menu`; não há faixas adicionais previstas.
 
@@ -124,15 +115,15 @@ O manifesto reserva estes contextos musicais:
 | resultado vencedor | `music.victory` |
 | resultado derrotado | `music.defeat` |
 
-Os eventos oficiais já existentes podem receber bindings quando existir Audio Manager:
+Os eventos oficiais existentes usam os bindings do Audio Manager:
 
 - `card-drawn` → `sfx.card.draw`;
-- `card-invoked` → `sfx.card.summon`;
+- `card-invoked` → `sfx.card.place`;
 - `card-retired` → `sfx.card.place`;
 - `draw-failed` → `sfx.card.draw-failed`, seguido do feedback efetivo de Soul ou HP;
 - `card-destroyed` → `sfx.combat.destroy`;
 - `souls-gained` → `sfx.soul.gain`;
-- `souls-spent` → `sfx.soul.spend`;
+- `souls-spent` → `sfx.soul.spend`; quando a razão é `invocation`, acrescenta `sfx.card.summon`;
 - `damage-dealt` → `sfx.player.damage`.
 
 Os marcadores de swing melee, lançamento ranged, impacto e bloqueio pertencem à timeline visual do combate e ainda não existem como eventos de domínio. Não devem ser inferidos de qualquer renderização React genérica.
@@ -149,36 +140,21 @@ ui:     0.65
 muted:  false
 ```
 
-Cada asset também possui ganho relativo próprio. O futuro Audio Manager deve aplicar `master × bus × asset`, expor mute sem alterar o estado do jogo e evitar que uma transição mantenha duas músicas ativas.
+Cada asset também possui ganho relativo próprio. O Audio Manager aplica `master × bus × asset`, expõe mute sem alterar o estado do jogo e evita que uma transição mantenha duas músicas ativas.
 
-## 7. Integração pendente
+## 7. Pendências de produção e validação
 
-Para concluir a integração será necessário:
+Para concluir a primeira entrega sonora será necessário:
 
-1. escolher uma ferramenta/fornecedor de produção original;
-2. gerar ou fornecer os masters WAV;
-3. verificar licenças e preencher a rastreabilidade;
-4. exportar OGG/MP3 sem clipping e sem silêncio inicial indevido;
-5. adicionar os ficheiros nos caminhos do manifesto;
-6. aprovar um Audio Manager único para carregar, fazer cache, tocar, parar, fazer loop e aplicar volumes;
-7. ligar os eventos oficiais e os marcadores da timeline;
-8. validar menu, lobby, tutorial, PvP Local, PvE, PvP Online e resultados.
+1. validar auditivamente menu, lobby, tutorial, PvP Local, PvE, PvP Online e resultados;
+2. ajustar a mixagem, os loops e os sons ranged após a avaliação humana;
+3. converter WAV quando existir uma ferramenta aprovada, sem substituir os originais licenciados.
 
 O PvP Online deverá reproduzir áudio localmente a partir dos snapshots/eventos autorizados; o servidor não deve transportar nem decidir áudio.
 
 ## 8. Direitos e rastreabilidade
 
-Nenhum asset foi incluído, logo nenhum ficheiro possui ainda origem ou licença aprovada. Para cada entrega futura registar:
-
-| Campo | Estado |
-|---|---|
-| nome do ficheiro | pendente |
-| origem/ferramenta | pendente |
-| autor/fornecedor | pendente |
-| licença | pendente |
-| atribuição | pendente |
-| restrições de distribuição | pendente |
-| master e versão exportada | pendente |
+Os 19 assets disponíveis estão registados individualmente em [SOULS-AUDIO-LICENSES.md](../SOULS-AUDIO-LICENSES.md), com origem, autor, URL da página, ficheiro original, licença e destino no projeto.
 
 Não adicionar música comercial, gravações copiadas de outros jogos ou ficheiros de origem desconhecida.
 
@@ -187,25 +163,25 @@ Não adicionar música comercial, gravações copiadas de outros jogos ou fichei
 Implementado nesta fase:
 
 - teste técnico do manifesto para IDs únicos, caminhos, mappings e estado `missing`;
+- verificação de 19 assets `ready` com origem OpenGameArt e licença confirmada;
 - tipagem explícita de contextos, buses, ganhos, durações sugeridas e formatos;
-- nenhum carregamento de ficheiros inexistentes no frontend.
+- carregamento controlado, cache, reprodução, crossfade, volumes, mute, autoplay pendente e diagnóstico no Audio Manager;
+- integração dos eventos oficiais e dos marcadores da timeline de combate, incluindo cancelamento por salto.
 
 Ainda pendente:
 
-- reprodução real no browser;
+- avaliação auditiva humana no browser;
 - equilíbrio de volumes;
 - qualidade dos loops;
 - sincronização de swing/impacto/destruição com o combate;
 - mute e controlos de volume visíveis;
-- verificação auditiva humana;
 - teste de sobreposição com velocidade 2× e salto de animações.
 
 Os testes técnicos do projeto continuam a ser executados com `npm run lint`, `npm run typecheck`, `npm run test:ci` e `npm run build`. A aprovação auditiva só poderá ser declarada depois de existirem assets reais.
 
 ## 10. Limitações conhecidas
 
-- não há produção musical ou de efeitos concluída nesta entrega;
-- não há Audio Manager para reutilizar ou integrar;
-- o manifesto é um contrato de preparação, não um catálogo de ficheiros existentes;
+- a seleção inicial ainda precisa de avaliação auditiva e eventual substituição;
+- os WAV ranged não foram convertidos por falta de ferramenta local;
 - não foram introduzidas dependências ou serviços externos de geração de áudio;
 - não foram alteradas regras, eventos normativos ou o motor SOULS.

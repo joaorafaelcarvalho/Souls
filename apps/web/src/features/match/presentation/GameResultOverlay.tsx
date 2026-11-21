@@ -1,6 +1,7 @@
 import type { PlayerId } from '@souls/game-core';
 import { useEffect, useRef } from 'react';
 import type { AuthorizedGameView } from '../application/authorizedGameView';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './GameResultOverlay.module.css';
 
 export interface GameResultOverlayProps {
@@ -17,6 +18,7 @@ function playerLabel(playerId: PlayerId): string {
 
 export function GameResultOverlay({ view, onRematch, onMenu, visible = true, playerLabels }: GameResultOverlayProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const { playSfx } = useAudio();
 
   useEffect(() => {
     if (visible && view.status === 'finished' && view.winnerId !== undefined) {
@@ -89,10 +91,16 @@ export function GameResultOverlay({ view, onRematch, onMenu, visible = true, pla
           </dl>
 
           <div className={styles.actions}>
-            <button ref={buttonRef} className={`${styles.action} ${styles.rematch}`} type="button" onClick={onRematch}>
+            <button ref={buttonRef} className={`${styles.action} ${styles.rematch}`} type="button" onClick={() => {
+              void playSfx('sfx.ui.click');
+              onRematch();
+            }}>
               Revanche
             </button>
-            <button className={`${styles.action} ${styles.close}`} type="button" onClick={onMenu}>
+            <button className={`${styles.action} ${styles.close}`} type="button" onClick={() => {
+              void playSfx('sfx.ui.click');
+              onMenu();
+            }}>
               Menu Principal
             </button>
           </div>

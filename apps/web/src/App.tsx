@@ -28,6 +28,8 @@ import { PvePreparationScreen } from './features/pve/presentation/PvePreparation
 import { OnlineRoomScreen } from './features/online/presentation/OnlineRoomScreen';
 import { useOnlineGame, type OnlineConnectionConfig } from './features/online/application/useOnlineGame';
 import type { PlayerDeckPair } from './features/decks/application/deckTypes';
+import { AUDIO_CONTEXT_MUSIC, type AudioContextId } from './shared/audio/audioManifest';
+import { AudioProvider, useAudio } from './shared/audio/AudioProvider';
 import styles from './App.module.css';
 
 const phaseLabels = {
@@ -89,7 +91,16 @@ export interface AppProps {
   readonly random?: RandomSource;
 }
 
-export default function App({ random = systemRandomSource }: AppProps) {
+export default function App(props: AppProps) {
+  return (
+    <AudioProvider>
+      <AppContent {...props} />
+    </AudioProvider>
+  );
+}
+
+function AppContent({ random = systemRandomSource }: AppProps) {
+  const audio = useAudio();
   const [selectedPlayerDecks, setSelectedPlayerDecks] = useState<PlayerDeckPair | null>(null);
   const [onlineConfig, setOnlineConfig] = useState<OnlineConnectionConfig | null>(null);
   const [pveConfig, setPveConfig] = useState<{ readonly difficulty: AiDifficulty } | null>(null);
@@ -98,6 +109,9 @@ export default function App({ random = systemRandomSource }: AppProps) {
   const localGame = useLocalGame({
     random,
     restartKey: deckStartToken,
+    onEvents: audio.playGameEvents,
+    onCombatPlayback: audio.playCombatPlayback,
+    onReset: audio.stopAllSfx,
     ...(selectedPlayerDecks === null ? {} : { playerDecks: selectedPlayerDecks }),
     ...(pveConfig === null ? {} : {
       viewerPlayerId: 1 as const,
@@ -105,7 +119,11 @@ export default function App({ random = systemRandomSource }: AppProps) {
       aiPresentationReady: presentationReady
     })
   });
-  const onlineGame = useOnlineGame(onlineConfig);
+  const onlineGame = useOnlineGame(onlineConfig, {
+    onEvents: audio.playGameEvents,
+    onCombatPlayback: audio.playCombatPlayback,
+    onReset: audio.stopAllSfx
+  });
   const [inspectedCardId, setInspectedCardId] = useState<CardInstanceId | null>(null);
   const [resultVisible, setResultVisible] = useState(true);
   const [rulesOpen, setRulesOpen] = useState(false);
@@ -139,6 +157,27 @@ export default function App({ random = systemRandomSource }: AppProps) {
     : view.cardDefinitions[view.visibleCardInstances[inspectedCardId]?.cardDefinitionId ?? ''];
   const isActionAnimating = isCombatAnimating || isResourceAnimating;
   const opponentPlayerId = view.viewerPlayerId === 1 ? 2 : 1;
+  const audioContext: AudioContextId | null = entryScreen === 'loading'
+    ? null
+    : entryScreen === 'game'
+      ? view.status === 'finished'
+        ? view.winnerId === view.viewerPlayerId ? 'victory' : 'defeat'
+        : 'battle'
+      : entryScreen === 'online-lobby'
+        ? 'lobby'
+        : entryScreen === 'tutorial'
+          ? 'tutorial'
+          : 'menu';
+
+  useEffect(() => {
+    if (audioContext === null) {
+      return;
+    }
+
+    const musicId = AUDIO_CONTEXT_MUSIC[audioContext];
+    audio.preload([musicId]);
+    void audio.playMusic(musicId);
+  }, [audio.playMusic, audio.preload, audioContext]);
 
   useEffect(() => () => {
     if (entryTransitionTimerRef.current !== null) {
@@ -347,6 +386,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
   }
 
   function handleReset() {
+    audio.stopAllSfx();
     setInspectedCardId(null);
     setResultVisible(true);
     commands.reset();
@@ -354,6 +394,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
 
   function handleRematch() {
     if (isOnline) {
+      audio.stopAllSfx();
       onlineGame.acceptRematch();
       return;
     }
@@ -374,6 +415,7 @@ export default function App({ random = systemRandomSource }: AppProps) {
   }
 
   function goToMainMenu() {
+    audio.stopAllSfx();
     setInspectedCardId(null);
     setRulesOpen(false);
     setResultVisible(true);
