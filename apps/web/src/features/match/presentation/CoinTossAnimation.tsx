@@ -1,5 +1,6 @@
 import type { PlayerId } from '@souls/game-core';
 import { useEffect, useRef, useState } from 'react';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './CoinTossAnimation.module.css';
 
 export const COIN_TOSS_REVEAL_DELAY_MS = 1_950;
@@ -21,6 +22,7 @@ function reducedMotion(): boolean {
 export function CoinTossAnimation({ firstPlayerId, onComplete, onSkip }: CoinTossAnimationProps) {
   const [revealed, setRevealed] = useState(false);
   const completeRef = useRef(onComplete);
+  const { playSfx } = useAudio();
 
   useEffect(() => {
     completeRef.current = onComplete;
@@ -68,7 +70,10 @@ export function CoinTossAnimation({ firstPlayerId, onComplete, onSkip }: CoinTos
           {playerLabel} começa
         </p>
         <p className={styles.hint}>O destino da partida já foi decidido pelo motor.</p>
-        <button className={styles.skip} type="button" autoFocus onClick={onSkip}>Saltar</button>
+        <button className={styles.skip} type="button" autoFocus onClick={() => {
+          void playSfx('sfx.ui.click');
+          onSkip();
+        }}>Saltar</button>
       </section>
     </div>
   );

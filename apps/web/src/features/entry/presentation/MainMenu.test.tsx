@@ -5,7 +5,7 @@ import { MainMenu } from './MainMenu';
 afterEach(cleanup);
 
 describe('MainMenu', () => {
-  it('presents the official logo, enables JOGAR and keeps future features disabled', () => {
+  it('presents the official logo, enables JOGAR and exposes audio settings', () => {
     const onOpenModes = vi.fn();
     const onCodex = vi.fn();
     render(<MainMenu onOpenModes={onOpenModes} onCodex={onCodex} />);
@@ -14,13 +14,17 @@ describe('MainMenu', () => {
     expect(screen.getByTestId('main-menu').querySelector('img[src*="souls-menu-banner"]')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /^JOGAR/ })).toBeEnabled();
     expect(screen.getByRole('button', { name: /códice das almas/i })).toBeEnabled();
-    expect(screen.getByRole('button', { name: /configurações/i })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /configurações/i })).toBeEnabled();
 
     fireEvent.click(screen.getByRole('button', { name: /^JOGAR/ }));
     expect(onOpenModes).toHaveBeenCalledOnce();
 
     fireEvent.click(screen.getByRole('button', { name: /códice das almas/i }));
     expect(onCodex).toHaveBeenCalledOnce();
+
+    fireEvent.click(screen.getByRole('button', { name: /configurações/i }));
+    expect(screen.getByRole('dialog')).toHaveTextContent('Definições de áudio');
+    fireEvent.click(screen.getByRole('button', { name: 'Fechar' }));
 
     fireEvent.click(screen.getByRole('button', { name: /regras do jogo/i }));
     expect(screen.getByRole('dialog')).toHaveTextContent('Regras do jogo');

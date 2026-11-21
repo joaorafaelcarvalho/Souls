@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "id": "combat/remaining-attack",
+  "kind": "combat-column",
+  "description": "Depois de destruir a defesa, o ataque restante causa dano direto.",
+  "input": {
+    "attackingCards": [
+      {
+        "id": "attacker",
+        "ownerId": 1,
+        "category": "melee",
+        "attack": 700,
+        "defense": 0
+      }
+    ],
+    "defenderPlayerId": 2,
+    "targets": [
+      {
+        "kind": "defense",
+        "card": {
+          "id": "defender",
+          "ownerId": 2,
+          "category": "melee",
+          "attack": 0,
+          "defense": 300
+        }
+      }
+    ]
+  },
+  "expected": {
+    "kind": "column",
+    "outcome": "direct-damage",
+    "initialAttackPower": 700,
+    "remainingAttack": 400,
+    "destroyedCardIds": ["defender"],
+    "hpDamage": 400,
+    "hpDamageTarget": 2,
+    "soulAwards": [
+      { "playerId": 2, "amount": 1 }
+    ],
+    "exchanges": [
+      {
+        "kind": "defense",
+        "targetId": "defender",
+        "outcome": "destroyed",
+        "attackPower": 700,
+        "remainingAttack": 400,
+        "destroyedCardIds": ["defender"],
+        "hpDamage": 0,
+        "soulAwards": [
+          { "playerId": 2, "amount": 1 }
+        ]
+      },
+      {
+        "kind": "direct",
+        "outcome": "direct-damage",
+        "attackPower": 400,
+        "remainingAttack": 400,
+        "destroyedCardIds": [],
+        "hpDamage": 400,
+        "hpDamageTarget": 2,
+        "soulAwards": []
+      }
+    ]
+  }
+}

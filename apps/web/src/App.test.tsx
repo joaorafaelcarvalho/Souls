@@ -46,7 +46,7 @@ describe('application entry and local match prototype', () => {
     act(() => vi.advanceTimersByTime(1));
     expect(screen.getByTestId('main-menu')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /códice das almas/i })).toBeEnabled();
-    expect(screen.getByRole('button', { name: /configurações/i })).toBeDisabled();
+    expect(screen.getByRole('button', { name: /configurações/i })).toBeEnabled();
 
     fireEvent.click(screen.getByRole('button', { name: /^JOGAR/ }));
     fireEvent.click(screen.getByRole('button', { name: /pvp local/i }));

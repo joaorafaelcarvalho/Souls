@@ -6,7 +6,8 @@
 
 - PvP Online v1.0 com salas privadas em memória, códigos de convite, identidades anónimas de sessão, lobby de baralhos, servidor autoritativo baseado no game-core, WebSocket, projeções privadas, versões/command IDs, reconexão temporária e revanche consensual;
 - pacote game-online com contratos de rede e visão autorizada partilhada entre API e frontend;
-- manifesto de Sound Design v1.0 com IDs de música/SFX, contextos, bindings de eventos, mixagem padrão e prompts de produção original; assets e Audio Manager permanecem pendentes;
+- integração de 19 assets licenciados do OpenGameArt no Audio Engine, com manifesto atualizado, rastreabilidade em `SOULS-AUDIO-LICENSES.md` e músicas oficiais de menu, combate, vitória e derrota; a validação auditiva humana permanece pendente;
+- preparação Multiplatform Architecture v1.0 com auditoria da árvore real, plano de migração seguro, proposta Flutter sem criação de projeto Mobile e três fixtures JSON portáteis validadas contra o game-core;
 
 - modal de passagem de turno integrado com as duas compras obrigatórias, WebP de saque congelado na primeira frame antes do clique e animação sincronizada até ao posicionamento;
 - tutorial concluído com compras falhadas jogáveis, comparação de níveis superiores e desafio final de posicionamento/combate;

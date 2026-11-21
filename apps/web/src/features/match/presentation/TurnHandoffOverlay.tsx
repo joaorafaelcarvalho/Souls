@@ -1,5 +1,6 @@
 import type { PlayerId } from '@souls/game-core';
 import { useState, type SyntheticEvent } from 'react';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './TurnHandoffOverlay.module.css';
 
 export const TURN_DRAW_ANIMATION_DURATION_MS = 3008;
@@ -81,6 +82,11 @@ export function TurnHandoffOverlay({
   onDraw
 }: TurnHandoffOverlayProps) {
   const isDraw = mode === 'draw';
+  const { playSfx } = useAudio();
+  const click = (action: (() => void) | undefined) => {
+    void playSfx('sfx.ui.click');
+    action?.();
+  };
 
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="turn-handoff-title" data-testid="turn-handoff-overlay">
@@ -101,7 +107,7 @@ export function TurnHandoffOverlay({
                 type="button"
                 autoFocus={!drawStarted}
                 disabled={drawStarted}
-                onClick={() => onDraw?.()}
+                onClick={() => click(onDraw)}
               >
                 {drawStarted ? 'Compras em curso…' : 'Efetuar duas compras'}
               </button>
@@ -112,7 +118,7 @@ export function TurnHandoffOverlay({
         ) : (
           <>
             <p>Confirma que estás pronto para continuar o duelo.</p>
-            <button type="button" autoFocus onClick={() => onContinue?.()}>Continuar</button>
+            <button type="button" autoFocus onClick={() => click(onContinue)}>Continuar</button>
           </>
         )}
       </section>

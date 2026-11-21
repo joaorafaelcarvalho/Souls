@@ -35,6 +35,7 @@ import {
   type CombatAnimationSpeed,
   type CombatPlaybackState
 } from '../../combat/application/CombatAnimationSequencer';
+import type { AudioCardContext } from '../../../shared/audio/audioEvents';
 import { formatGameEvents } from '../../match/application/formatGameEvents';
 import type { BoardCellState } from '../../game-board/presentation/GameBoard';
 import { markTutorialCompleted } from './tutorialProgress';
@@ -84,6 +85,12 @@ export interface TutorialSession {
   readonly canPlaceSelectedCard: (instanceId: CardInstanceId, position: BoardPosition) => boolean;
   readonly getCellState: (position: BoardPosition, occupantId: string | null) => BoardCellState;
   readonly commands: TutorialCommands;
+}
+
+export interface TutorialGameOptions {
+  readonly onEvents?: (events: readonly GameEvent[]) => void;
+  readonly onCombatPlayback?: (playback: CombatPlaybackState, context: AudioCardContext) => void;
+  readonly onReset?: () => void;
 }
 
 const initialLog = ['Tutorial iniciado.'];
@@ -217,7 +224,7 @@ function cardLabel(key: TutorialCardKey): string {
   }[key];
 }
 
-export function useTutorialGame(): TutorialSession {
+export function useTutorialGame(options: TutorialGameOptions = {}): TutorialSession {
   const [phase, setPhase] = useState<TutorialPhase>('intro');
   const [stepIndex, setStepIndex] = useState(0);
   const [state, setState] = useState<GameState>(() => createTutorialGame());
@@ -233,6 +240,9 @@ export function useTutorialGame(): TutorialSession {
   const [combatSpeed, setCombatSpeedState] = useState<CombatAnimationSpeed>(1);
   const [sequencer] = useState(() => new CombatAnimationSequencer());
   const drawTimerRef = useRef<number | null>(null);
+  const onEvents = options.onEvents;
+  const onCombatPlayback = options.onCombatPlayback;
+  const onReset = options.onReset;
 
   const step = TUTORIAL_STEPS[stepIndex] ?? TUTORIAL_STEPS[0]!;
   const isResourceAnimating = drawPlayback !== null;
@@ -262,9 +272,10 @@ export function useTutorialGame(): TutorialSession {
     if (drawTimerRef.current !== null) {
       window.clearTimeout(drawTimerRef.current);
     }
-  }, []);
+  }, [onEvents]);
 
   const applyResult = useCallback((result: GameOperationResult, previousState: GameState) => {
+    onEvents?.(result.events);
     const entries = formatGameEvents(result.events, previousState, result.state);
     setState(result.state);
     setSelectedCardId(null);
@@ -298,6 +309,7 @@ export function useTutorialGame(): TutorialSession {
     }
 
     setSelectedCardId(null);
+    onEvents?.(first.events);
     setDrawPlayback({
       result,
       segments,
@@ -313,7 +325,7 @@ export function useTutorialGame(): TutorialSession {
       ...current,
       ...formatGameEvents(first.events, previousState, result.state)
     ].slice(-40));
-  }, [applyResult]);
+  }, [applyResult, onEvents]);
 
   const advanceDrawPlayback = useCallback(() => {
     const playback = drawPlayback;
@@ -345,12 +357,13 @@ export function useTutorialGame(): TutorialSession {
       currentDamageByPlayer: next.damageByPlayer,
       currentSoulsSpentByPlayer: next.soulsSpentByPlayer
     });
+    onEvents?.(next.events);
     setMessage(segmentMessage(next));
     setMatchLog((current) => [
       ...current,
       ...formatGameEvents(next.events, playback.result.state, playback.result.state)
     ].slice(-40));
-  }, [drawPlayback]);
+  }, [drawPlayback, onEvents]);
 
   useEffect(() => {
     if (drawPlayback === null || drawTimerRef.current !== null) return;
@@ -361,6 +374,7 @@ export function useTutorialGame(): TutorialSession {
   }, [advanceDrawPlayback, drawPlayback]);
 
   const start = useCallback(() => {
+    onReset?.();
     const nextState = createTutorialGame();
     setPhase('active');
     setStepIndex(1);
@@ -372,9 +386,10 @@ export function useTutorialGame(): TutorialSession {
     setDrawPlayback(null);
     setMatchLog(initialLog);
     setMessage(messageForStep(TUTORIAL_STEPS[1]!));
-  }, []);
+  }, [onReset]);
 
   const reset = useCallback(() => {
+    onReset?.();
     sequencer.cancel();
     if (drawTimerRef.current !== null) {
       window.clearTimeout(drawTimerRef.current);
@@ -392,9 +407,10 @@ export function useTutorialGame(): TutorialSession {
     setIsCombatAnimating(false);
     setMatchLog(initialLog);
     setMessage('Começa o tutorial para aprender os fundamentos do SOULS.');
-  }, [sequencer]);
+  }, [onReset, sequencer]);
 
   const restartStep = useCallback(() => {
+    onReset?.();
     sequencer.cancel();
     if (drawTimerRef.current !== null) {
       window.clearTimeout(drawTimerRef.current);
@@ -410,7 +426,7 @@ export function useTutorialGame(): TutorialSession {
     setDrawPlayback(null);
     setIsCombatAnimating(false);
     setMessage(messageForStep(step));
-  }, [sequencer, state, step]);
+  }, [onReset, sequencer, state, step]);
 
   const advanceStep = useCallback(() => {
     if (phase !== 'active' || !stepCompleted && step.kind !== 'explain') {
@@ -421,6 +437,7 @@ export function useTutorialGame(): TutorialSession {
     const nextIndex = stepIndex + 1;
 
     if (nextIndex >= TUTORIAL_STEPS.length) {
+      onReset?.();
       markTutorialCompleted();
       setPhase('complete');
       return;
@@ -436,7 +453,7 @@ export function useTutorialGame(): TutorialSession {
     setCombatPlayback(null);
     setDrawPlayback(null);
     setMessage(messageForStep(nextStep));
-  }, [phase, step.kind, stepCompleted, stepIndex]);
+  }, [onReset, phase, step.kind, stepCompleted, stepIndex]);
 
   const exploreZone = useCallback((zone: TutorialZone) => {
     if (step.id !== 'board') {
@@ -628,8 +645,15 @@ export function useTutorialGame(): TutorialSession {
       sequencer.play(
         trace,
         {
-          onStep: (playback) => setCombatPlayback(playback),
+          onStep: (playback) => {
+            onCombatPlayback?.(playback, {
+              cardInstances: previousState.cardInstances,
+              cardDefinitions: previousState.cardDefinitions
+            });
+            setCombatPlayback(playback);
+          },
           onComplete: () => {
+            onEvents?.(trace.trailingEvents);
             setState(result.state);
             setCombatPlayback(null);
             setIsCombatAnimating(false);
@@ -650,7 +674,7 @@ export function useTutorialGame(): TutorialSession {
     } catch (error) {
       setMessage(error instanceof GameRuleError ? error.message : 'Não foi possível resolver o ataque.');
     }
-  }, [applyResult, combatSpeed, isCombatAnimating, isResourceAnimating, phase, sequencer, state, step.kind]);
+  }, [applyResult, combatSpeed, isCombatAnimating, isResourceAnimating, onCombatPlayback, onEvents, phase, sequencer, state, step.kind]);
 
   const setCombatSpeed = useCallback((speed: CombatAnimationSpeed) => {
     setCombatSpeedState(speed);

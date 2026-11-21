@@ -1,6 +1,7 @@
 import type { CardDefinition, CardInstance, CardInstanceId } from '@souls/game-core';
 import { useEffect, useRef } from 'react';
 import { Card } from '../../cards/presentation/Card';
+import { useAudio } from '../../../shared/audio/AudioProvider';
 import styles from './PlayerHand.module.css';
 
 export interface PlayerHandProps {
@@ -21,6 +22,7 @@ export function PlayerHand({
   disabled = false
 }: PlayerHandProps) {
   const cardsRef = useRef<HTMLDivElement>(null);
+  const { playSfx } = useAudio();
 
   useEffect(() => {
     const scrollContainer = cardsRef.current;
@@ -74,7 +76,10 @@ export function PlayerHand({
               key={instanceId}
               type="button"
               disabled={disabled}
-              onClick={() => onSelect(instanceId)}
+              onClick={() => {
+                void playSfx('sfx.card.select');
+                onSelect(instanceId);
+              }}
             >
               <Card definition={definition} selected={isSelected} variant="hand" />
             </button>

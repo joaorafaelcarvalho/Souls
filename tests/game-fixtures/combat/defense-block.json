@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "combat/defense-block",
+  "kind": "combat-column",
+  "description": "A defesa superior bloqueia o ataque sem destruição, dano ou Souls.",
+  "input": {
+    "attackingCards": [
+      {
+        "id": "attacker",
+        "ownerId": 1,
+        "category": "melee",
+        "attack": 300,
+        "defense": 0
+      }
+    ],
+    "defenderPlayerId": 2,
+    "targets": [
+      {
+        "kind": "defense",
+        "card": {
+          "id": "defender",
+          "ownerId": 2,
+          "category": "melee",
+          "attack": 0,
+          "defense": 700
+        }
+      }
+    ]
+  },
+  "expected": {
+    "kind": "column",
+    "outcome": "defense-blocked",
+    "initialAttackPower": 300,
+    "remainingAttack": 0,
+    "destroyedCardIds": [],
+    "hpDamage": 0,
+    "soulAwards": [],
+    "exchanges": [
+      {
+        "kind": "defense",
+        "targetId": "defender",
+        "outcome": "blocked",
+        "attackPower": 300,
+        "remainingAttack": 0,
+        "destroyedCardIds": [],
+        "hpDamage": 0,
+        "soulAwards": []
+      }
+    ]
+  }
+}

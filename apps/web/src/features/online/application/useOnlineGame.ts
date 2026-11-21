@@ -20,11 +20,18 @@ import {
   type CombatPlaybackState
 } from '../../combat/application/CombatAnimationSequencer';
 import type { MatchCommands } from '../../match/application/MatchCommands';
+import type { AudioCardContext, AudioGameEvent } from '../../../shared/audio/audioEvents';
 import { formatOnlineEvents, onlineEventMessage } from './formatOnlineEvents';
 
 export interface OnlineConnectionConfig {
   readonly roomId: string;
   readonly sessionToken: string;
+}
+
+export interface OnlineGameOptions {
+  readonly onEvents?: (events: readonly AudioGameEvent[]) => void;
+  readonly onCombatPlayback?: (playback: CombatPlaybackState, context: AudioCardContext) => void;
+  readonly onReset?: () => void;
 }
 
 interface DamageByPlayer {
@@ -73,7 +80,7 @@ function damageFromEvents(events: readonly OnlineGameEvent[]): DamageByPlayer {
   return damage;
 }
 
-export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGameSession {
+export function useOnlineGame(config: OnlineConnectionConfig | null, options: OnlineGameOptions = {}): OnlineGameSession {
   const [room, setRoom] = useState<OnlineRoomSnapshot | null>(null);
   const [view, setView] = useState<AuthorizedGameView | null>(null);
   const viewRef = useRef<AuthorizedGameView | null>(null);
@@ -92,7 +99,10 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
   const [resourceDamageByPlayer, setResourceDamageByPlayer] = useState<DamageByPlayer | null>(null);
   const [resourcePlaybackKey, setResourcePlaybackKey] = useState<string | undefined>(undefined);
   const resourceTimerRef = useRef<number | null>(null);
+  const lastAudioSnapshotRef = useRef<string | null>(null);
   const [sequencer] = useState(() => new CombatAnimationSequencer());
+  const onEvents = options.onEvents;
+  const onCombatPlayback = options.onCombatPlayback;
 
   useEffect(() => {
     viewRef.current = view;
@@ -111,6 +121,9 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
   const applySnapshot = useCallback((snapshot: Extract<OnlineServerMessage, { type: 'match-updated' }>['snapshot']) => {
     const previousView = viewRef.current;
     const previousMatchId = matchIdRef.current;
+    const snapshotKey = `${snapshot.matchId}:${snapshot.version}`;
+    const shouldEmitAudio = lastAudioSnapshotRef.current !== snapshotKey;
+    lastAudioSnapshotRef.current = snapshotKey;
     versionRef.current = snapshot.version;
     setRoom(snapshot.room);
     setMatchId(snapshot.matchId);
@@ -137,6 +150,12 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
         trace,
         {
           onStep: (playback) => {
+            if (shouldEmitAudio) {
+              onCombatPlayback?.(playback, {
+                cardInstances: previousView.visibleCardInstances,
+                cardDefinitions: previousView.cardDefinitions
+              });
+            }
             setCombatPlayback(playback);
             const cumulativeDamage = playback.cumulativeHpDamage;
             setView({
@@ -151,6 +170,7 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
             setMatchLog((current) => [...current, `Coluna ${playback.column + 1}: consequências aplicadas.`].slice(-100));
           },
           onComplete: () => {
+            if (shouldEmitAudio) onEvents?.(trace.trailingEvents);
             setView(snapshot.view);
             viewRef.current = snapshot.view;
             setCombatPlayback(null);
@@ -166,6 +186,7 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
       return;
     }
 
+    if (shouldEmitAudio) onEvents?.(snapshot.events);
     setView(snapshot.view);
     viewRef.current = snapshot.view;
     if (snapshot.events.some((event) => event.type === 'draw-failed')) {
@@ -179,7 +200,7 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
         setResourcePlaybackKey(undefined);
       }, 520);
     }
-  }, [sequencer]);
+  }, [onCombatPlayback, onEvents, sequencer]);
 
   useEffect(() => {
     let active = true;
@@ -193,6 +214,7 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
       socketRef.current = null;
       sequencer.cancel(false);
       if (resourceTimerRef.current !== null) window.clearTimeout(resourceTimerRef.current);
+      lastAudioSnapshotRef.current = null;
     };
 
     if (config === null) {
@@ -203,6 +225,8 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
       setMatchId(null);
       matchIdRef.current = null;
       versionRef.current = 0;
+      lastAudioSnapshotRef.current = null;
+      options.onReset?.();
       setConnectionState('disconnected');
       return cleanup;
     }
@@ -273,7 +297,7 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
 
     connect();
     return cleanup;
-  }, [applySnapshot, config, sequencer]);
+  }, [applySnapshot, config, options.onReset, sequencer]);
 
   useEffect(() => () => sequencer.cancel(false), [sequencer]);
 
@@ -337,10 +361,11 @@ export function useOnlineGame(config: OnlineConnectionConfig | null): OnlineGame
   }, [sequencer]);
 
   const reset = useCallback(() => {
+    options.onReset?.();
     const currentMatchId = matchIdRef.current;
     if (currentMatchId !== null) send({ type: 'leave-room', commandId: commandId() });
     socketRef.current?.close();
-  }, [send]);
+  }, [options.onReset, send]);
 
   const canPlaceSelectedCard = useCallback((instanceId: CardInstanceId, row: number, column: number): boolean => {
     if (view === null || view.status === 'finished' || view.activePlayerId !== view.viewerPlayerId) return false;
