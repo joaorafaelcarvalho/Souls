@@ -42,3 +42,9 @@ As três etapas de compra usam, respetivamente, a compra normal, duas penalizaç
 A conclusão é registada apenas como `souls.tutorial.v1.completed` no `localStorage`. Repetir o tutorial reinicia a sessão, mas não apaga o marcador de conclusão. Sair desmonta a sessão e cancela o sequenciador local.
 
 Não existe IA tutorial, persistência remota, autenticação, matchmaking ou alteração do estado de uma partida PvP.
+
+## Responsividade web
+
+Até 64rem, o tutorial usa uma composição própria de espaço compacto: a barra superior mantém o logo e a saída, as instruções ficam numa área rolável, o tabuleiro ocupa a faixa central e a mão abre num drawer overlay com a contagem real de cartas. Abrir a mão não altera a caixa do tabuleiro.
+
+Em portrait, o painel de instruções reserva uma faixa limitada acima do tabuleiro. Em landscape, passa para um overlay compacto para preservar a altura útil da grelha. Os destaques das zonas, a seleção de casas, a retirada estratégica, as ações de combate e os modais de atributos continuam a usar os mesmos comandos e estado do tutorial.

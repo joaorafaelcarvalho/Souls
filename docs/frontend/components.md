@@ -7,6 +7,7 @@ O índice completo está em [docs/components/README.md](../components/README.md)
 | Componente | Localização | Responsabilidade |
 | --- | --- | --- |
 | [CardInspectionPanel](../components/CardInspectionPanel.md) | [CardInspectionPanel.tsx](../../apps/web/src/features/cards/presentation/CardInspectionPanel.tsx) | inspecionar uma carta no rail direito |
+| [CardInspectionDialog](../components/CardInspectionDialog.md) | [CardInspectionDialog.tsx](../../apps/web/src/features/cards/presentation/CardInspectionDialog.tsx) | inspeção responsiva com ações da mão e Soul Harvest |
 | [Card](../components/Card.md) | [Card.tsx](../../apps/web/src/features/cards/presentation/Card.tsx) | apresentar ilustração, moldura, nome, tipo, ATK, DEF e nível |
 | [GameBoard](../components/GameBoard.md) | [GameBoard.tsx](../../apps/web/src/features/game-board/presentation/GameBoard.tsx) | compor a grelha 6×4 e as cartas em jogo |
 | [BoardCell](../components/BoardCell.md) | [BoardCell.tsx](../../apps/web/src/features/game-board/presentation/BoardCell.tsx) | apresentar uma casa vertical vazia ou ocupada |
@@ -39,6 +40,8 @@ Em ecrãs largos, [App.tsx](../../apps/web/src/App.tsx) usa uma grelha de três 
 A coluna central cresce com o espaço disponível. O GameBoard continua a limitar o tamanho das casas pela largura e altura reais da sua área, mantendo as 24 casas visíveis. Em ecrãs estreitos as zonas passam para uma coluna vertical.
 
 A mão é renderizada depois do tabuleiro e usa scroll horizontal. O tabuleiro usa a variante board de [Card](../components/Card.md), sem expor IDs, coordenadas ou nomes técnicos das casas.
+
+Em viewports até 64rem, [App.tsx](../../apps/web/src/App.tsx) passa para uma composição específica de espaço compacto: a barra de partida fica fixa no topo, J2 e J1 ocupam faixas entre a moldura e o tabuleiro — superior esquerda e inferior direita —, o histórico é apenas ocultado visualmente e a mão usa o mesmo `PlayerHand` dentro de um drawer overlay. O `CardInspectionDialog` substitui o rail de inspeção nessa faixa sem criar um segundo fluxo de jogo. A partir de 48rem, o layout aproveita a largura adicional de tablet, mantendo o mesmo modelo de interação.
 ## Recursos de cartas
 
 A imagem é sempre recebida através de CardDefinition.image. Para adicionar uma nova carta, basta criar a definição UUID, colocar a ilustração normalizada em apps/web/public/images/cards e associar esse caminho no JSON; não é necessário alterar Card, GameBoard ou PlayerHand.

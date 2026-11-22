@@ -18,7 +18,7 @@ O estado da inspeção é mantido no frontend e é separado da definição/inst�
 
 ## Responsividade
 
-Em desktop o painel ocupa o rail direito entre a ronda e a mão. Em ecrãs menores torna-se uma secção compacta do rail sem aumentar o tabuleiro.
+Em desktop o painel ocupa o rail direito entre a ronda e a mão. Até 64rem, o rail é removido da composição visual e a inspeção passa para [CardInspectionDialog](./CardInspectionDialog.md), sem aumentar ou deslocar o tabuleiro.
 
 ## Limitações
 

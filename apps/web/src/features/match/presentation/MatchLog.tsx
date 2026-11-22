@@ -8,7 +8,7 @@ export function MatchLog({ entries }: MatchLogProps) {
   const newestFirst = [...entries].reverse();
 
   return (
-    <section className={styles.log} aria-label="Histórico da partida">
+    <section className={styles.log} data-match-log aria-label="Histórico da partida">
       <div className={styles.heading}>
         <h2>Análise da Partida</h2>
         <span>{entries.length}</span>

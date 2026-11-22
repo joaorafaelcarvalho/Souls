@@ -24,7 +24,9 @@ export interface GameBoardProps {
   readonly getCellState?: (position: BoardPosition, occupantId: string | null) => BoardCellState;
   readonly onCellClick?: (position: BoardPosition, occupantId: string | null) => void;
   readonly opponentPanel?: ReactNode;
+  readonly opponentPlayerId?: PlayerId;
   readonly playerPanel?: ReactNode;
+  readonly playerPlayerId?: PlayerId;
   readonly combatPlayback?: CombatPlaybackState | null;
   readonly highlightedRows?: readonly BoardRow[];
   readonly perspectivePlayerId?: PlayerId;
@@ -87,13 +89,16 @@ export function GameBoard({
   getCellState,
   onCellClick,
   opponentPanel,
+  opponentPlayerId,
   playerPanel,
+  playerPlayerId,
   combatPlayback,
   highlightedRows,
   perspectivePlayerId
 }: GameBoardProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const boardShellRef = useRef<HTMLElement>(null);
+  const dimensionsRef = useRef<BoardDimensions | null>(null);
   const [dimensions, setDimensions] = useState<BoardDimensions | null>(null);
 
   useLayoutEffect(() => {
@@ -117,22 +122,31 @@ export function GameBoard({
         return;
       }
 
-      setDimensions({
+      const nextDimensions = {
         cellWidth,
         cellHeight: cellWidth * 1.5,
         width: cellWidth * 4 + gap * 3,
         height: cellWidth * 9 + gap * 5
-      });
+      };
+      dimensionsRef.current = nextDimensions;
+      setDimensions(nextDimensions);
     };
 
     const observer = new ResizeObserver(updateDimensions);
     observer.observe(viewport);
-    window.addEventListener('resize', updateDimensions);
+
+    const handleWindowResize = () => {
+      dimensionsRef.current = null;
+      setDimensions(null);
+      window.requestAnimationFrame(updateDimensions);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
     updateDimensions();
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('resize', updateDimensions);
+      window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
 
@@ -146,9 +160,25 @@ export function GameBoard({
       };
 
   return (
-    <section ref={boardShellRef} aria-label="Tabuleiro SOULS" className={styles.boardShell}>
-      {opponentPanel === undefined ? null : <div className={styles.playerOverlayTop}>{opponentPanel}</div>}
-      {playerPanel === undefined ? null : <div className={styles.playerOverlayBottom}>{playerPanel}</div>}
+    <section ref={boardShellRef} aria-label="Tabuleiro SOULS" className={styles.boardShell} data-board-shell>
+      {opponentPanel === undefined ? null : (
+        <div
+          className={styles.playerOverlayTop}
+          data-player-overlay="top"
+          {...(opponentPlayerId === undefined ? {} : { 'data-panel-player-id': opponentPlayerId })}
+        >
+          {opponentPanel}
+        </div>
+      )}
+      {playerPanel === undefined ? null : (
+        <div
+          className={styles.playerOverlayBottom}
+          data-player-overlay="bottom"
+          {...(playerPlayerId === undefined ? {} : { 'data-panel-player-id': playerPlayerId })}
+        >
+          {playerPanel}
+        </div>
+      )}
       <LightningAttackEffect
         cardDefinitions={cardDefinitions}
         cardInstances={cardInstances}

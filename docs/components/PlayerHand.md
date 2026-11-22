@@ -14,7 +14,9 @@ Quando placeCard tem sucesso, a instância é removida do array hand; o tabuleir
 
 ## Apresentação
 
-A mão fica abaixo do tabuleiro, em fila horizontal. A altura das cartas é limitada ao espaço inferior disponível e o contentor permite scroll horizontal quando existirem mais cartas do que a largura disponível. Em ecrãs largos, a mão ocupa a coluna direita inferior, imediatamente abaixo do status do jogador 1.
+A mão fica abaixo do tabuleiro, em fila horizontal. A altura das cartas é limitada ao espaço inferior disponível e o contentor permite scroll horizontal quando existirem mais cartas do que a largura disponível. Em ecrãs largos, a mão ocupa a coluna direita inferior, imediatamente abaixo do status do jogador 1. Até 64rem, o mesmo componente recebe a classe de drawer do `App`, fica fora do fluxo normal e abre acima do botão compacto `Mão (n)`.
+
+O cabeçalho interno e o `id` do drawer só são usados pela apresentação compacta; não alteram a lista de instâncias nem a seleção oficial.
 
 ## Limitações
 

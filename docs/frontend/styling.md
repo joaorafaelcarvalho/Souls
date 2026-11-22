@@ -41,6 +41,21 @@ Gradientes e sombras criam profundidade sem depender de texturas externas.
 - [PlayerHand.module.css](../../apps/web/src/features/match/presentation/PlayerHand.module.css): mão horizontal;
 - [global.css](../../apps/web/src/shared/styles/global.css): tokens, canvas e reduced motion.
 
+## Layout compacto de partida
+
+O layout desktop continua ativo acima de 64rem. Entre 48rem e 64rem a interface usa a composição tablet; abaixo de 48rem usa a composição mobile. Os breakpoints dependem da largura efetiva do viewport, não de user-agent.
+
+Nos dois modos compactos:
+
+- a barra superior concentra logo, Regras, Voltar e o controlo de ação existente;
+- o `GameBoard` ocupa a área entre a barra e o botão da mão, mantendo o cálculo 6×4 por largura e altura através de `ResizeObserver`;
+- J2 e J1 ficam em faixas próprias entre a moldura e a grelha, respetivamente superior esquerda e inferior direita, com HP e Souls condensados;
+- o `MatchLog` deixa de reservar espaço, mas continua alimentado no estado da partida;
+- a mão permanece fora do fluxo normal, abre em drawer horizontal com scroll e fecha pelo botão ou pelo backdrop;
+- inspeção, colocação e Soul Harvest usam os comandos e a validação já existentes.
+
+Os limites verticais usam `dvh` e `safe-area-inset-*`. A abertura do drawer e dos diálogos usa camadas fixas, por isso não altera a caixa nem a posição calculada do tabuleiro. `prefers-reduced-motion` continua a remover as transições através dos estilos globais.
+
 ## Regras
 
 - use tokens semânticos;

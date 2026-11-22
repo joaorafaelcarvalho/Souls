@@ -122,3 +122,66 @@
     transition: none;
   }
 }
+
+@media (max-width: 64rem) {
+  .status {
+    width: min(15rem, 100%);
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.12rem 0.35rem;
+    border-color: rgba(150, 113, 78, 0.72);
+    padding: 0.24rem 0.35rem;
+    background: rgba(17, 18, 24, 0.9);
+    box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.32), inset 0 1px rgba(242, 234, 219, 0.05);
+  }
+
+  .heading,
+  .metrics {
+    gap: 0.35rem;
+  }
+
+  .heading {
+    font-size: 0.58rem;
+    line-height: 1;
+  }
+
+  .metrics {
+    justify-content: flex-end;
+    font-size: 0.58rem;
+  }
+
+  .metrics strong {
+    font-size: 0.7rem;
+  }
+
+  .hpBar {
+    grid-column: 1 / -1;
+    height: 0.16rem;
+  }
+
+  .secondary {
+    display: none;
+  }
+
+  .status[data-player-position='bottom'] {
+    float: none;
+    gap: 0.12rem 0.35rem;
+    padding: 0.24rem 0.35rem;
+  }
+
+  .status[data-player-position='bottom'] .heading,
+  .status[data-player-position='bottom'] .metrics {
+    font-size: 0.58rem;
+  }
+
+  .status[data-player-position='bottom'] .metrics strong {
+    font-size: 0.7rem;
+  }
+
+}
+
+@media (max-width: 47.99rem) {
+  .status {
+    width: min(11rem, 100%);
+  }
+}

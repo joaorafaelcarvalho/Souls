@@ -27,6 +27,7 @@ Aliases de compatibilidade mantêm os CSS Modules existentes coesos sem duplicar
 - [BoardCell](./components/BoardCell.md): estados `valid`, `invalid` e `inactive`;
 - [PlayerStatus](./components/PlayerStatus.md): HUD compacto;
 - [PlayerHand](./components/PlayerHand.md): fila horizontal.
+- [CardInspectionDialog](./components/CardInspectionDialog.md): inspeção responsiva e ações condicionais.
 
 ## Design visual das cartas
 
@@ -61,7 +62,7 @@ boardHeight = 9w + 5g
 [GameBoard.tsx](../apps/web/src/features/game-board/presentation/GameBoard.tsx) mede a área disponível com `ResizeObserver` e usa o menor limite entre largura e altura. O conteúdo das cartas não define o tamanho da grelha.
 ## Camada visual da carta
 
-A imagem da definição é usada como background da carta, com uma camada de contraste para manter o nome, o nível e os valores legíveis. A mão usa cartas maiores no rail direito inferior; o status do jogador 1 fica acima da mão. Esta composição não altera a grelha nem as regras.
+A imagem da definição é usada como background da carta, com uma camada de contraste para manter o nome, o nível e os valores legíveis. No desktop, a mão usa cartas maiores no rail direito inferior e o status do jogador 1 fica acima da mão. Esta composição não altera a grelha nem as regras.
 ## Painel de histórico e fundo
 
 O MatchLog usa o mesmo tratamento de painel de ferro/pedra dos restantes elementos e aparece por baixo do Jogador 2. O fundo global usa o asset local em apps/web/public/images/backgrounds/souls-background.png, com overlays escuros e violeta para manter o centro legível.
@@ -70,6 +71,10 @@ O MatchLog usa o mesmo tratamento de painel de ferro/pedra dos restantes element
 Os efeitos de combate usam realces, opacidade e sombras sem alterar o layout. A coluna ativa, o atacante, o alvo e a destruição são estados semânticos do `BoardCell`; não há crescimento da grelha nem reposicionamento de cartas. A sequência e os tempos estão documentados em [combat-animations.md](./combat-animations.md).
 
 A apresentação reduzida respeita `prefers-reduced-motion: reduce`, removendo pulso e espera temporal. A informação equivalente continua disponível no indicador do tabuleiro e no histórico da partida.
+
+## Partida em mobile e tablet
+
+O `App.module.css` define a composição compacta até 64rem e diferencia mobile abaixo de 48rem. O tabuleiro não é escalado por uma largura fixa: o `GameBoard` mede a área central disponível e mantém a proporção das casas. Os HUDs ocupam faixas reservadas na moldura; apenas a mão e os modais usam overlays com safe-area, sem layout shift.
 ## Combat VFX
 
 A linguagem visual de combate usa dourado/bronze para carga e raios, azul-violeta para Souls, vermelho-brasa para dano e marcadores X e sombras profundas para destruição. O SVG fica numa camada absoluta dentro do tabuleiro, com `pointer-events: none`, sem alterar casas, cartas ou layout. Os tempos são centralizados em [combatVfxTiming.ts](../apps/web/src/features/combat/combatVfxTiming.ts).
@@ -88,4 +93,4 @@ A composição do resultado final combina componentes funcionais com assets tran
 
 ## Tutorial
 
-O tutorial usa o mesmo ferro escuro, bronze, dourado envelhecido e violeta espiritual através de [TutorialInstructionPanel](../apps/web/src/features/tutorial/presentation/TutorialInstructionPanel.tsx). As linhas guiadas recebem apenas um contorno e pulso de baixa intensidade em [BoardCell.module.css](../apps/web/src/features/game-board/presentation/BoardCell.module.css); o destaque não altera dimensões, cliques ou regras do tabuleiro.
+O tutorial usa o mesmo ferro escuro, bronze, dourado envelhecido e violeta espiritual através de [TutorialInstructionPanel](../apps/web/src/features/tutorial/presentation/TutorialInstructionPanel.tsx). As linhas guiadas recebem apenas um contorno e pulso de baixa intensidade em [BoardCell.module.css](../apps/web/src/features/game-board/presentation/BoardCell.module.css); o destaque não altera dimensões, cliques ou regras do tabuleiro. Até 64rem, o tutorial usa instruções compactas, mão em drawer e uma composição específica para landscape sem overflow horizontal.
