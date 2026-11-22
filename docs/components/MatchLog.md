@@ -10,6 +10,8 @@ O componente recebe uma lista de mensagens já adaptadas para linguagem humana. 
 
 O histórico é atualizado pelo [useLocalGame](../../apps/web/src/features/match/application/useLocalGame.ts) depois de cada operação bem-sucedida. As mensagens mais recentes aparecem no topo e a lista mantém scroll vertical interno, limitada ao espaço do rail esquerdo.
 
+Até 64rem, o componente é ocultado exclusivamente por CSS e não reserva espaço. A lista de eventos continua a ser mantida pelo controlador e reaparece intacta quando o viewport regressa ao layout desktop.
+
 ## Eventos apresentados
 
 O adaptador cobre invocações, compras, falhas de compra, retiradas, destruições, dano, Souls, início de turnos/rondas e fim da partida. IDs de instância e objetos JSON não são expostos.

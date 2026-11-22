@@ -48,8 +48,8 @@ export function TutorialInstructionPanel({
       <progress className={styles.progress} value={stepIndex + (stepCompleted ? 1 : 0)} max={totalSteps} aria-label="Progresso do tutorial" />
       <p className={styles.eyebrow}>SOULS · TUTORIAL INTERATIVO</p>
       <h2>{step.title}</h2>
-      <p className={styles.description}>{step.description}</p>
-      <div className={styles.objective}>
+      <p className={styles.description} data-tutorial-description>{step.description}</p>
+      <div className={styles.objective} data-tutorial-objective>
         <span className={styles.objectiveLabel}>OBJETIVO</span>
         <strong>{step.objective}</strong>
       </div>
@@ -89,9 +89,9 @@ export function TutorialInstructionPanel({
         </div>
       ) : null}
 
-      <p className={`${styles.message} ${stepCompleted ? styles.success : ''}`} role="status">{message}</p>
+      <p className={`${styles.message} ${stepCompleted ? styles.success : ''}`} data-tutorial-message role="status">{message}</p>
 
-      <div className={styles.actions}>
+      <div className={styles.actions} data-tutorial-actions>
         {showAction ? (
           <button className={styles.primary} type="button" onClick={() => {
             void playSfx('sfx.ui.click');

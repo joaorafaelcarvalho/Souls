@@ -5,6 +5,9 @@
 ### Adicionado
 
 - PvP Online v1.0 com salas privadas em memória, códigos de convite, identidades anónimas de sessão, lobby de baralhos, servidor autoritativo baseado no game-core, WebSocket, projeções privadas, versões/command IDs, reconexão temporária e revanche consensual;
+- composição responsiva da partida para mobile/tablet até 64rem, com barra superior compacta, HUDs ancorados por jogador, mão em drawer overlay, inspeção modal, colocação explícita e Soul Harvest ligado aos comandos oficiais;
+- refinamento responsivo da partida: inspeção mobile sem narrativa, HUDs em faixas sem sobreposição e recálculo do tabuleiro após redimensionamento;
+- tutorial responsivo em mobile/tablet, com instruções compactas, mão em drawer overlay e composição landscape sem scroll horizontal;
 - pacote game-online com contratos de rede e visão autorizada partilhada entre API e frontend;
 - integração de 19 assets licenciados do OpenGameArt no Audio Engine, com manifesto atualizado, rastreabilidade em `SOULS-AUDIO-LICENSES.md` e músicas oficiais de menu, combate, vitória e derrota; a validação auditiva humana permanece pendente;
 - preparação Multiplatform Architecture v1.0 com auditoria da árvore real, plano de migração seguro, proposta Flutter sem criação de projeto Mobile e três fixtures JSON portáteis validadas contra o game-core;

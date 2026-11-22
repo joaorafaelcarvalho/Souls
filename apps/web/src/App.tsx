@@ -1,4 +1,5 @@
 import {
+  MAX_SOULS,
   systemRandomSource,
   type BoardPosition,
   type CardInstanceId,
@@ -13,6 +14,7 @@ import { PlayerHand } from './features/match/presentation/PlayerHand';
 import { PlayerStatus } from './features/match/presentation/PlayerStatus';
 import { MatchLog } from './features/match/presentation/MatchLog';
 import { CardInspectionPanel } from './features/cards/presentation/CardInspectionPanel';
+import { CardInspectionDialog } from './features/cards/presentation/CardInspectionDialog';
 import { GameResultOverlay } from './features/match/presentation/GameResultOverlay';
 import { GameRulesDialog } from './features/rules/presentation/GameRulesDialog';
 import { LoadingScreen } from './features/entry/presentation/LoadingScreen';
@@ -125,6 +127,7 @@ function AppContent({ random = systemRandomSource }: AppProps) {
     onReset: audio.stopAllSfx
   });
   const [inspectedCardId, setInspectedCardId] = useState<CardInstanceId | null>(null);
+  const [handOpen, setHandOpen] = useState(false);
   const [resultVisible, setResultVisible] = useState(true);
   const [rulesOpen, setRulesOpen] = useState(false);
   const [returnMenuOpen, setReturnMenuOpen] = useState(false);
@@ -155,6 +158,38 @@ function AppContent({ random = systemRandomSource }: AppProps) {
   const inspectedCardDefinition = inspectedCardId === null
     ? undefined
     : view.cardDefinitions[view.visibleCardInstances[inspectedCardId]?.cardDefinitionId ?? ''];
+  const inspectedCardInstance = inspectedCardId === null
+    ? undefined
+    : view.visibleCardInstances[inspectedCardId];
+  const inspectedCardInHand = inspectedCardId !== null && view.viewer.hand.includes(inspectedCardId);
+  const inspectedCardSource = inspectedCardInHand ? 'hand' as const : 'board' as const;
+  const canPlaceInspectedCard = inspectedCardInHand
+    && inspectedCardId !== null
+    && !isCombatAnimating
+    && !isResourceAnimating
+    && !isAiTurn
+    && view.status !== 'finished'
+    && Array.from({ length: 6 }, (_, row) => row).some((row) =>
+      Array.from({ length: 4 }, (_, column) => column).some((column) =>
+        canPlaceSelectedCard(inspectedCardId, row, column)
+      )
+    );
+  const canRetireInspectedCard = inspectedCardInstance?.ownerId === view.viewerPlayerId
+    && view.activePlayerId === view.viewerPlayerId
+    && view.status !== 'finished'
+    && !isCombatAnimating
+    && !isResourceAnimating
+    && !isAiTurn
+    && (view.turn.phase === 'first-round-positioning' || view.turn.phase === 'positioning')
+    && view.turn.placementsMade === 0
+    && !view.turn.hasRetired;
+  const retirementDisabledReason = view.turn.phase !== 'first-round-positioning' && view.turn.phase !== 'positioning'
+    ? 'A retirada só pode ocorrer durante o posicionamento.'
+    : view.turn.placementsMade > 0 || view.turn.hasStartedPlacement
+      ? 'A retirada tem de acontecer antes de qualquer colocação.'
+      : view.activePlayerId !== view.viewerPlayerId
+        ? 'Só o jogador ativo pode retirar uma carta.'
+        : 'A retirada não está disponível neste momento.';
   const isActionAnimating = isCombatAnimating || isResourceAnimating;
   const opponentPlayerId = view.viewerPlayerId === 1 ? 2 : 1;
   const audioContext: AudioContextId | null = entryScreen === 'loading'
@@ -190,6 +225,12 @@ function AppContent({ random = systemRandomSource }: AppProps) {
       setEntryScreen('game');
     }
   }, [entryScreen, onlineConfig, onlineGame.view]);
+
+  useEffect(() => {
+    if (inspectedCardId !== null && inspectedCardInstance === undefined) {
+      setInspectedCardId(null);
+    }
+  }, [inspectedCardId, inspectedCardInstance]);
 
   function startLocalGame(playerDecks: PlayerDeckPair) {
     if (isMenuLeaving) {
@@ -388,6 +429,7 @@ function AppContent({ random = systemRandomSource }: AppProps) {
   function handleReset() {
     audio.stopAllSfx();
     setInspectedCardId(null);
+    setHandOpen(false);
     setResultVisible(true);
     commands.reset();
   }
@@ -417,6 +459,7 @@ function AppContent({ random = systemRandomSource }: AppProps) {
   function goToMainMenu() {
     audio.stopAllSfx();
     setInspectedCardId(null);
+    setHandOpen(false);
     setRulesOpen(false);
     setResultVisible(true);
     commands.reset();
@@ -427,6 +470,30 @@ function AppContent({ random = systemRandomSource }: AppProps) {
     setIsMenuLeaving(false);
     setEntryScreen('menu');
   }
+
+  function closeCardInspection() {
+    setInspectedCardId(null);
+  }
+
+  function placeInspectedCard() {
+    if (!canPlaceInspectedCard) {
+      return;
+    }
+
+    setInspectedCardId(null);
+    setHandOpen(false);
+  }
+
+  function retireInspectedCard() {
+    if (!canRetireInspectedCard) {
+      return;
+    }
+
+    commands.retireSelectedCard();
+    setInspectedCardId(null);
+    setHandOpen(false);
+  }
+
   function handleHandSelect(instanceId: CardInstanceId) {
     if (isActionAnimating || isAiTurn || view.status === 'finished') {
       return;
@@ -443,6 +510,7 @@ function AppContent({ random = systemRandomSource }: AppProps) {
 
     if (occupantId !== null) {
       setInspectedCardId(occupantId);
+      setHandOpen(false);
       commands.selectBoardCard(occupantId);
       return;
     }
@@ -536,7 +604,9 @@ function AppContent({ random = systemRandomSource }: AppProps) {
           combatPlayback={combatPlayback}
           getCellState={getCellState}
           onCellClick={handleCellClick}
+          opponentPlayerId={opponentPlayerId}
           opponentPanel={<PlayerStatus player={view.players[opponentPlayerId]} {...(isPve ? { label: 'A IA' } : {})} isActive={view.activePlayerId === opponentPlayerId} position="top" damageAmount={combatDamageFor(combatPlayback, opponentPlayerId) || resourceDamageFor(resourceDamageByPlayer, opponentPlayerId)} soulDelta={combatSoulDeltaFor(combatPlayback, opponentPlayerId)} feedbackKey={resourcePlaybackKey} feedbackSpeed={combatPlayback?.speed ?? 1} />}
+          playerPlayerId={view.viewerPlayerId}
           playerPanel={<PlayerStatus player={view.players[view.viewerPlayerId]} isActive={view.activePlayerId === view.viewerPlayerId} position="bottom" damageAmount={combatDamageFor(combatPlayback, view.viewerPlayerId) || resourceDamageFor(resourceDamageByPlayer, view.viewerPlayerId)} soulDelta={combatSoulDeltaFor(combatPlayback, view.viewerPlayerId)} feedbackKey={combatPlayback === null ? resourcePlaybackKey : `${combatPlayback.column}-${combatPlayback.exchangeIndex}-p${view.viewerPlayerId}`} feedbackSpeed={combatPlayback?.speed ?? 1} />}
         />
       </section>
@@ -576,7 +646,15 @@ function AppContent({ random = systemRandomSource }: AppProps) {
         <CardInspectionPanel definition={inspectedCardDefinition} />
       </aside>
 
-      <section className={styles.playerArea} aria-label="Estado do jogador ativo">
+      <section className={`${styles.playerArea} ${handOpen ? styles.handOpen : ''}`} aria-label="Estado do jogador ativo">
+        {handOpen ? (
+          <button
+            className={styles.handBackdrop}
+            type="button"
+            aria-label="Fechar mão"
+            onClick={() => setHandOpen(false)}
+          />
+        ) : null}
         <div className={styles.playerControls}>
           <section className={styles.selection} aria-live="polite">
             <strong>
@@ -605,13 +683,41 @@ function AppContent({ random = systemRandomSource }: AppProps) {
             disabled={isActionAnimating || isAiTurn || (isOnline && view.activePlayerId !== view.viewerPlayerId) || view.status === 'finished'}
             onSelect={handleHandSelect}
             selectedCardId={selectedCardId}
+            showHeading={handOpen}
+            id="player-hand-drawer"
+            {...(styles.handDrawer === undefined ? {} : { className: styles.handDrawer })}
           />
         </div>
+        <button
+          className={styles.handToggle}
+          type="button"
+          aria-label={handOpen ? 'Fechar mão' : 'Abrir mão'}
+          aria-controls="player-hand-drawer"
+          aria-expanded={handOpen}
+          onClick={() => setHandOpen((open) => !open)}
+        >
+          <span aria-hidden="true">✦</span>
+          Mão ({view.viewer.hand.length})
+        </button>
       </section>
 
       <ReturnToMenuDialog open={returnMenuOpen} onCancel={cancelReturnToMenu} onConfirm={confirmReturnToMenu} />
 
       <GameRulesDialog open={rulesOpen} onClose={() => setRulesOpen(false)} />
+
+      <CardInspectionDialog
+        open={inspectedCardId !== null}
+        definition={inspectedCardDefinition}
+        source={inspectedCardSource}
+        canPlace={canPlaceInspectedCard}
+        canRetire={canRetireInspectedCard}
+        showRetireAction={inspectedCardSource === 'board' && inspectedCardInstance?.ownerId === view.viewerPlayerId}
+        retirementLabel={view.players[view.viewerPlayerId].souls >= MAX_SOULS ? 'Retirar carta · Souls no limite' : 'Retirar carta · +1 Soul'}
+        retirementDisabledReason={retirementDisabledReason}
+        onClose={closeCardInspection}
+        onPlace={placeInspectedCard}
+        onRetire={retireInspectedCard}
+      />
 
       <GameResultOverlay view={view} visible={resultVisible} {...(isPve ? { playerLabels: { 1: 'Jogador', 2: 'A IA' } } : {})} onMenu={goToMainMenu} onRematch={handleRematch} />
 

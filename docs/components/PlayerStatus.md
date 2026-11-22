@@ -33,6 +33,8 @@ Usa tokens de espaço, borda, superfície, texto e destaque definidos em [tokens
 <PlayerStatus player={state.players[1]} isActive position="bottom" />
 ```
 
+Em viewports até 64rem, o componente reduz espaçamento e conteúdo secundário. A posição visual é determinada pelas faixas do `GameBoard`: J2 fica no painel superior esquerdo e J1 no inferior direito, preservando HP, Souls e feedbacks de combate sem sobrepor a grelha.
+
 ## Limitações
 
 - não edita HP ou Souls;

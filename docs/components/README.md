@@ -3,6 +3,7 @@
 Componentes React implementados:
 
 - [Card](./Card.md)
+- [CardInspectionDialog](./CardInspectionDialog.md)
 - [GameBoard](./GameBoard.md)
 - [BoardCell](./BoardCell.md)
 - [PlayerStatus](./PlayerStatus.md)

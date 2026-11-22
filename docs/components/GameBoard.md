@@ -6,7 +6,7 @@ Compor a grelha visual de 24 casas, com seis linhas e quatro colunas, dando dest
 
 ## Props
 
-A interface recebe board, cardInstances, cardDefinitions, getCellState e onCellClick. Os tipos completos estão no próprio [GameBoard.tsx](../../apps/web/src/features/game-board/presentation/GameBoard.tsx).
+A interface recebe board, cardInstances, cardDefinitions, getCellState, onCellClick, os painéis dos jogadores e os respetivos IDs. Os tipos completos estão no próprio [GameBoard.tsx](../../apps/web/src/features/game-board/presentation/GameBoard.tsx).
 
 ## Estados
 
@@ -16,7 +16,9 @@ As casas recebem valid, invalid ou inactive do controlador local. A decisão usa
 
 As coordenadas e nomes técnicos das zonas não são mostrados. Casas vazias usam apenas cor e espaço vertical. Casas ocupadas mostram a carta completa em proporção 2 / 3.
 
-A área [App.tsx](../../apps/web/src/App.tsx) coloca o GameBoard na coluna central da composição desktop. A moldura aproveita a largura disponível, enquanto o cálculo interno usa o menor limite entre largura e altura para manter as seis linhas e quatro colunas integralmente visíveis. Em ecrãs pequenos, a área passa para uma coluna sem alterar a grelha.
+A área [App.tsx](../../apps/web/src/App.tsx) coloca o GameBoard na coluna central da composição desktop. A moldura aproveita a largura disponível, enquanto o cálculo interno usa o menor limite entre largura e altura para manter as seis linhas e quatro colunas integralmente visíveis. Até 64rem, o shell recebe uma área fixa entre a barra superior e o botão da mão; a única faixa da grelha passa a ocupar esse espaço completo, sem alterar a grelha.
+
+Nos viewports compactos, os mesmos `PlayerStatus` ocupam faixas próprias dentro da moldura: J2 fica sempre no painel superior esquerdo e J1 no painel inferior direito, mesmo quando muda o jogador ativo. O tabuleiro fica na faixa central e a mão/modal continuam em camadas independentes, sem cobrir as casas.
 
 ## Limitações
 

@@ -11,6 +11,9 @@ export interface PlayerHandProps {
   readonly selectedCardId: CardInstanceId | null;
   readonly onSelect: (cardId: CardInstanceId) => void;
   readonly disabled?: boolean;
+  readonly showHeading?: boolean;
+  readonly id?: string;
+  readonly className?: string;
 }
 
 export function PlayerHand({
@@ -19,7 +22,10 @@ export function PlayerHand({
   cardDefinitions,
   selectedCardId,
   onSelect,
-  disabled = false
+  disabled = false,
+  showHeading = false,
+  id,
+  className
 }: PlayerHandProps) {
   const cardsRef = useRef<HTMLDivElement>(null);
   const { playSfx } = useAudio();
@@ -56,10 +62,16 @@ export function PlayerHand({
   }, []);
 
   return (
-    <section className={styles.hand}>
-      <div className={styles.heading}>
+    <section className={`${styles.hand} ${className ?? ''}`} aria-label="Mão do jogador" {...(id === undefined ? {} : { id })}>
+      <div className={styles.heading} data-hand-heading>
+        {showHeading ? (
+          <>
+            <h2>Mão do jogador</h2>
+            <span>{cardIds.length} cartas</span>
+          </>
+        ) : null}
       </div>
-      <div ref={cardsRef} className={styles.cards}>
+      <div ref={cardsRef} className={styles.cards} data-hand-cards>
         {cardIds.map((instanceId) => {
           const instance = cardInstances[instanceId];
           const definition = instance === undefined ? undefined : cardDefinitions[instance.cardDefinitionId];

@@ -41,7 +41,7 @@ export function PlayerStatus({
   const statusStyle: StatusStyle = { '--hp-progress': hpProgress };
 
   return (
-    <section className={`${styles.status} ${isActive ? styles.active : ''}`} data-player-position={position} style={statusStyle}>
+    <section className={`${styles.status} ${isActive ? styles.active : ''}`} data-player-id={player.id} data-player-position={position} style={statusStyle}>
       <div className={styles.heading}>
         <span>{label ?? 'Jogador ' + player.id}</span>
         {isActive ? <span className={styles.badge}>ativo</span> : null}

@@ -74,3 +74,15 @@
   cursor: wait;
   opacity: 0.7;
 }
+
+@media (max-width: 64rem) {
+  .cards {
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 0.2rem;
+    touch-action: pan-x;
+  }
+
+  .card {
+    min-height: 2.75rem;
+  }
+}

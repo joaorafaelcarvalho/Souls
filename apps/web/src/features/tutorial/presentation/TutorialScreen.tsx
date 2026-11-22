@@ -1,4 +1,5 @@
 import type { BoardPosition } from '@souls/game-core';
+import { useState } from 'react';
 import { GameBoard, type BoardCellState } from '../../game-board/presentation/GameBoard';
 import { MatchLog } from '../../match/presentation/MatchLog';
 import { PlayerHand } from '../../match/presentation/PlayerHand';
@@ -55,6 +56,7 @@ function Completion({ onRestart, onPlayNow, onExit }: { readonly onRestart: () =
 
 export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
   const audio = useAudio();
+  const [handOpen, setHandOpen] = useState(false);
   const tutorial = useTutorialGame({
     onEvents: audio.playGameEvents,
     onCombatPlayback: audio.playCombatPlayback,
@@ -148,7 +150,9 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
           combatPlayback={tutorial.combatPlayback}
           getCellState={getCellState}
           onCellClick={handleCellClick}
+          opponentPlayerId={2}
           opponentPanel={<PlayerStatus player={tutorial.view.players[2]} isActive={tutorial.view.activePlayerId === 2} position="top" />}
+          playerPlayerId={1}
           playerPanel={<PlayerStatus player={tutorial.view.players[1]} isActive={tutorial.view.activePlayerId === 1} position="bottom" />}
         />
       </section>
@@ -172,7 +176,15 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
         />
       </aside>
 
-      <section className={styles.handStage} aria-label="Mão do tutorial">
+      <section className={`${styles.handStage} ${handOpen ? styles.handOpen : ''}`} aria-label="Mão do tutorial">
+        {handOpen ? (
+          <button
+            className={styles.handBackdrop}
+            type="button"
+            aria-label="Fechar mão do tutorial"
+            onClick={() => setHandOpen(false)}
+          />
+        ) : null}
         <div className={styles.handHeading}>
           <strong>{selectedCardDefinition === undefined ? 'Seleciona uma carta' : `Selecionada: ${selectedCardDefinition.name}`}</strong>
           <span>{handEnabled ? 'A carta indicada está destacada pelo objetivo.' : 'Observa as cartas e os seus atributos.'}</span>
@@ -184,7 +196,21 @@ export function TutorialScreen({ onExit, onPlayNow }: TutorialScreenProps) {
           selectedCardId={tutorial.selectedCardId}
           disabled={!handEnabled || tutorial.isCombatAnimating}
           onSelect={tutorial.commands.selectCard}
+          showHeading={handOpen}
+          id="tutorial-hand-drawer"
+          {...(styles.tutorialHand === undefined ? {} : { className: styles.tutorialHand })}
         />
+        <button
+          className={styles.handToggle}
+          type="button"
+          aria-label={handOpen ? 'Fechar mão do tutorial' : 'Abrir mão do tutorial'}
+          aria-controls="tutorial-hand-drawer"
+          aria-expanded={handOpen}
+          onClick={() => setHandOpen((open) => !open)}
+        >
+          <span aria-hidden="true">✦</span>
+          Mão ({tutorial.view.viewer.hand.length})
+        </button>
       </section>
 
       {(tutorial.step.id === 'cards' || tutorial.step.id === 'levels') && selectedCardDefinition !== undefined ? (

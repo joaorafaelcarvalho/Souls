@@ -68,6 +68,51 @@
     padding: 0.35rem;
   }
 }
+
+@media (max-width: 64rem) {
+  .boardShell {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .playerOverlayTop,
+  .playerOverlayBottom {
+    position: static;
+    display: flex;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .playerOverlayTop {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .playerOverlayBottom {
+    grid-column: 1;
+    grid-row: 3;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  [data-panel-player-id='2'] {
+    grid-row: 1;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  [data-panel-player-id='1'] {
+    grid-row: 3;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .gridViewport {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
 .combatBanner {
   position: absolute;
   top: 0.5rem;
